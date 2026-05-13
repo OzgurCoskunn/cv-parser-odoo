@@ -438,8 +438,8 @@ class StockPicking(models.Model):
             self.cancel_shipment()
         return super(StockPicking, self).action_cancel()
     
-    @api.depends('carrier_id', 'move_ids_without_package')
+    @api.depends('carrier_id', 'move_ids')
     def _compute_return_picking(self):
         for picking in self:
-            picking.is_return_picking = any(m.origin_returned_move_id for m in picking.move_ids_without_package)
+            picking.is_return_picking = any(m.origin_returned_move_id for m in picking.move_ids)
 
