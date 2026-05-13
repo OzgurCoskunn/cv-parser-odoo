@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+from odoo import models
+
+
+class SyncopsConnector(models.Model):
+    _inherit = 'syncops.connector'
+
+    def action_toggle_environment(self):
+        super().action_toggle_environment()
+        self.env['delivery.carrier'].sudo().search([
+            '|',
+            ('delivery_yurtici_connector_id', '=', self.id),
+            ('delivery_yurtici_return_connector_id', '=', self.id),
+        ]).write({'prod_environment': self.environment})

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="delivery_base.view_order_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//page[@name='cargo_status']/notebook" position="inside">
+            <page string="Yurtiçi Kargo">
+                <field name="delivery_tracking_yurtici_ids" nolabel="1">
+                    <tree>
+                        <field name="transaction_datetime" widget="date"/>
+                        <field name="location"/>
+                        <field name="transaction"/>
+                    </tree>
+                </field>
+            </page>
+        </xpath>
+    </field>
+    </record>
+</odoo>

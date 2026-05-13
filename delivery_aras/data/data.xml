@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="cron_update_order" model="ir.cron">
+            <field name="name">Delivery: Update Aras Kargo Order</field>
+            <field name="interval_number">30</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="code">model._update_delivery_aras_state()</field>
+            <field name="state">code</field>
+        </record>
+
+        <record id="delivery_carrier" model="delivery.carrier">
+            <field name="name">Aras Kargo</field>
+            <field name="delivery_type">aras</field>
+            <field name="product_id" ref="delivery.product_product_delivery"/>
+        </record>
+
+    	<record id="key_date_start" model="ir.config_parameter">
+            <field name="key">delivery.aras.date.start</field>
+            <field name="value"></field>
+        </record>
+    	<record id="key_date_cleanup" model="ir.config_parameter">
+            <field name="key">delivery.aras.cleanup.days</field>
+            <field name="value"></field>
+        </record>
+    </data>
+</odoo>

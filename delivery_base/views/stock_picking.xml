@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[@name='button_box']" position="inside">
+            <button name="action_view_delivery_logs" type="object" class="oe_stat_button" icon="fa-file-text-o" invisible="delivery_log_count == 0" groups="stock.group_stock_manager">
+                <div class="o_stat_info">
+                    <span class="o_stat_value"><field name="delivery_log_count"/></span>
+                    <span class="o_stat_text">Delivery Logs</span>
+                </div>
+            </button>
+        </xpath>
+        <xpath expr="//field[@name='carrier_id']" position="after">
+            <field name="carrier_state" widget="badge" decoration-success="state == 'delivered'"/>
+            <field name="carrier_doc_id"/>
+        </xpath>
+    </field>
+    </record>
+
+    <record id="view_picking_internal_search" model="ir.ui.view">
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field" position="before">
+            <field name="carrier_tracking_ref" string="Tracking Reference" filter_domain="[('carrier_tracking_ref', 'ilike', self)]"/>
+        </xpath>
+    </field>
+    </record>
+
+    <record id="tree_delivery_tracking" model="ir.ui.view">
+    <field name="model">delivery.tracking</field>
+    <field name="arch" type="xml">
+        <list string="Delivery Tracking">
+            <field name="name" invisible="1"/>
+            <field name="delivery_type" decoration-bf="1"/>
+            <field name="carrier_id"/>
+            <field name="customer_barcode"/>
+            <field name="transaction_date"/>
+            <field name="transaction_time"/>
+            <field name="location"/>
+            <field name="transaction"/>
+            <field name="date_promised"/>
+            <field name="delivery_on_promised" invisible="1"/>
+            <field name="delivery_status" widget="badge" optional="show" decoration-danger="delivery_status=='cancel'" decoration-success="delivery_status == 'done'" invisible="not delivery_on_promised"/>
+            <field name="state" widget="badge" optional="show" decoration-success="state == 'delivered'" decoration-danger="state == 'return_to_seller'"/>
+            <field name="passing_time_selection"/>
+            <field name="delivery_return_reason" optional="hide"/>
+            <field name="delivery_return_reason_message" optional="hide"/>
+            <field name="passing_time" optional="hide"/>
+            <field name="status" optional="hide"/>
+        </list>
+    </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_delivery_tracking">
+    <field name="name">Delivery Tracking</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">delivery.tracking</field>
+    <field name="view_mode">list</field>
+    </record>
+
+    <menuitem
+        id="menu_delivery_tracking"
+        parent="stock.menu_delivery"
+        name="Delivery Tracking"
+        action="action_delivery_tracking"/>
+</odoo>
