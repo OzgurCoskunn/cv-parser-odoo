@@ -13,6 +13,7 @@
         'mail',
         'sms',
         'sale',
+        'purchase',
         'crm',
         'sla',
         'l10n_tr_address',
