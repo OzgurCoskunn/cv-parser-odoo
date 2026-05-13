@@ -1,0 +1,107 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_tr_address_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-30 13:58+0000\n"
+"PO-Revision-Date: 2024-03-30 17:02+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Apartment / Flat No"
+msgstr "Apartman / Daire No"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "City"
+msgstr "Şehir"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Country"
+msgstr "Ülke"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Country..."
+msgstr "Ülke..."
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "District"
+msgstr "Mahalle"
+
+#. module: l10n_tr_address_portal
+#. odoo-javascript
+#: code:addons/l10n_tr_address_portal/static/src/js/portal.js:0
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+#, python-format
+msgid "District..."
+msgstr "Mahalle..."
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Email"
+msgstr "Eposta"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Name"
+msgstr "Adı"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Phone"
+msgstr "Telefon"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "State / Province"
+msgstr "Şehir"
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "State / Province..."
+msgstr "Şehir..."
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Street"
+msgstr "Cadde"
+
+#. module: l10n_tr_address_portal
+#. odoo-javascript
+#: code:addons/l10n_tr_address_portal/static/src/js/portal.js:0
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+#, python-format
+msgid "Street..."
+msgstr "Cadde..."
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Town"
+msgstr "İlçe"
+
+#. module: l10n_tr_address_portal
+#. odoo-javascript
+#: code:addons/l10n_tr_address_portal/static/src/js/portal.js:0
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+#, python-format
+msgid "Town..."
+msgstr "İlçe..."
+
+#. module: l10n_tr_address_portal
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_portal.portal_my_details_fields
+msgid "Zip / Postal Code"
+msgstr "Posta Kodu"

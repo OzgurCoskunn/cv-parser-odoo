@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit address form fields to add Turkish address structure -->
+    <template id="address_form_fields" inherit_id="portal.address_form_fields">
+        
+        <!-- Replace street field with Turkish district structure -->
+        <xpath expr="//div[@id='div_street']" position="replace">
+            <div id="div_district" class="col-lg-12 mb-2">
+                <label class="col-form-label" for="o_district">District</label>
+                <input
+                    name="street"
+                    id="o_district"
+                    type="text"
+                    class="form-control"
+                    t-att-value="partner_sudo.street"
+                />
+            </div>
+        </xpath>
+        
+        <!-- Replace street2 field with Turkish street structure -->
+        <xpath expr="//div[@id='div_street2']" position="replace">
+            <div id="div_street2" class="col-lg-12 mb-2">
+                <label class="col-form-label label-optional" for="o_street2">Street</label>
+                <input
+                    id="o_street2"
+                    type="text"
+                    name="street2"
+                    class="form-control"
+                    t-att-value="partner_sudo.street2"
+                />
+            </div>
+            <div id="div_street3" class="col-lg-12 mb-2">
+                <label class="col-form-label label-optional" for="o_street3">Apartment / Flat No</label>
+                <input
+                    id="o_street3"
+                    type="text"
+                    name="street3"
+                    class="form-control"
+                    t-att-value="partner_sudo.street3"
+                />
+            </div>
+        </xpath>
+        
+        <!-- Replace city field with Turkish town structure -->
+        <xpath expr="//div[@id='div_city']" position="replace">
+            <div id="div_city" class="col-md-8 mb-2">
+                <label class="col-form-label" for="o_city">Town</label>
+                <input
+                    id="o_city"
+                    type="text"
+                    name="city"
+                    class="form-control"
+                    t-att-value="partner_sudo.city"
+                />
+            </div>
+        </xpath>
+        
+    </template>
+</odoo>

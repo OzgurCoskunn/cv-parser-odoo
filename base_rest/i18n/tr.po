@@ -1,0 +1,210 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* base_rest
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-06 14:40+0000\n"
+"PO-Revision-Date: 2024-09-06 17:48+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "%(key)'s JSON content is malformed: %(error)s"
+msgstr "%(key) JSON içeriği bozuk: %(error)s"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Array of "
+msgstr "Dizi"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "BadRequest %s"
+msgstr "Hatalı İstek %s"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "BadRequest item %(idx)s :%(errors)s"
+msgstr "Hatalı İstek Kalemi %(idx)s :%(errors)s"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "BadRequest: Not enough items in the list (%(current)s < %(expected)s)"
+msgstr "Hatalı İstek: Listede yeteri kadar kalem yok (%(current)s < %(expected)s)"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "BadRequest: Too many items in the list (%(current)s > %(expected)s)"
+msgstr "Hatalı İstek: Listede olması gerekenden fazla kalem var (%(current)s < %(expected)s)"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Callback responses"
+msgstr "Geridönüş yanıtları"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Default"
+msgstr "Varsayılan"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Deprecated"
+msgstr "Kullanım Dışı"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Download"
+msgstr "İndir"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Download OpenAPI specification"
+msgstr "OpenAPI spesifikasyonunu indir"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Enum"
+msgstr "Değerler"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Event"
+msgstr "Hook"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Example"
+msgstr "Örnek"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Examples"
+msgstr "Örnekler"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "Invalid Response %s"
+msgstr "Geçersiz Yanıt %s"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Items"
+msgstr "Kalemler"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "No results found"
+msgstr "Sonuç bulunamadı"
+
+#. module: base_rest
+#: model:ir.model,name:base_rest.model_rest_service_registration
+msgid "REST Services Registration Model"
+msgstr "REST Servisleri Kayıt Modeli"
+
+#. module: base_rest
+#: model:ir.model,name:base_rest.model_ir_rule
+msgid "Record Rule"
+msgstr "Kayıt Kuralı"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Recursive"
+msgstr "Yineleyen"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Request samples"
+msgstr "İstek örnekleri"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Response samples"
+msgstr "Yanıt örnekleri"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Responses"
+msgstr "Yanıtlar"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/apispec/base_rest_service_apispec.py:0
+#, python-format
+msgid "Successful"
+msgstr "Başarılı"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "Unable to get cerberus schema from %s"
+msgstr "%s için cerberus şeması alınamadı"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/controllers/api_docs.py:0
+#, python-format
+msgid "Value"
+msgstr "Değer"
+
+#. module: base_rest
+#. odoo-python
+#: code:addons/base_rest/restapi.py:0
+#, python-format
+msgid "You must provide a dict of RestMethodParam"
+msgstr "RestMethodParam için bir anahtar-değer belirtmelisiniz"

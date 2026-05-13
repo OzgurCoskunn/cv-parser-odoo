@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_inventory_line" model="ir.ui.view">
+    <field name="name">stock.barcode.inventory.line.tree</field>
+    <field name="model">stock.barcode.inventory.line</field>
+    <field name="arch" type="xml">
+        <list editable="top" js_class="inventory_line">
+            <header>
+                <button name="remove" type="object" string="Remove" icon="fa-trash"/>
+            </header>
+            <field name="inventory_id" class="" invisible="'dialog_size' in context" options="{'no_create': True, 'no_open': True}" optional="show"/>
+            <field name="location_id" invisible="'dialog_size' in context" options="{'no_create': True, 'no_open': True}" optional="show"/>
+            <field name="product_id" options="{'no_create': True}"/>
+            <field name="quantity"/>
+            <field name="onhand"/>
+            <field name="uom_id"/>
+            <field name="create_uid" invisible="'dialog_size' in context"/>
+            <field name="state" decoration-success="state == 'done'" decoration-info="state == 'draft'" widget="badge"  invisible="'dialog_size' in context"/>
+            <groupby name="inventory_id">
+                <field name="done" invisible="1"/>
+                <button name="action_validate" icon="fa-check" title="Done" type="object" invisible="done" groups="stock.group_stock_manager" column_invisible="'dialog_size' in context"/>
+                <button name="action_remove" class="text-danger" icon="fa-trash" title="Remove" type="object" invisible="done" groups="stock.group_stock_manager" column_invisible="'dialog_size' in context"/>
+            </groupby>
+        </list>
+    </field>
+    </record>
+
+    <record id="search_inventory_line" model="ir.ui.view">
+    <field name="name">stock.barcode.inventory.line.search</field>
+    <field name="model">stock.barcode.inventory.line</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="barcode"/>
+            <field name="product_id"/>
+            <filter string="Done" name="done" domain="[('inventory_id.done', '=', True)]"/>
+            <filter string="Ongoing" name="ongoing" domain="[('inventory_id.done', '=', False)]"/>
+            <group>
+                <filter string="Inventory" name="inventory_id" domain="[]" context="{'group_by': 'inventory_id'}"/>
+            </group>
+        </search>
+    </field>
+    </record>
+
+    <record id="form_inventory_wizard" model="ir.ui.view">
+    <field name="name">stock.barcode.inventory.wizard.form</field>
+    <field name="model">stock.barcode.inventory.wizard</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <p class="align-items-center d-flex flex-column h3 justify-content-center" invisible="type != 'validate'">
+                    <i class="fa fa-3x fa-exclamation-triangle mb-5 text-primary"/>
+                    <span class="text-center">Are you sure to validate this inventory adjustment?</span>
+                </p>
+                <p class="align-items-center d-flex flex-column h3 justify-content-center" invisible="type != 'remove'">
+                    <i class="fa fa-3x fa-exclamation-triangle mb-5 text-danger"/>
+                    <span class="text-center">Are you sure to remove this inventory adjustment?</span>
+                </p>
+                <field name="inventory_id" invisible="1"/>
+                <field name="type" invisible="1"/>
+            </sheet>
+            <footer class="d-flex justify-content-center">
+                <button name="validate" icon="fa-check" class="btn-primary text-uppercase font-weight-bold" string="Validate" type="object" groups="stock.group_stock_manager" invisible="type != 'validate'"/>
+                <button name="remove" icon="fa-trash" class="btn-danger text-uppercase font-weight-bold" string="Remove" type="object" groups="stock.group_stock_manager" invisible="type != 'remove'" confirm="Are you sure to remove related inventory adjustment lines? This action cannot be undone!"/>
+                <button special="cancel" icon="fa-minus" class="btn-secondary text-uppercase font-weight-bold" string="Cancel"/>
+            </footer>
+        </form>
+    </field>
+    </record>
+
+    <record id="action_inventory_line" model="ir.actions.act_window">
+    <field name="name">Inventory Lines</field>
+    <field name="res_model">stock.barcode.inventory.line</field>
+    <field name="view_mode">list</field>
+    <field name="context">{'groupby': 'location_id', 'create': False, 'delete': False}</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            No inventory lines found
+        </p>
+        <p>
+            There is not any inventory lines related to according inventory adjustment.
+        </p>
+    </field>
+    </record>
+
+    <record id="action_inventory_wizard" model="ir.actions.act_window">
+    <field name="name">Inventory Confirmation</field>
+    <field name="res_model">stock.barcode.inventory.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record>
+</odoo>

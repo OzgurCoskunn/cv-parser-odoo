@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_stock_warehouse" model="ir.ui.view">
+    <field name="model">stock.warehouse</field>
+    <field name="inherit_id" ref="stock.view_warehouse"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='group_resupply']" position="after">
+            <group name="fsm" string="Field Service" groups="fsm.group_administrator">
+                <field name="fsm_owner_id" options="{'no_create': True}" string="Owner"/>
+                <field name="fsm_user_id" options="{'no_create': True}" string="User"/>
+            </group>
+        </xpath>
+    </field>
+    </record>
+</odoo>

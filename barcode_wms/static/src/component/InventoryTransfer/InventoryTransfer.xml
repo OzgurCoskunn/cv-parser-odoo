@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.InventoryTransfer" t-inherit="barcode_wms.Components" t-inherit-mode="primary" owl="1">
+        <xpath expr="//div[@class='scanning-screen']" position="inside">
+            <div class="scanning-screen-bar flex-column flex-sm-row gap-2">
+                <div class="d-flex flex-fill align-items-center">
+                    <div t-on-click="onBack" class="back-button-left">
+                        <i class="fa fa-angle-left"/>
+                    </div>
+                    <div class="scanning-screen-bar-item">
+                        <SelectDropdownOperation data="operations" selected="state.operation" text="'Operation Types'" trigger="'change-operation-type'"/>
+                    </div>
+                </div>
+                <div class="d-flex flex-fill align-items-center justify-content-center justify-content-sm-end">
+                    <div t-if="state.operation.id and state.operation.src or state.operation.id and state.operation.dest" class="scanning-screen-bar-item" t-on-click="() => this.openPopup('addLocation')">
+                        <button class="text-white"><i class="fa fa-plus"/></button>
+                    </div>
+                    <div t-if="state.operation.id and state.operation.src" class="scanning-screen-bar-item">
+                        <SelectDropdownLocationSrc data="locations.src" selected="state.location.src" trigger="'select-source-location'"/>
+                    </div>
+                    <div t-if="state.operation.id and state.operation.dest" class="scanning-screen-bar-item">
+                        <SelectDropdownLocationDest data="locations.dest" selected="state.location.dest" trigger="'select-destination-location'"/>
+                    </div>
+                    <div class="scanning-screen-bar-item lg-up">
+                        <SelectDropdownSort key="state.sort" trigger="'select-sort'"/>
+                    </div>
+                    <div class="scanning-screen-bar-item lg-up">
+                        <div class="h-100">
+                            <Pagination current="pages.current" total="pages.total"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scanning-screen-subbar md-down">
+                <div class="align-items-center d-flex">
+                    <div class="scanning-screen-subbar-item">
+                        <SelectDropdownSort key="state.sort" trigger="'select-sort'"/>
+                    </div>
+                </div>
+                <div class="align-items-center d-flex">
+                    <div class="scanning-screen-subbar-item">
+                        <div class="h-100">
+                            <Pagination current="pages.current" total="pages.total"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scanning-screen-body">
+                <div id="barcode_move" class="scanning-screen-line w-100 h-100 overflow-auto">
+                    <StockMove moves="moves" move="state.move" line="state.line" page="true" groups="state.groups" fields="getFields()"/>
+                </div>
+                <div class="w-100 bottom border-top">
+                    <button class="confirm-button" t-on-click="() => this.openPopup('addMove')" t-att-disabled="state.location.src.length or state.location.dest.length ? undefined : 'disabled'">Add Products</button>
+                    <button class="border-start confirm-button" t-on-click="() => this.openPopup('validate')" t-att-disabled="moves.length ? undefined : 'disabled'">Apply</button>
+                </div>
+            </div>
+        </xpath>
+    </t>
+ </templates>

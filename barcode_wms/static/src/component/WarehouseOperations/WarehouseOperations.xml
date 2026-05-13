@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.WarehouseOperations" owl="1">
+        <div class="o_barcode_action">
+            <div class="operations-screen">
+                <div class="operations-screen-bar">
+                    <div t-on-click="onBack" class="back-button-left">
+                        <i class="fa fa-angle-left"/>
+                    </div>
+                    <div class="align-items-center d-flex flex-fill font-size-20 justify-content-end px-5">
+                        Select the warehouse operation type
+                    </div>
+                </div>
+                <div class="operations-body">
+                    <div>
+                        <div t-foreach="operations" t-as="operation" t-key="operation.id">
+                            <div>
+                                <h2 clas="m-0" t-esc="operation.warehouse[1]"/>
+                            </div>
+                            <div>
+                                <div t-foreach="operation.types" t-as="type" t-key="type.id" t-on-click="() => this.selectType(type)" class="operations-card">
+                                    <div>
+                                        <div class="d-flex flex-fill text-primary px-2 py-2"><p t-esc="type.name"/></div>
+                                    </div>
+                                    <div class="operations-card-lines">
+                                        <div>
+                                            <div class="px-2 py-2 mx-2 text-700 text-center bg-100 border rounded shadow-sm"><t t-esc="type.ready"/> Ready</div>
+                                        </div>
+                                        <div>
+                                            <div t-if="type.draft" class="px-2 py-1 text-700"><t t-esc="type.draft"/> Draft</div>
+                                            <div t-if="type.late" class="px-2 py-1 text-700"><t t-esc="type.late"/> Late</div>
+                                            <div t-if="type.waiting" class="px-2 py-1 text-700"><t t-esc="type.waiting"/> Waiting</div>
+                                            <div t-if="type.backorder" class="px-2 py-1 text-700"><t t-esc="type.backorder"/> Backorder</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="barcode_wms.WarehousePickings" owl="1">
+        <div class="o_barcode_action">
+            <div class="pickings-screen">
+                <div class="pickings-screen-bar">
+                    <div t-on-click="onBack" class="back-button-left">
+                        <i class="fa fa-angle-left"/>
+                    </div>
+                    <div class="align-items-center d-flex flex-fill font-size-20 justify-content-end">
+                        <WarehouseState state="state.state" trigger="'select-state'"/>
+                        <div class="pickings-search px-4">
+                            <input type="text" class="search-bar-input h-75" placeholder="Search pickings by Name, Contact, Source Document..." t-on-input="setQuery"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="pickings-body">
+                    <div>
+                        <div t-foreach="state.filtered" t-as="picking" t-key="picking.id" t-on-click="() => this.selectOperation(picking)">
+                            <div class="d-flex justify-content-between flex-column">
+                                <div class="d-flex">
+                                    <span class="flex-fill" t-esc="picking.name"/>
+                                    <div class="mr4"><i class="fa fa-desktop" t-on-click.stop="() => this.viewPicking(picking)"/></div>
+                                    <div>
+                                        <span t-if="picking.state == 'assigned'" class="badge bg-200">Ready</span>
+                                        <span t-elif="picking.state == 'draft'" class="badge bg-200">Draft</span>
+                                        <span t-elif="picking.state == 'confirmed'" class="badge bg-200">Waiting</span>
+                                        <span t-elif="picking.state == 'done'" class="badge bg-200">Done</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <div class="d-flex mt-2 justify-content-between">
+                                        <div>
+                                            <span t-if="picking.origin" class="badge bg-primary text-white small" t-esc="picking.origin"/>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex align-items-center">
+                                                <i class="fa fa-calendar mr4"/>
+                                                <span class="text-nowrap" t-esc="picking.scheduled_date.split(' ')[0]"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-4 justify-content-between">
+                                        <div class="text-start ml4">
+                                            <span t-esc="picking.partner_id[1]"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </t>
+
+    <t t-name="barcode_wms.WarehouseState" owl="1">
+        <div class="dropdown-warehouse-state" t-ref="root">
+            <div t-on-click="clickDropDown" class="dropdown-div align-items-center p-3">
+                <h2>
+                    <span t-if="props.state == 'assigned'">Ready</span>
+                    <span t-elif="props.state == 'draft'">Draft</span>
+                    <span t-elif="props.state == 'confirmed'">Waiting</span>
+                    <span t-elif="props.state == 'done'">Done</span>
+                    <span t-elif="props.state == 'cancel'">Cancelled</span>
+                </h2>
+            </div>
+            <div t-if="state.visible" class="dropdown-list">
+                <ul>
+                    <li t-on-click="() => this.onClickDropdownList('assigned')">
+                        <div class="d-flex align-items-center flex-fill">
+                            <div class="flex-fill">
+                                <h2>Ready</h2>
+                            </div>
+                        </div>
+                    </li>
+                    <li t-on-click="() => this.onClickDropdownList('confirmed')">
+                        <div class="d-flex align-items-center flex-fill">
+                            <div class="flex-fill">
+                                <h2>Waiting</h2>
+                            </div>
+                        </div>
+                    </li>
+                    <li t-on-click="() => this.onClickDropdownList('draft')">
+                        <div class="d-flex align-items-center flex-fill">
+                            <div class="flex-fill">
+                                <h2>Draft</h2>
+                            </div>
+                        </div>
+                    </li>
+                    <li t-on-click="() => this.onClickDropdownList('done')">
+                        <div class="d-flex align-items-center flex-fill">
+                            <div class="flex-fill">
+                                <h2>Done</h2>
+                            </div>
+                        </div>
+                    </li>
+                    <li t-on-click="() => this.onClickDropdownList('cancel')">
+                        <div class="d-flex align-items-center flex-fill">
+                            <div class="flex-fill">
+                                <h2>Cancelled</h2>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+     </t>
+ </templates>

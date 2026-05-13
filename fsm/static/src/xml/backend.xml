@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="Fsm.Task.ListView.Buttons" t-inherit="web.ListView.Buttons" t-inherit-mode="primary" owl="1">
+        <xpath expr="." position="inside">
+            <FsmTaskButton/>
+            <FsmTaskImport/>
+        </xpath>
+    </t>
+
+    <t t-name="Fsm.Task.KanbanView.Buttons" t-inherit="web.KanbanView.Buttons" t-inherit-mode="primary" owl="1">
+        <xpath expr="." position="inside">
+            <FsmTaskImport/>
+        </xpath>
+    </t>
+
+    <t t-name="Fsm.Task.FormView.Buttons" t-inherit="web.FormView.Buttons" t-inherit-mode="primary" owl="1">
+        <xpath expr="." position="inside">
+            <FsmTaskButton/>
+        </xpath>
+    </t>
+
+    <t t-name="Fsm.Task.Buttons" owl="1">
+        <t t-foreach="buttons" t-as="button" t-key="button.id">
+            <button type="button" t-attf-class="btn btn-fsm-task text-uppercase {{ button.theme ? 'btn-' + button.theme : '' }} {{ button.class or '' }}" t-attf-style="{{ button.style or undefined }}" t-esc="button.name" t-on-click="() => this.onClick(button.type, button.stage, button.id)" t-att-title="button.desc"/>
+        </t>
+    </t>
+
+    <t t-name="Fsm.Task.Import" owl="1">
+        <button t-if="enabled" type="button" class="btn btn-secondary" t-on-click="() => this.onClick()" title="Import Tasks">
+            <i class="fa fa-upload"/>
+        </button>
+    </t>
+
+    <t t-name="Fsm.File" owl="1">
+        <div class="o_fsm_file_dialog">
+            <div>
+                <div class="o_fsm_file_dialog_file">
+                    <input type="file" t-ref="file" t-att-accept="type"/>
+                </div>
+                <div class="o_fsm_file_dialog_footer">
+                    <button class="btn btn-primary" t-on-click="save">Save</button>
+                    <button class="btn btn-secondary" t-on-click="close">Close</button>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="Chatter" t-inherit="mail.Chatter" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o-mail-Chatter-content')]" position="attributes">
+            <attribute name="t-if">state.thread.fsmHasLogAccess</attribute>
+        </xpath>
+        <xpath expr="//button[hasclass('o-mail-Chatter-sendMessage')]" position="attributes">
+            <attribute name="t-if">state.thread.fsmHasMessageAccess</attribute>
+        </xpath>
+        <xpath expr="//button[hasclass('o-mail-Chatter-logNote')]" position="attributes">
+            <attribute name="t-if">state.thread.fsmHasNoteAccess</attribute>
+        </xpath>
+        <xpath expr="//button[hasclass('o-mail-Chatter-activity')]" position="attributes">
+            <attribute name="t-if">state.thread.fsmHasActivityAccess and props.has_activities</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o-mail-Chatter-topbar')]//FileUploader" position="attributes">
+            <attribute name="t-if">attachments.length === 0 and state.thread.fsmHasAttachmentAccess</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o-mail-Followers')]" position="attributes">
+            <attribute name="t-if">state.thread.fsmHasFollowerAccess</attribute>
+        </xpath>
+    </t>
+
+    <t t-name="ChatterAttachFiles" t-inherit="mail.Chatter.attachFiles" t-inherit-mode="extension" owl="1">
+         <xpath expr="//button[hasclass('o-mail-Chatter-attachFiles')]" position="attributes">
+             <attribute name="t-if">state.thread.fsmHasAttachmentAccess</attribute>
+         </xpath>
+    </t>
+</templates>

@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="list_task" model="ir.ui.view">
+    <field name="name">fsm.task.list</field>
+    <field name="model">fsm.task</field>
+    <field name="arch" type="xml">
+        <list string="Tasks" js_class="fsm_task_list" sample="1">
+            <field name="name" decoration-bf="1"/>
+            <field name="material_barcode_tag" string="Material Barcode" widget="badge" optional="show" decoration-primary="True"/>
+            <field name="type_id" widget="badge"/>
+            <field name="stage_id" widget="badge"/>
+            <field name="partner_ticket_hour_left" string="Partner SLA Hours Left" widget="float_time" invisible="partner_ticket_show == False" optional="show"/>
+            <field name="partner_ticket_hour_paused" string="Partner SLA Hours Paused" widget="float_time" invisible="partner_ticket_show == False" optional="hide"/>
+            <field name="user_ticket_hour_left" string="User SLA Hours Left" widget="float_time" invisible="user_ticket_show == False" optional="show"/>
+            <field name="user_ticket_hour_paused" string="User SLA Hours Paused" widget="float_time" invisible="user_ticket_show == False" optional="hide"/>
+            <field name="team_ticket_hour_left" string="Team SLA Hours Left" widget="float_time" invisible="team_ticket_show == False" optional="show"/>
+            <field name="team_ticket_hour_paused" string="Team SLA Hours Paused" widget="float_time" invisible="team_ticket_show == False" optional="hide"/>
+            <field name="partner_ticket_show" invisible="1"/>
+            <field name="user_ticket_show" invisible="1"/>
+            <field name="team_ticket_show" invisible="1"/>
+            <field name="flow_stage_id" invisible="1"/>
+            <field name="flow_id" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="kanban_task" model="ir.ui.view">
+    <field name="name">fsm.task.kanban</field>
+    <field name="model">fsm.task</field>
+    <field name="arch" type="xml">
+        <kanban
+            default_group_by="stage_id"
+            class="o_kanban_small_column"
+            js_class="fsm_task_kanban"
+            groups_draggable="False"
+            group_create="False"
+            group_delete="False"
+            group_edit="False"
+            quick_create="False"
+            archivable="False"
+            sample="1"
+        >
+            <field name="color"/>
+            <field name="priority"/>
+            <field name="stage_id" options='{"group_by_tooltip": {"description": "Description"}}'/>
+            <field name="sequence"/>
+            <field name="active"/>
+            <field name="stage_type"/>
+            <field name="user_ids"/>
+            <field name="partner_ticket_show"/>
+            <field name="partner_ticket_hour_left"/>
+            <field name="partner_ticket_hour_paused"/>
+            <field name="user_ticket_show"/>
+            <field name="user_ticket_hour_left"/>
+            <field name="user_ticket_hour_paused"/>
+            <field name="team_ticket_show"/>
+            <field name="team_ticket_hour_left"/>
+            <field name="team_ticket_hour_paused"/>
+            <progressbar field="kanban_state" colors='{"done": "success", "blocked": "danger", "normal": "200"}'/>
+            <templates>
+            <t t-name="card">
+                <div t-attf-class="{{!selection_mode ? 'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) : ''}} oe_kanban_card oe_kanban_global_click">
+                    <div class="oe_kanban_content">
+                        <div class="o_kanban_record_top">
+                            <div class="o_kanban_record_headings">
+                                <strong class="o_kanban_record_title">
+                                    <s t-if="!record.active.raw_value"><field name="name"/></s>
+                                    <t t-else=""><field name="name"/></t>
+                                </strong>
+                            </div>
+                            <div class="o_dropdown_kanban dropdown" t-if="!selection_mode" groups="base.group_user">
+                                <a role="button" class="dropdown-toggle o-no-caret btn" data-bs-toggle="dropdown" data-bs-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <a role="menuitem" type="action" class="dropdown-item">Share</a>
+                                    <a t-if="widget.editable" role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="o_kanban_record_body">
+                            <div name="type_id">
+                                <field name="type_id" widget="badge"/>
+                            </div>
+                            <div t-if="record.due_date.raw_value" name="due_date" invisible="stage_type == '2'">
+                                <field name="due_date" widget="remaining_days"/>
+                            </div>
+                            <div name="partner_ticket" class="mt8 mb8 pt8 border-top border-light" invisible="partner_ticket_show == False">
+                                <span class="fw-bold"><i class="fa fa-building mr4 fw-normal text-600"/>Partner SLA Status</span><br/>
+                                <span class="text-600 fw-bold">Time Left: <span class="float-end ml4"><field name="partner_ticket_hour_left" class="text-primary" widget="float_time" nolabel="1"/></span></span><br/>
+                                <span class="text-600 fw-bold">Time Paused: <span class="float-end ml4"><field name="partner_ticket_hour_paused" class="text-primary" widget="float_time" nolabel="1"/></span></span>
+                            </div>
+                            <div name="user_ticket" class="mt8 mb8 pt8 border-top border-light" invisible="partner_ticket_show == False">
+                                <span class="fw-bold"><i class="fa fa-user mr4 fw-normal text-600"/>User SLA Status</span><br/>
+                                <span class="text-600 fw-bold">Time Left: <span class="float-end ml4"><field name="user_ticket_hour_left" class="text-primary" widget="float_time" nolabel="1"/></span></span><br/>
+                                <span class="text-600 fw-bold">Time Paused: <span class="float-end ml4"><field name="user_ticket_hour_paused" class="text-primary" widget="float_time" nolabel="1"/></span></span>
+                            </div>
+                            <div name="team_ticket" class="mt8 mb8 pt8 border-top border-light" invisible="partner_ticket_show == False">
+                                <span class="fw-bold"><i class="fa fa-group mr4 fw-normal text-600"/>Team SLA Status</span><br/>
+                                <span class="text-600 fw-bold">Time Left: <span class="float-end ml4"><field name="team_ticket_hour_left" class="text-primary" widget="float_time" nolabel="1"/></span></span><br/>
+                                <span class="text-600 fw-bold">Time Paused: <span class="float-end ml4"><field name="team_ticket_hour_paused" class="text-primary" widget="float_time" nolabel="1"/></span></span>
+                            </div>
+                        </div>
+                        <div class="o_kanban_record_bottom" t-if="!selection_mode">
+                            <div class="oe_kanban_bottom_left">
+                                <field name="priority" widget="priority"/>
+                                <field name="activity_ids" widget="kanban_activity"/>
+                            </div>
+                            <div class="oe_kanban_bottom_right" t-if="!selection_mode">
+                                <field name="kanban_state" widget="state_selection" groups="base.group_user"/>
+                                <t t-if="record.user_ids.raw_value"><field name="user_ids" widget="many2many_avatar_user"/></t>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"/>
+                </div>
+            </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <record id="form_task" model="ir.ui.view">
+    <field name="name">fsm.task.form</field>
+    <field name="model">fsm.task</field>
+    <field name="arch" type="xml">
+        <form string="Tasks" class="o_form_fsm_task" js_class="fsm_task_form">
+            <header>
+                <field name="stage_id" widget="statusbar" domain="[('id', 'in', stage_ids)]" invisible="(project_id == False and stage_id == False)"/>
+                <field name="stage_ids" invisible="1"/>
+                <field name="stage_type" invisible="1"/>
+                <field name="project_id" invisible="1"/>
+                <field name="project_item_id" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+                <field name="flow_id" invisible="1"/>
+                <field name="flow_stage_id" invisible="1"/>
+                <field name="id" invisible="1"/>
+            </header>
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_project" type="object" class="oe_stat_button" icon="fa-briefcase" invisible="not id or not project_id" groups="fsm.group_manager">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Task:</span>
+                                <span><field name="type_id" widget="badge" nolabel="1" decoration-primary="id" readonly="1" force_save="1"/></span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Project:</span>
+                                <span invisible="project_item_id"><field name="project_id" class="text-primary" nolabel="1" readonly="1"/></span>
+                                <span invisible="not project_item_id"><field name="project_item_id" class="text-primary" nolabel="1" readonly="1"/></span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Details</span>
+                        </div>
+                    </button>
+                    <button name="action_view_flow" type="object" class="oe_stat_button" icon="fa-random" invisible="not id or not project_id" groups="fsm.group_manager">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Name:</span>
+                                <span><field name="flow_id" widget="badge" class="border border-primary rounded-pill" nolabel="1" readonly="1" force_save="1"/></span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Stage:</span>
+                                <span><field name="flow_stage_id" class="text-primary small" nolabel="1" readonly="1"/></span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Flows</span>
+                        </div>
+                    </button>
+                    <button name="action_view_task" type="object" class="oe_stat_button" icon="fa-suitcase" invisible="not id or not parent_id">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Type:</span>
+                                <span><field name="parent_type" widget="badge" nolabel="1" readonly="1"/></span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Name:</span>
+                                <span><field name="parent_id" class="text-primary" nolabel="1" readonly="1"/></span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Parent Task</span>
+                        </div>
+                    </button>
+                    <button name="action_view_subtask" type="object" class="oe_stat_button" icon="fa-suitcase" invisible="not id or child_count == 0">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Count:</span>
+                                <span class="float-end ms-2"><field name="child_count" class="text-primary" nolabel="1" readonly="1"/> Tasks</span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Closed:</span>
+                                <span class="float-end ms-2"><field name="child_closed_count" class="text-primary" nolabel="1" readonly="1"/> Tasks</span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Sub Tasks</span>
+                        </div>
+                    </button>
+                    <button name="action_view_todos" type="object" class="oe_stat_button" icon="fa-check-square-o" invisible="not id" groups="fsm.group_officer">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Count:</span>
+                                <span class="float-end ms-2"><field name="todo_count" class="text-primary" nolabel="1" readonly="1"/> Records</span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Done:</span>
+                                <span class="float-end ms-2"><field name="todo_done" class="text-primary" nolabel="1" readonly="1"/> Records</span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Todos</span>
+                        </div>
+                    </button>
+                    <button name="action_view_appointments" type="object" class="oe_stat_button" icon="fa-calendar" invisible="not id">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Count:</span>
+                                <span class="float-end ms-2"><field name="appointment_count" class="text-primary" nolabel="1" readonly="1"/> Records</span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Date:</span>
+                                <span class="float-end ms-2" invisible="not appointment_date"><field name="appointment_date" class="text-primary" nolabel="1" readonly="1"/></span>
+                                <span class="mx-auto text-primary" invisible="appointment_date">-</span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Appointments</span>
+                        </div>
+                    </button>
+                    <button name="action_view_partner_tickets" type="object" class="oe_stat_button" icon="fa-building" invisible="not id or not partner_ticket_show" groups="fsm.group_officer">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Time Left:</span>
+                                <span><field name="partner_ticket_hour_left" class="text-primary" widget="float_time" nolabel="1"/></span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Time Paused:</span>
+                                <span><field name="partner_ticket_hour_paused" class="text-primary" widget="float_time" nolabel="1"/></span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Partner SLA Tickets</span>
+                        </div>
+                    </button>
+                    <button name="action_view_user_tickets" type="object" class="oe_stat_button" icon="fa-user" invisible="not id or not user_ticket_show">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Time Left:</span>
+                                <span><field name="user_ticket_hour_left" class="text-primary" widget="float_time" nolabel="1"/></span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Time Paused:</span>
+                                <span><field name="user_ticket_hour_paused" class="text-primary" widget="float_time" nolabel="1"/></span>
+                            </span>
+                            <span class="o_stat_text fw-bold">User SLA Tickets</span>
+                        </div>
+                    </button>
+                    <button name="action_view_team_tickets" type="object" class="oe_stat_button" icon="fa-group" invisible="not id or not team_ticket_show">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Time Left:</span>
+                                <span><field name="team_ticket_hour_left" class="text-primary" widget="float_time" nolabel="1"/></span>
+                            </span>
+                            <span class="o_stat_value text-600 fw-bold">
+                                <span>Time Paused:</span>
+                                <span><field name="team_ticket_hour_paused" class="text-primary" widget="float_time" nolabel="1"/></span>
+                            </span>
+                            <span class="o_stat_text fw-bold">Team SLA Tickets</span>
+                        </div>
+                    </button>
+                    <button name="action_view_deliveries" type="object" class="oe_stat_button" icon="fa-ambulance" invisible="not id or not delivery_show">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">Ready: <span class="float-end ms-2"><field name="delivery_ready_count" class="text-primary" nolabel="1"/> Moves</span></span>
+                            <span class="o_stat_value text-600 fw-bold">Done: <span class="float-end ms-2"><field name="delivery_done_count" class="text-primary" nolabel="1"/> Moves</span></span>
+                            <span class="o_stat_text fw-bold">Delivery Moves</span>
+                        </div>
+                    </button>
+                    <button name="action_view_pickings" type="object" class="oe_stat_button" icon="fa-truck" invisible="not id or not picking_show">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value text-600 fw-bold">Ready: <span class="float-end ms-2"><field name="picking_ready_count" class="text-primary" nolabel="1"/> Moves</span></span>
+                            <span class="o_stat_value text-600 fw-bold">Done: <span class="float-end ms-2"><field name="picking_done_count" class="text-primary" nolabel="1"/> Moves</span></span>
+                            <span class="o_stat_text fw-bold">Stock Moves</span>
+                        </div>
+                    </button>
+                    <field name="partner_ticket_show" invisible="1"/>
+                    <field name="user_ticket_show" invisible="1"/>
+                    <field name="team_ticket_show" invisible="1"/>
+                    <field name="delivery_show" invisible="1"/>
+                    <field name="picking_show" invisible="1"/>
+                </div>
+                <widget name="web_ribbon" title="Success" bg_color="bg-success" invisible="(close_done == False or close_success == False)"/>
+                <widget name="web_ribbon" title="Failed" bg_color="bg-danger" invisible="(close_done == False or close_success != False)"/>
+                <div class="oe_title">
+                    <label for="name"/>
+                    <h1 invisible="id == False"><field name="name" class="oe_inline"/></h1>
+                    <h1 invisible="id != False">ID #<i class="fa fa-spin fa-circle-o-notch text-600 mx-2"/></h1>
+                    <h3 class="mt-n4" invisible="(id == False or order_uid == False)" style="color: #ccc !important;">ORDER <field name="order_uid" class="oe_inline" style="color: #ccc !important;"/></h3>
+                    <div class="d-flex gap-1">
+                        <field name="type_id" widget="badge" readonly="1" invisible="field_type_id == 0"/>
+                        <field name="type_id" widget="badge" readonly="1" invisible="field_type_id != 0" groups="fsm.group_manager"/>
+                        <field name="service_type_id" widget="badge" readonly="1" invisible="field_service_type_id == 0"/>
+                        <field name="service_type_id" widget="badge" readonly="1" invisible="field_service_type_id != 0" groups="fsm.group_manager"/>
+                    </div>
+                </div>
+                <group class="mt32">
+                    <group string="Details" invisible="(field_partner_id == 0 and field_merchant_id == 0 and field_merchant_service_id == 0 and field_type_id == 0 and field_order_uid == 0 and field_project_uid == 0 and field_project_name == 0 and field_service_zone_id == 0 and field_service_type_id == 0 and field_sla_id == 0 and field_team_ids == 0 and field_user_ids == 0)">
+                        <field name="partner_id" force_save="1" options="{'no_create': True}" invisible="field_partner_id == 0"/>
+                        <field name="merchant_id" force_save="1" options="{'no_create': True}" invisible="field_merchant_id == 0" readonly="field_merchant_id not in (3, 4)" context="{'default_category_id': [(4, merchant_category_id)]}"/>
+                        <field name="merchant_service_id" force_save="1" options="{'no_create': True}" invisible="field_merchant_service_id == 0" readonly="field_merchant_service_id not in (3, 4)" context="{'show_contact': 1, 'default_category_id': [(4, merchant_category_id)]}"/>
+                        <field name="merchant_vat" invisible="field_merchant_vat == 0"/>
+                        <!--<span class="o_form_label o_td_label" name="address_name" invisible="(field_merchant_service_street == 0 and field_merchant_service_street2 == 0 and field_merchant_service_zip == 0 and field_merchant_service_city == 0 and merchant_service_state_id == 0 and field_merchant_service_country_id == 0)">
+                            <b>Merchant Address</b>
+                        </span>-->
+                        <label for="merchant_service_street" name="address_name" string="Merchant Address" invisible="(field_merchant_service_street == 0 and field_merchant_service_street2 == 0 and field_merchant_service_zip == 0 and field_merchant_service_city == 0 and merchant_service_state_id == 0 and field_merchant_service_country_id == 0)"/>
+                        <div class="o_address_format" invisible="(field_merchant_service_street == 0 and field_merchant_service_street2 == 0 and field_merchant_service_zip == 0 and field_merchant_service_city == 0 and merchant_service_state_id == 0 and field_merchant_service_country_id == 0)">
+                            <field name="merchant_service_street" placeholder="District" class="o_address_street" invisible="field_merchant_service_street == 0"/>
+                            <field name="merchant_service_street2" placeholder="Address" class="o_address_street" invisible="field_merchant_service_street2 == 0"/>
+                            <field name="merchant_service_city" placeholder="Town" class="o_address_city" invisible="field_merchant_service_city == 0"/>
+                            <field name="merchant_service_state_id" class="o_address_state" placeholder="City" options="{'no_open': True, 'no_create': True}" invisible="field_merchant_service_state_id == 0"/>
+                            <field name="merchant_service_zip" placeholder="ZIP" class="o_address_zip" invisible="field_merchant_service_zip == 0"/>
+                            <div name="partner_address_country" class="d-flex justify-content-between">
+                                <field name="merchant_service_country_id" placeholder="Country" class="o_address_country" options="{'no_open': True, 'no_create': True}" invisible="field_merchant_service_country_id == 0"/>
+                            </div>
+                        </div>
+                        <field name="merchant_service_table_name" invisible="field_merchant_service_table_name == 0"/>
+                        <field name="merchant_service_contact_name" invisible="field_merchant_service_contact_name == 0"/>
+                        <field name="merchant_service_phone" invisible="field_merchant_service_phone == 0"/>
+                        <field name="merchant_service_mobile" invisible="field_merchant_service_mobile == 0"/>
+                        <!--<field name="merchant_service_id" options="{'no_create': True}" invisible="field_merchant_service_id == 0" readonly="field_merchant_service_id not in (3, 4)" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True, 'default_category_id': [(4, merchant_category_id)]}"/>-->
+                        <field name="project_uid" readonly="1" invisible="field_project_uid == 0"/>
+                        <field name="project_name" readonly="1" invisible="field_project_name == 0"/>
+                        <field name="sla_id" readonly="1" options="{'no_create': True}" invisible="field_sla_id == 0"/>
+                        <field name="sla_status" readonly="1" widget="badge" invisible="field_sla_id == 0"/>
+                        <field name="service_zone_id" readonly="1" options="{'no_create': True}" invisible="field_service_zone_id == 0" force_save="1"/>
+                        <field name="service_type_id" readonly="1" options="{'no_create': True}" invisible="field_service_type_id == 0" force_save="1"/>
+                        <!--<field name="service_zone_id" invisible="field_service_zone_id == 0" readonly="field_service_zone_id not in (3, 4)" force_save="1"/>-->
+                        <!--<field name="service_type_id" invisible="field_service_type_id == 0" readonly="field_service_type_id not in (3, 4)"/>-->
+                        <field name="team_ids" widget="many2many_tags" options="{'no_create': True}" invisible="field_team_ids == 0" readonly="field_team_ids not in (3, 4)"/>
+                        <field name="user_ids" widget="many2many_tags" options="{'no_create': True}" invisible="field_user_ids == 0" readonly="field_user_ids not in (3, 4)"/>
+                        <field name="user_id" options="{'no_create': True}" readonly="1" invisible="field_user_id == 0"/>
+                        <field name="merchant_category_id" invisible="1"/>
+                    </group>
+                    <group name="description" string="Description">
+                    <!--<group string="Description" invisible="(field_due_date == 0 and field_description == 0 and close_done == False)">-->
+                        <field name="create_date" invisible="field_create_date == 0"/>
+                        <field name="close_date" invisible="close_done == False"/>
+                        <field name="close_contact_id" string="Responsible Contact" invisible="close_done == False"/>
+                        <field name="due_date" invisible="field_due_date == 0" readonly="field_due_date not in (3, 4)"/>
+                        <field name="description" readonly="field_description not in (3, 4)"/>
+                        <!--<field name="description" invisible="field_description == 0" readonly="field_description not in (3, 4)"/>-->
+                        <field name="document_itf" invisible="(stage_type != '2' or document_itf == False)"/>
+                        <field name="package_id" options="{'no_create': True, 'no_open': True}" invisible="field_package_id == 0" readonly="field_package_id not in (3, 4)"/>
+                        <field name="barcode" invisible="field_barcode == 0" readonly="field_barcode not in (3, 4)"/>
+                    </group>
+                    <group string="Product" invisible="(field_product_ids == 0 and field_product_id == 0 and field_product_lot_id == 0 and field_product_lot_ref == 0 and field_product_owner == 0 and field_product_state == 0 and field_product_type == 0 and field_product_os == 0 and field_product_order_type == 0 and field_product_operation_type == 0 and field_product_subpartner == 0 and field_product_operator == 0)">
+                        <div class="o_fsm_task_product_header bg-100 shadow-sm fw-bold p-2" colspan="2" invisible="field_product_ids == 0">
+                            <div class="px-3">Product</div>
+                            <div class="px-1">Lot/Serial</div>
+                            <div class="px-1 text-nowrap">Order Type</div>
+                        </div>
+                        <field name="product_ids" string="Products" mode="kanban" invisible="field_product_ids == 0" readonly="field_product_ids not in (3, 4)" class="o_fsm_task_product" nolabel="1" colspan="2">
+                            <kanban>
+                                <field name="product_id"/>
+                                <field name="product_lot_id"/>
+                                <field name="product_order_type"/>
+                                <templates>
+                                    <t t-name="card">
+                                        <div class="oe_kanban_card oe_kanban_global_click overflow-hidden p-0">
+                                            <div class="oe_kanban_content">
+                                                <div class="o_kanban_record_top"/>
+                                                <div class="o_kanban_record_body px-1">
+                                                    <div class="px-3 fw-bold">
+                                                        <field name="product_id" class="text-700"/>
+                                                    </div>
+                                                    <div class="px-1">
+                                                        <field name="product_lot_id" class="text-600"/>
+                                                    </div>
+                                                    <div class="px-1 text-nowrap">
+                                                        <field name="product_order_type" class="text-600"/>
+                                                    </div>
+                                                </div>
+                                                <div class="o_kanban_record_bottom"/>
+                                            </div>
+                                            <div class="clearfix"/>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                            <list editable="bottom">
+                                <field name="product_id" string="Model" options="{'no_create': True}" column_invisible="parent.field_product_id == 0" readonly="parent.field_product_id not in (3, 4)"/>
+                                <field name="product_lot_id" string="Lot/Serial Number" options="{'no_create': True}" column_invisible="parent.field_product_lot_id == 0" readonly="parent.field_product_lot_id not in (3, 4)"/>
+                                <field name="product_lot_ref" string="Lot/Serial Reference" column_invisible="parent.field_product_lot_ref == 0" readonly="parent.field_product_lot_ref not in (3, 4)"/>
+                                <field name="product_owner" string="Owner" column_invisible="parent.field_product_owner == 0" readonly="parent.field_product_owner not in (3, 4)" optional="hide"/>
+                                <field name="product_type" string="Type" column_invisible="parent.field_product_type == 0" readonly="parent.field_product_type not in (3, 4)" optional="hide"/>
+                                <field name="product_os" string="Operating System" column_invisible="parent.field_product_os == 0" readonly="parent.field_product_os not in (3, 4)" optional="hide"/>
+                                <field name="product_order_type" string="Order Type" column_invisible="parent.field_product_order_type == 0" readonly="parent.field_product_order_type not in (3, 4)" optional="show"/>
+                                <field name="product_operation_type" string="Operation Type" column_invisible="parent.field_product_operation_type == 0" readonly="parent.field_product_operation_type not in (3, 4)" optional="hide"/>
+                                <field name="product_subpartner" string="Subpartner" column_invisible="parent.field_product_subpartner == 0" readonly="parent.field_product_subpartner not in (3, 4)" optional="hide"/>
+                                <field name="product_operator" string="Operator" column_invisible="parent.field_product_operator == 0" readonly="parent.field_product_operator not in (3, 4)" optional="hide"/>
+                                <field name="product_state" string="State" column_invisible="parent.field_product_state == 0" readonly="parent.field_product_state not in (3, 4)" optional="hide"/>
+                                <field name="domain_product" invisible="1"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="product_id" string="Model" options="{'no_create': True}" invisible="parent.field_product_id == 0" readonly="parent.field_product_id not in (3, 4)"/>
+                                            <field name="product_lot_id" string="Lot/Serial Number" options="{'no_create': True}" invisible="parent.field_product_lot_id == 0" readonly="parent.field_product_lot_id not in (3, 4)"/>
+                                            <field name="product_lot_ref" string="Lot/Serial Reference" invisible="parent.field_product_lot_ref == 0" readonly="parent.field_product_lot_ref not in (3, 4)"/>
+                                            <field name="product_owner" string="Owner" invisible="parent.field_product_owner == 0" readonly="parent.field_product_owner not in (3, 4)"/>
+                                            <field name="product_type" string="Type" invisible="parent.field_product_type == 0" readonly="parent.field_product_type not in (3, 4)"/>
+                                        </group>
+                                        <group>
+                                            <field name="product_os" string="Operating System" invisible="parent.field_product_os == 0" readonly="parent.field_product_os not in (3, 4)"/>
+                                            <field name="product_order_type" string="Order Type" invisible="parent.field_product_order_type == 0" readonly="parent.field_product_order_type not in (3, 4)"/>
+                                            <field name="product_operation_type" string="Operation Type" invisible="parent.field_product_operation_type == 0" readonly="parent.field_product_operation_type not in (3, 4)"/>
+                                            <field name="product_subpartner" string="Subpartner" invisible="parent.field_product_subpartner == 0" readonly="parent.field_product_subpartner not in (3, 4)"/>
+                                            <field name="product_operator" string="Operator" invisible="parent.field_product_operator == 0" readonly="parent.field_product_operator not in (3, 4)"/>
+                                            <field name="product_state" string="State" invisible="parent.field_product_state == 0" readonly="parent.field_product_state not in (3, 4)"/>
+                                        </group>
+                                        <field name="domain_product" invisible="1"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                        <field name="product_id" string="Model" options="{'no_create': True}" invisible="1"/>
+                        <field name="product_lot_id" string="Lot/Serial Number" options="{'no_create': True}" invisible="1"/>
+                        <field name="product_lot_ref" string="Lot/Serial Reference" invisible="1"/>
+                        <field name="product_owner" string="Owner" invisible="1"/>
+                        <field name="product_type" string="Type" invisible="1"/>
+                        <field name="product_os" string="Operating System" invisible="1"/>
+                        <field name="product_order_type" string="Order Type" invisible="1"/>
+                        <field name="product_operation_type" string="Operation Type" invisible="1"/>
+                        <field name="product_subpartner" string="Subpartner" invisible="1"/>
+                        <field name="product_operator" string="Operator" invisible="1"/>
+                        <field name="product_state" string="State" invisible="1"/>
+                    </group>
+                    <group string="Setup" invisible="(field_setup_uid == 0 and field_setup_key == 0 and field_setup_merchant_uid == 0 and field_setup_application_ids == 0)">
+                        <field name="setup_uid" invisible="field_setup_uid == 0" readonly="field_setup_uid not in (3, 4)"/>
+                        <field name="setup_key" invisible="field_setup_key == 0" readonly="field_setup_key not in (3, 4)"/>
+                        <field name="setup_merchant_uid" invisible="field_setup_merchant_uid == 0" readonly="field_setup_merchant_uid not in (3, 4)"/>
+                        <field name="setup_application_ids" invisible="field_setup_application_ids == 0" readonly="field_setup_application_ids not in (3, 4)">
+                            <list editable="bottom">
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="version"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                        </group>
+                                        <group>
+                                            <field name="description"/>
+                                            <field name="version"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                    <group string="Material" invisible="(field_material_id == 0 and field_material_name == 0 and field_material_serial == 0 and field_material_count == 0)">
+                        <field name="material_id" invisible="field_material_id == 0" readonly="field_material_id not in (3, 4)"/>
+                        <field name="material_name" invisible="field_material_name == 0" readonly="field_material_name not in (3, 4)"/>
+                        <field name="material_serial" invisible="field_material_serial == 0" readonly="field_material_serial not in (3, 4)"/>
+                        <field name="material_count" invisible="field_material_count == 0" readonly="field_material_count not in (3, 4)"/>
+                        <field name="material_barcode" invisible="field_material_barcode == 0" readonly="field_material_barcode not in (3, 4)"/>
+                    </group>
+                    <group string="Document" invisible="(field_document_uid == 0 and field_document_type == 0 and field_document_name == 0 and field_document_info_vat == 0 and field_document_info_name == 0 and field_document_info_birthday == 0 and field_document_info_birthplace == 0 and field_document_info_iban == 0 and field_document_info_detail_ids == 0)">
+                        <field name="document_uid" invisible="field_document_uid == 0" readonly="field_document_uid not in (3, 4)"/>
+                        <field name="document_type" invisible="field_document_type == 0" readonly="field_document_type not in (3, 4)"/>
+                        <field name="document_name" invisible="field_document_name == 0" readonly="field_document_name not in (3, 4)"/>
+                        <field name="document_info_vat" invisible="field_document_info_vat == 0" readonly="field_document_info_vat not in (3, 4)"/>
+                        <field name="document_info_name" invisible="field_document_info_name == 0" readonly="field_document_info_name not in (3, 4)"/>
+                        <field name="document_info_birthday" invisible="field_document_info_birthday == 0" readonly="field_document_info_birthday not in (3, 4)"/>
+                        <field name="document_info_birthplace" invisible="field_document_info_birthplace == 0" readonly="field_document_info_birthplace not in (3, 4)"/>
+                        <field name="document_info_iban" invisible="field_document_info_iban == 0" readonly="field_document_info_iban not in (3, 4)"/>
+                        <field name="document_info_detail_ids" invisible="field_document_info_detail_ids == 0" readonly="field_document_info_detail_ids not in (3, 4)">
+                            <list>
+                                <field name="name"/>
+                                <field name="value"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                        </group>
+                                        <group>
+                                            <field name="value"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                    <group string="Reason" invisible="reason_id == False">
+                        <field name="approval_state" string="State" widget="badge" decoration-success="approval_state == '0'" decoration-danger="approval_state == '1'" invisible="(close_done == False or approval_state == False)"/>
+                        <field name="reason_code" string="Code" invisible="reason_code == False"/>
+                        <field name="reason_name" string="Reason" invisible="reason_name == False"/>
+                        <field name="reason_desc" string="Description" invisible="reason_desc == False"/>
+                        <field name="reason_id" invisible="1"/>
+                        <field name="close_success" invisible="1"/>
+                        <field name="close_done" invisible="1"/>
+                        <field name="approval_desc" invisible="1"/>
+                    </group>
+                    <field name="field_create_date" invisible="1"/>
+                    <field name="field_type_id" invisible="1"/>
+                    <field name="field_package_id" invisible="1"/>
+                    <field name="field_partner_id" invisible="1"/>
+                    <field name="field_merchant_id" invisible="1"/>
+                    <field name="field_merchant_vat" invisible="1"/>
+                    <field name="field_merchant_service_id" invisible="1"/>
+                    <field name="field_merchant_vat" invisible="1"/>
+                    <field name="field_merchant_service_country_id" invisible="1"/>
+                    <field name="field_merchant_service_state_id" invisible="1"/>
+                    <field name="field_merchant_service_city" invisible="1"/>
+                    <field name="field_merchant_service_zip" invisible="1"/>
+                    <field name="field_merchant_service_street" invisible="1"/>
+                    <field name="field_merchant_service_street2" invisible="1"/>
+                    <field name="field_merchant_service_table_name" invisible="1"/>
+                    <field name="field_merchant_service_contact_name" invisible="1"/>
+                    <field name="field_merchant_service_phone" invisible="1"/>
+                    <field name="field_merchant_service_mobile" invisible="1"/>
+                    <field name="field_service_zone_id" invisible="1"/>
+                    <field name="field_service_type_id" invisible="1"/>
+                    <field name="field_todo_ids" invisible="1"/>
+                    <field name="field_due_date" invisible="1"/>
+                    <field name="field_description" invisible="1"/>
+                    <field name="field_barcode" invisible="1"/>
+                    <field name="field_sla_id" invisible="1"/>
+                    <field name="field_sla_status" invisible="1"/>
+                    <field name="field_order_uid" invisible="1"/>
+                    <field name="field_project_uid" invisible="1"/>
+                    <field name="field_project_name" invisible="1"/>
+                    <field name="field_team_ids" invisible="1"/>
+                    <field name="field_user_ids" invisible="1"/>
+                    <field name="field_user_id" invisible="1"/>
+                    <field name="field_product_ids" invisible="1"/>
+                    <field name="field_product_id" invisible="1"/>
+                    <field name="field_product_lot_id" invisible="1"/>
+                    <field name="field_product_lot_ref" invisible="1"/>
+                    <field name="field_product_owner" invisible="1"/>
+                    <field name="field_product_type" invisible="1"/>
+                    <field name="field_product_os" invisible="1"/>
+                    <field name="field_product_subpartner" invisible="1"/>
+                    <field name="field_product_order_type" invisible="1"/>
+                    <field name="field_product_operation_type" invisible="1"/>
+                    <field name="field_product_operator" invisible="1"/>
+                    <field name="field_product_state" invisible="1"/>
+                    <field name="field_setup_uid" invisible="1"/>
+                    <field name="field_setup_key" invisible="1"/>
+                    <field name="field_setup_merchant_uid" invisible="1"/>
+                    <field name="field_setup_application_ids" invisible="1"/>
+                    <field name="field_material_id" invisible="1"/>
+                    <field name="field_material_name" invisible="1"/>
+                    <field name="field_material_serial" invisible="1"/>
+                    <field name="field_material_count" invisible="1"/>
+                    <field name="field_material_barcode" invisible="1"/>
+                    <field name="field_document_uid" invisible="1"/>
+                    <field name="field_document_type" invisible="1"/>
+                    <field name="field_document_name" invisible="1"/>
+                    <field name="field_document_info_vat" invisible="1"/>
+                    <field name="field_document_info_name" invisible="1"/>
+                    <field name="field_document_info_birthday" invisible="1"/>
+                    <field name="field_document_info_birthplace" invisible="1"/>
+                    <field name="field_document_info_iban" invisible="1"/>
+                    <field name="field_document_info_detail_ids" invisible="1"/>
+                    <field name="domain_product" invisible="1"/>
+                    <field name="domain_team" invisible="1"/>
+                    <field name="domain_user" invisible="1"/>
+                    <field name="domain_todo" invisible="1"/>
+                </group>
+                <notebook class="border-bottom-0">
+                    <page name="todos" string="Todos" invisible="todo_ids == []">
+                        <!--<field name="todo_ids" class="o_fsm_task_todo" readonly="field_todo_ids not in (3, 4)">-->
+                        <field name="todo_ids" mode="kanban" class="o_fsm_task_todo" widget="fsm_task_todo"/>
+                    </page>
+                </notebook>
+                <notebook groups="fsm.group_administrator">
+                    <page name="logs" string="Logs">
+                        <field name="log_ids">
+                            <list decoration-muted="stage_type == '1'" decoration-bf="stage_type == '2'">
+                                <field name="stage_id" options="{'no_create': True, 'no_open': True}" decoration-bf="1"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="reason_code" widget="badge" optional="show"/>
+                                <field name="reason_name" optional="show"/>
+                                <field name="reason_desc" optional="hide"/>
+                                <field name="approval_state" widget="badge" decoration-success="approval_state == '0'" decoration-danger="approval_state == '1'" optional="hide"/>
+                                <field name="approval_date" optional="hide"/>
+                                <field name="approval_code" optional="hide"/>
+                                <field name="approval_desc" optional="hide"/>
+                                <field name="stage_type" invisible="1"/>
+                                <field name="reason_id" invisible="1"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="stage_id" options="{'no_create': True, 'no_open': True}"/>
+                                            <field name="date_from"/>
+                                            <field name="date_to"/>
+                                            <separator string="Approval" colspan="2"/>
+                                            <field name="approval_state" widget="badge" decoration-success="approval_state == '0'" decoration-danger="approval_state == '1'"/>
+                                            <field name="approval_date"/>
+                                            <field name="approval_code"/>
+                                            <field name="approval_desc"/>
+                                        </group>
+                                        <group>
+                                            <separator string="User" colspan="2"/>
+                                            <field name="create_date"/>
+                                            <field name="create_uid" widget="many2one_avatar_user"/>
+                                            <separator string="Reason" colspan="2"/>
+                                            <field name="reason_code" widget="badge" string="Code"/>
+                                            <field name="reason_name" string="Name"/>
+                                            <field name="reason_desc" string="Description"/>
+                                            <field name="reason_id" invisible="1"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            <chatter/>
+        </form>
+    </field>
+    </record>
+
+    <record id="pivot_task" model="ir.ui.view">
+         <field name="name">fsm.task.pivot</field>
+         <field name="model">fsm.task</field>
+         <field name="arch" type="xml">
+             <pivot sample="1">
+                 <field name="type_id" type="col"/>
+                 <field name="create_date" interval="month" type="row"/>
+             </pivot>
+         </field>
+    </record>
+
+    <record id="search_task" model="ir.ui.view">
+    <field name="name">fsm.task.search</field>
+    <field name="model">fsm.task</field>
+    <field name="arch" type="xml">
+        <search>
+            <field name="uid" filter_domain="['|', ('uid', 'ilike', self), ('order_uid', 'ilike', self)]" string="Name"/>
+            <filter string="SLA On" name="filterby_sla_on" domain="[('sla_status', '=', 'on')]"/>
+            <filter string="SLA Off" name="filterby_sla_off" domain="[('sla_status', '=', 'off')]"/>
+            <separator/>
+            <group>
+                <filter string="Stage" name="groupby_stage" context="{'group_by': 'stage_id'}"/>
+            </group>
+        </search>
+    </field>
+    </record>
+
+    <record id="tree_task_todo" model="ir.ui.view">
+    <field name="name">fsm.task.todo.list</field>
+    <field name="model">fsm.task.todo</field>
+    <field name="arch" type="xml">
+        <list create="0" delete="0" editable="bottom" decoration-bf="fulfilled == False" expand="1">
+            <field name="done"/>
+            <!--<button name="action_toggle" type="object" icon="fa-check-square-o" invisible="(disabled != False or done == False)" class="btn text-primary"/>
+            <button name="action_toggle" type="object" icon="fa-check-square-o" invisible="(disabled == False or done == False)" class="btn text-primary" disabled="disabled"/>-->
+            <button name="action_photo" type="object" icon="fa-camera" invisible="(photo_ok == False or done == False)" class="btn text-primary o_fsm_task_todo_type" disabled="disabled"/>
+            <button name="action_photo" type="object" icon="fa-camera" invisible="(photo_ok == False or done == True)" class="btn text-primary o_fsm_task_todo_type"/>
+            <field name="todo_id" options="{'no_create': True, 'no_open': True}" decoration-bf="1"/>
+            <field name="photo_ids" widget="many2many_tags_avatar" invisible="photo_ok == False"/>
+            <button icon="fa-truck text-muted" invisible="(picking_ok == False or picking_ids != [])" class="btn o_fsm_task_todo_type text-muted fst-italic" string="Stock move will be created with this todo"/>
+            <field name="picking_ids" widget="many2many_tags" invisible="(picking_ok == False or picking_ids == [])"/>
+            <field name="picking_location_type" invisible="picking_ok == False" class="text-muted fst-italic"/>
+            <field name="picking_product_id" options="{'no_create': True, 'no_open': True}" invisible="picking_ok == False" class="text-muted fst-italic"/>
+            <field name="picking_product_lot_id" options="{'no_create': True, 'no_open': True}" invisible="picking_ok == False" class="text-muted fst-italic"/>
+            <field name="picking_product_lot_id_raw" invisible="1"/>
+            <field name="picking_product_lot_read" invisible="1"/>
+            <field name="picking_product_lot_ids" invisible="1"/>
+            <field name="picking_product_lot_ok" invisible="1"/>
+            <field name="picking_location_id" invisible="1"/>
+            <field name="picking_location_dest_id" invisible="1"/>
+            <field name="fulfilled" invisible="1"/>
+            <field name="required" invisible="1"/>
+            <field name="disabled" invisible="1"/>
+            <field name="photo_ok" invisible="1"/>
+            <field name="picking_ok" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="kanban_task_todo" model="ir.ui.view">
+    <field name="name">fsm.task.todo.kanban</field>
+    <field name="model">fsm.task.todo</field>
+    <field name="arch" type="xml">
+        <kanban
+            default_group_by="stage_id"
+            class="o_fsm_task_todo_kanban_view"
+            groups_draggable="False"
+            group_create="False"
+            group_delete="False"
+            group_edit="False"
+            quick_create="False"
+            archivable="False"
+            create="false"
+            delete="false"
+            sample="1"
+        >
+            <field name="done"/>
+            <field name="todo_id"/>
+            <field name="required"/>
+            <field name="fulfilled"/>
+            <field name="disabled"/>
+            <field name="photo_ok"/>
+            <field name="picking_ok"/>
+            <field name="picking_product_lot_id_raw"/>
+            <field name="picking_product_lot_read"/>
+            <field name="picking_product_lot_ids"/>
+            <field name="picking_product_lot_ok"/>
+            <field name="picking_location_id"/>
+            <field name="picking_location_dest_id"/>
+            <templates>
+                <t t-name="card">
+                    <div class="oe_kanban_card oe_kanban_global_click o_fsm_task_todo_kanban overflow-hidden p-0 rounded-2">
+                        <div class="oe_kanban_content">
+                            <div t-attf-class="o_kanban_record_top bg-100 border-4 border-{{record.fulfilled.raw_value ? 'primary' : 'danger'}} border-start mx-4 my-3 p-3 rounded-2 shadow-sm text-center">
+                                <div class="o_kanban_record_headings">
+                                    <div class="o_kanban_record_title d-flex flex-row justify-content-between">
+                                        <div>
+                                            <button t-if="record.photo_ok.raw_value" name="action_photo" type="object" icon="fa-camera" t-attf-class="btn text-500 py-0 o_fsm_task_todo_type {{record.done.raw_value ? 'disabled' : ''}}" t-att-disabled="record.done.raw_value ? 'disabled' : undefined"/>
+                                            <field name="todo_id" class="h3 text-700 text-nowrap"/>
+                                        </div>
+                                        <field name="done" widget="boolean_toggle" force_save="1" readonly="fulfilled == False"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_body px-4 text-truncate">
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="d-inline-flex align-items-center border rounded-pill bg-500 text-white fw-bold" invisible="(photo_ok == False or photo_ids == [])">
+                                        <span class="px-2">Photos</span>
+                                        <field name="photo_ids" class="d-flex px-1 m-0" widget="many2many_tags_avatar"/>
+                                    </span>
+                                    <span class="d-inline-flex align-items-center border rounded-pill bg-500 text-white fw-bold" invisible="(picking_ok == False or picking_ids == [])">
+                                        <span class="px-2">Pickings</span>
+                                        <field name="picking_ids" class="d-flex px-1 m-0" widget="many2many_tags"/>
+                                    </span>
+                                </div>
+                                <button icon="fa-truck text-muted" invisible="(picking_ok == False or picking_ids != [])" class="btn o_fsm_task_todo_type text-muted fst-italic w-100" string="Stock move will be created with this todo"/>
+                                <div t-if="record.picking_ok.raw_value" class="mt-1">
+                                    <span class="d-inline-flex align-items-center" invisible="picking_product_id == False">
+                                        <span class="text-500">
+                                            <i class="fa fa-cube" title="Product"/>
+                                        </span>
+                                        <field name="picking_product_id" class="px-2 text-500 small fw-bold"/>
+                                    </span>
+                                    <span class="d-inline-flex align-items-center" invisible="picking_location_type == False">
+                                        <span class="text-500">
+                                            <i class="fa fa-home" title="Location"/>
+                                        </span>
+                                        <field name="picking_location_type" class="px-2 text-500 small fw-bold"/>
+                                    </span>
+                                    <span class="d-inline-flex align-items-center" invisible="picking_product_lot_id == False">
+                                        <span class="text-500">
+                                            <i class="fa fa-barcode" title="Lot/Serial"/>
+                                        </span>
+                                        <field name="picking_product_lot_id" class="px-2 text-500 small fw-bold"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom"/>
+                        </div>
+                        <div class="clearfix"/>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <record id="form_task_todo" model="ir.ui.view">
+    <field name="name">fsm.task.todo.form</field>
+    <field name="model">fsm.task.todo</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <div class="d-flex gap-3 mb-3">
+                    <div class="d-flex align-items-center justify-content-center rounded-3 border pt-2 px-2 pb-1" style="box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);">
+                        <field name="done" widget="boolean_toggle" force_save="1" nolabel="1" class="oe_inline mx-n4 mr0 my-0" readonly="(done == False and fulfilled == False)"/>
+                    </div>
+                    <div class="border border-1 d-flex flex-fill align-items-center justify-content-center rounded-3 border pt-2 px-2 pb-1" style="box-shadow: 6px 0px 0 -2px var(--primary) inset, 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);" invisible="fulfilled == False">
+                        <field name="todo_id" options="{'no_create': True, 'no_open': True}" nolabel="1" class="oe_inline fw-bold text-600 h1 px-2"/>
+                    </div>
+                    <div class="border border 1 d-flex flex-fill align-items-center justify-content-center rounded-3 border pt-2 px-2 pb-1" style="box-shadow: 6px 0px 0 -2px var(--danger) inset, 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;" invisible="fulfilled != False">
+                        <field name="todo_id" options="{'no_create': True, 'no_open': True}" nolabel="1" class="oe_inline fw-bold text-600 h1 px-2"/>
+                    </div>
+                </div>
+                <separator string="Photos" invisible="photo_ok == False"/>
+                <div invisible="photo_ok == False">
+                    <div>
+                        <button name="action_photo" type="object" icon="fa-camera mr8" string="Take Photo" invisible="(photo_ok == False or done == False)" class="text-600 o_fsm_task_todo_type shadow-sm border border-1 mx-4 btn rounded-3 p-2 px-4" disabled="disabled" title="You cannot take photo because it marked as done."/>
+                        <button name="action_photo" type="object" icon="fa-camera mr8" string="Take Photo" invisible="(photo_ok == False or done == True)" class="text-600 o_fsm_task_todo_type shadow-sm border border-1 mx-4 btn rounded-3 p-2 px-4"/>
+                    </div>
+                    <div>
+                        <field name="photo_ids" invisible="photo_ids == []" mode="kanban" nolabel="1" colspan="2">
+                            <kanban>
+                                <field name="id"/>
+                                <field name="mimetype"/>
+                                <field name="type"/>
+                                <field name="create_uid"/>
+                                <field name="url"/>
+                                <field name="create_date"/>
+                                <field name="name"/>
+                                <templates>
+                                    <t t-name="card">
+                                        <div class="oe_kanban_global_area oe_kanban_global_click o_kanban_attachment rounded-3 shadow-sm">
+                                            <div class="row">
+                                                <div class="offset-10">
+                                                    <div class="o_dropdown_kanban dropdown" groups="base.group_user">
+                                                        <a role="button" class="dropdown-toggle o-no-caret btn" data-bs-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                                            <span class="fa fa-ellipsis-v"/>
+                                                        </a>
+                                                        <div class="dropdown-menu" role="menu">
+                                                            <a t-attf-href="/web/content/ir.attachment/#{record.id.raw_value}/datas?download=true" download="" class="dropdown-item">Download</a>
+                                                            <!--<a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete</a>-->
+                                                            <button name="unlink_fsm_file" type="object" class="dropdown-item">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="o_kanban_image">
+                                                <div class="o_kanban_image_wrapper">
+                                                    <t t-set="webimage" t-value="new RegExp('image.*(gif|jpeg|jpg|png)').test(record.mimetype.value)"/>
+                                                    <div t-if="record.type.raw_value == 'url'" class="o_url_image fa fa-link fa-3x text-muted" aria-label="Image is a link"/>
+                                                    <img t-elif="webimage" t-attf-src="/web/image/#{record.id.raw_value}" width="100" height="100" alt="Document" class="o_attachment_image rounded-3"/>
+                                                    <div t-else="!webimage" class="o_image o_image_thumbnail" t-att-data-mimetype="record.mimetype.value"/>
+                                                </div>
+                                            </div>
+                                            <div class="o_kanban_details">
+                                                <div class="o_kanban_details_wrapper">
+                                                    <div t-att-title="record.name.raw_value" class="o_kanban_record_title">
+                                                        <field name="name" class="o_text_overflow text-600"/>
+                                                    </div>
+                                                    <div class="o_kanban_record_body">
+                                                        <t t-if="record.type.raw_value == 'url'">
+                                                            <span class="o_document_url"><i class="fa fa-globe" aria-label="Document url"/> <field name="url" widget="url"/></span>
+                                                        </t>
+                                                        <samp t-else="" class="text-muted"> </samp>
+                                                    </div>
+                                                    <div class="o_kanban_record_bottom">
+                                                        <time class="oe_kanban_bottom_left">
+                                                            <field name="create_date" widget="date" class="text-600 fw-bold"/>
+                                                        </time>
+                                                        <div class="oe_kanban_bottom_right">
+                                                            <field name="create_uid" widget="many2one_avatar_user"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                            <form class="o_fsm_photo_dialog">
+                                <sheet>
+                                    <field name="datas" widget="image"/>
+                                </sheet>
+                            </form>
+                        </field>
+                        <p class="h1 my-5 text-500 text-center" invisible="photo_ids != []">No photo uploaded</p>
+                    </div>
+                </div>
+                <div class="position-relative" invisible="picking_ok == False or (picking_location_id != False and picking_location_dest_id != False and picking_product_lot_ok == False)">
+                    <separator string="Stock"/>
+                    <div class="d-flex gap-2 position-absolute" style="right: 0; top: -11px;">
+                        <button name="action_picking_return" type="object" class="text-danger" string="Return Picking" invisible="picking_state not in (1, 3)" icon="fa-undo"/>
+                        <button name="action_picking_cancel" type="object" class="text-danger" string="Cancel Picking" invisible="picking_state not in (2, 3)" icon="fa-times"/>
+                    </div>
+                </div>
+                <div class="row mb-3" invisible="picking_ok == False or (picking_location_id != False and picking_location_dest_id != False and picking_product_lot_ok == False)">
+                    <div class="col-md-6 d-flex flex-column" invisible="(picking_location_id != False and picking_location_dest_id != False)">
+                        <label for="picking_location_type" string="Location"/>
+                        <div class="border border-1 rounded-3 shadow-sm mt-2">
+                            <field name="picking_location_type" nolabel="1" class="w-100 p-2 d-flex justify-content-center mt-2" readonly="(done == True or picking_ids != [])" widget="radio" options="{'horizontal': True}" force_save="1"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column" invisible="picking_product_lot_ok == False">
+                        <label for="picking_product_lot_id" string="Lot/Serial"/>
+                        <div class="border border-1 rounded-3 shadow-sm mt-2">
+                            <field name="picking_product_lot_id" nolabel="1" class="w-100 p-2 d-flex justify-content-center mt-1 mb-0" readonly="(done == True or picking_ids != [])" required="(picking_ok == True and picking_ids == [] and picking_product_lot_ok == True)" options="{'no_create': True, 'no_open': True}" force_save="1" placeholder="Please select a serial"/>
+                        </div>
+                    </div>
+                </div>
+                <field name="fulfilled" invisible="1"/>
+                <field name="required" invisible="1"/>
+                <field name="disabled" invisible="1"/>
+                <field name="photo_ok" invisible="1"/>
+                <field name="picking_ok" invisible="1"/>
+                <field name="picking_ids" invisible="1"/>
+                <field name="picking_state" invisible="1"/>
+                <field name="picking_location_id" invisible="1"/>
+                <field name="picking_location_dest_id" invisible="1"/>
+                <field name="picking_product_lot_id_raw" invisible="1"/>
+                <field name="picking_product_lot_read" invisible="1"/>
+                <field name="picking_product_lot_ids" invisible="1"/>
+                <field name="picking_product_lot_ok" invisible="1"/>
+                <field name="picking_product_id" invisible="1"/>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="action_task" model="ir.actions.act_window">
+    <field name="name">Tasks</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">fsm.task</field>
+    <field name="view_mode">list,kanban,pivot,form</field>
+    <field name="context">{'create': False}</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            No tasks yet
+        </p>
+        <p>
+            Create tasks from projects easily
+        </p>
+    </field>
+    </record>
+
+    <record id="action_task_todo" model="ir.actions.act_window">
+    <field name="name">Task Todos</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">fsm.task.todo</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="domain">[('task_id', '=', active_id)]</field>
+    <field name="context">{'create': False, 'delete': False, 'group_by': 'flow_stage_id'}</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            No task todos yet
+        </p>
+    </field>
+    </record>
+
+    <record id="action_server_task_todo" model="ir.actions.server">
+    <field name="name">Update Todos</field>
+    <field name="group_ids" eval="[Command.link(ref('fsm.group_operator'))]"/>
+    <field name="model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_view_types">form</field>
+    <field name="state">code</field>
+    <field name="code">action = records.action_update_todos()</field>
+    </record>
+
+    <record id="action_task_stage" model="ir.actions.server">
+    <field name="name">Change Stage</field>
+    <field name="group_ids" eval="[Command.link(ref('fsm.group_administrator'))]"/>
+    <field name="model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">action = records.action_change_stage()</field>
+    </record>
+
+    <record id="action_task_reason" model="ir.actions.server">
+    <field name="name">Change Reason</field>
+    <field name="group_ids" eval="[Command.link(ref('fsm.group_administrator'))]"/>
+    <field name="model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">action = records.action_change_reason()</field>
+    </record>
+
+    <record id="action_server_task_service_change" model="ir.actions.server">
+    <field name="name">Change Service Type</field>
+    <field name="group_ids" eval="[Command.link(ref('fsm.group_administrator'))]"/>
+    <field name="model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">action = records.action_change_service_type()</field>
+    </record>
+
+    <record id="action_task_user" model="ir.actions.server">
+    <field name="name">Assing Technician</field>
+    <field name="group_ids" eval="[Command.link(ref('fsm.group_operator'))]"/>
+    <field name="model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_model_id" ref="fsm.model_fsm_task"/>
+    <field name="binding_view_types">list,form</field>
+    <field name="state">code</field>
+    <field name="code">action = records.action_assign_user()</field>
+    </record>
+</odoo>

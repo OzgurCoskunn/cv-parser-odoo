@@ -1,0 +1,265 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_tr_address_website_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-30 14:22+0000\n"
+"PO-Revision-Date: 2024-03-30 14:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid ""
+"<option value=\"\" disabled=\"true\" "
+"selected=\"error.get('state_id')\">State / Province...</option>"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid ""
+"<option value=\"\" disabled=\"true\" "
+"selected=\"error.get('town_id')\">Town...</option>"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "<option value=\"\" disabled=\"true\">Country...</option>"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Apartment / Flat Number"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Billing Address"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid ""
+"Changing VAT number is not allowed once document(s) have been issued for "
+"your account. Please contact us directly for this operation."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid ""
+"Changing company name is not allowed once document(s) have been issued for "
+"your account. Please contact us directly for this operation."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "City"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Company"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Company Name"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Country"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "District"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-javascript
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+#, python-format
+msgid "District..."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Person"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Phone"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please fill VAT number field."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please fill apartment / flat number field."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please fill city/town field."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please fill district field."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please fill street field."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please fill tax office field."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please select a district."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please select a street."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Please select a town."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model:ir.model,name:l10n_tr_address_website_sale.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "State / Province"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-javascript
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#, python-format
+msgid "State / Province..."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Street"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-javascript
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+#, python-format
+msgid "Street..."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-javascript
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+#, python-format
+msgid "Tax Number"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-javascript
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#, python-format
+msgid "Tax Office..."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Tax Offices"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Tax Offices..."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "The prefix of the zip code and the state code do not match."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Town"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-javascript
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#, python-format
+msgid "Town..."
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-javascript
+#: code:addons/l10n_tr_address_website_sale/static/src/js/address.js:0
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+#, python-format
+msgid "VAT Number"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address_website_sale.address
+msgid "Zip Code"
+msgstr ""
+
+#. module: l10n_tr_address_website_sale
+#. odoo-python
+#: code:addons/l10n_tr_address_website_sale/controllers/main.py:0
+#, python-format
+msgid "Zip format is incorrect."
+msgstr ""

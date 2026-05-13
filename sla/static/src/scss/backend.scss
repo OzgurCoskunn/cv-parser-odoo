@@ -1,0 +1,7 @@
+.o_web_client {
+    .o_sla_agreement_hour_ref, .o_sla_policy_stage_ref {
+        select {
+            display: none;
+        }
+    }
+}

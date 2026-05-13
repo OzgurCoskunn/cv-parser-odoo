@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_sale_order" model="ir.ui.view">
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//page[@name='other_information']" position="inside">
+            <group name="fsm" string="Field Service">
+                <field name="access_token" string="Order ID" readonly="1"/>
+                <field name="fsm_ref" string="Customer Order ID" readonly="1"/>
+                <field name="fsm_channel" string="Channel" readonly="1"/>
+                <field name="fsm_detail_ids" string="Details" readonly="1">
+                    <list>
+                        <field name="key"/>
+                        <field name="value"/>
+                    </list>
+                    <form>
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="key"/>
+                                </group>
+                                <group>
+                                    <field name="value"/>
+                                </group>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </group>
+        </xpath>
+        <xpath expr="//field[@name='order_line']//form" position="inside">
+            <field name="fsm_reserved_lot_ids" invisible="1"/>
+        </xpath>
+        <xpath expr="//field[@name='order_line']//list" position="inside">
+            <field name="fsm_reserved_lot_ids" widget="many2many_tags" optional="hide"/>
+        </xpath>
+    </field>
+    </record>
+</odoo>

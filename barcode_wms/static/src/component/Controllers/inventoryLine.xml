@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="barcode_wms.inventory_line_footer_buttons">
+        <div class="d-flex" role="toolbar">
+            <button type="button" class="btn btn-secondary o_button_close" title="Close" accesskey="j"><i class="fa fa-minus mr4" t-translation="off"/>Discard</button>
+        </div>
+    </t>
+</templates>

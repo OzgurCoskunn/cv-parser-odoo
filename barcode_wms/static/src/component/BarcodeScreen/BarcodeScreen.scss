@@ -1,0 +1,151 @@
+.o_barcode_action {
+    .barcode-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        font-family: Argentum Sans;
+    
+        > h1 {
+          margin-bottom:20px;
+          font-weight: 600;
+          font-size: 2.5rem;
+        }
+    
+        > ul {
+          display: inline-block;
+          font-size: 1.2rem;
+        }
+    
+        .fa-barcode {
+          text-align: center;
+          font-size: 120px;
+        }
+    
+        .barcode-screen-item {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+
+        .barcode-screen-container {
+            width: 900px;  
+            text-align: center;
+            padding: 2rem;
+
+            .barcode-screen-items {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                gap: 5px;
+
+                & > button {
+                    //font-family: 'Argentum Sans';
+                    border-radius: 0px;
+                    border-style: none;
+                    font-size: 16px;
+                    font-weight: 500;
+                    height: 150px;
+                    width: 150px;
+                    line-height: 20px;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    outline: none;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    transition: color 100ms;
+                    vertical-align: baseline;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    touch-action: manipulation;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items:center;
+
+                    > div {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        > div:first-child {
+                            flex: 1;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            svg {
+                                height: 70px;
+                            }
+                        }
+
+                        > div:last-child {
+                            background-color: #00000033;
+                            padding: 5px;
+                            text-wrap: nowrap;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .o_barcode_action {
+        .barcode-screen-container {
+            width: 900px;
+            text-align: center;
+            padding: 2rem;
+            height: 100%;
+            overflow-y: auto;
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .o_barcode_action {
+        .barcode-screen-items > button {
+            height: 135px;
+            width: 135px;
+
+            svg {
+                height: 65px;
+            }
+
+            .barcode-screen-title {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.o_web_client.dark_mode {
+    .o_barcode_action {
+        .barcode-screen {
+            .barcode-screen-container {
+                background-color: #333333;
+            }
+        }
+    }
+}
+
+.o_web_client:not(.dark_mode) {
+    .o_barcode_action {
+        .barcode-screen {
+            background-color: #dddddd;
+            .barcode-screen-container {
+                background-color: #ffffff;
+            }
+        }
+    }
+}

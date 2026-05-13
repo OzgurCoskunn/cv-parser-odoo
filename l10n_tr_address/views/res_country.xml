@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_country_state_form" model="ir.ui.view">
+    <field name="model">res.country.state</field>
+    <field name="inherit_id" ref="base.view_country_state_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//sheet" position="inside">
+            <field name="town_ids"/>
+        </xpath>
+    </field>
+    </record>
+
+    <record id="view_country_state_tree" model="ir.ui.view">
+    <field name="model">res.country.state</field>
+    <field name="inherit_id" ref="base.view_country_state_tree"/>
+    <field name="arch" type="xml">
+        <xpath expr="//list" position="attributes">
+            <attribute name="editable"></attribute>
+        </xpath>
+    </field>
+    </record>
+    
+    <record id="view_country_form" model="ir.ui.view">
+    <field name="model">res.country</field>
+    <field name="inherit_id" ref="base.view_country_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='state_ids']//list" position="attributes">
+            <attribute name="editable"></attribute>
+        </xpath>
+    </field>
+    </record>
+
+    <record id="view_town_form" model="ir.ui.view">
+    <field name="model">res.country.town</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="state_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                </group>
+                <field name="district_ids"/>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="view_town_tree" model="ir.ui.view">
+    <field name="model">res.country.town</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="state_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="view_district_form" model="ir.ui.view">
+    <field name="model">res.country.district</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="town_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                </group>
+                <field name="street_ids"/>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="view_district_tree" model="ir.ui.view">
+    <field name="model">res.country.district</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="town_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="view_street_form" model="ir.ui.view">
+    <field name="model">res.country.street</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="district_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="view_street_tree" model="ir.ui.view">
+    <field name="model">res.country.street</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="district_id" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+        </list>
+    </field>
+    </record>
+</odoo>

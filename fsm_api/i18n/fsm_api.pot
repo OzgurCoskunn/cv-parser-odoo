@@ -1,0 +1,1916 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fsm_api
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-11 12:35+0000\n"
+"PO-Revision-Date: 2025-04-11 12:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/services/soap.py:0
+#, python-format
+msgid " (signed)"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/services/soap.py:0
+#, python-format
+msgid "%s (rendered).pdf"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_proxy.py:0
+#: code:addons/fsm_api/models/fsm_proxy.py:0
+#, python-format
+msgid "%s Record"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_proxy.py:0
+#: code:addons/fsm_api/models/fsm_proxy.py:0
+#, python-format
+msgid "%s Records"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_response
+msgid "--- No Response"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "/workorder"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "1.0"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_response__type__200
+msgid "200 OK"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_response__type__400
+msgid "400 Bad Request"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_response__type__401
+msgid "401 Unauthorized"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_response__type__403
+msgid "403 Forbidden"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_response__type__404
+msgid "404 Not Found"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_response__type__422
+msgid "422 Unprocessable Content"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_response__type__500
+msgid "500 Internal Server Error"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid ""
+"<br/>\n"
+"                                                        <span class=\"fst-italic\">in corresponding tasks, block the process.</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "<code>{{product}}</code>: Table of products"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "<code>{{reason}}</code>: Table of reasons"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "<code>{{stage}}</code>: Table of stages"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "<code>{{type}}</code>: Table of types"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "<span class=\"font-weight-bold text-700\">Active</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "<span class=\"font-weight-bold\">Passive</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "<span class=\"fst-italic mr8\">Active</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "<span class=\"fst-italic mr8\">All</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "<span class=\"fst-italic mr8\">Take all reasons as parameter</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid ""
+"<span class=\"fst-italic\">If reason is one of</span>\n"
+"                                                        <br/>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_task
+msgid "<span class=\"o_stat_text fw-bold\">API Logs</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_task
+msgid "<span>Count:</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_task
+msgid "<span>Done:</span>"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__api_key
+msgid "API Key"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "API Key will be here"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_task__api_log_ids
+msgid "API Logs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.ui.menu,name:fsm_api.menu_conf_api
+msgid "APIs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__active
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__active
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__active
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__active
+msgid "Active"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Add a section"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Add a service"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Add a webhook"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,help:fsm_api.field_fsm_api_proxy_city__name
+msgid ""
+"Administrative divisions of a country. E.g. Fed. State, Departement, Canton"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__product_all
+msgid "All Products"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__reason_all
+msgid "All Reasons"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__reason_valid_all
+msgid "All Reasons Valid"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__stage_all
+msgid "All Stages"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__type_all
+msgid "All Types"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid ""
+"Any sale order cannot found related to requested order number. Please check "
+"the order number and try again."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_task__api_log_count
+msgid "Api Log Count"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_task__api_log_done
+msgid "Api Log Done"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "Authorization"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__auth_type
+msgid "Authorization Type"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.actions.act_window,name:fsm_api.action_api_auth
+#: model:ir.ui.menu,name:fsm_api.menu_conf_api_auth
+msgid "Authorizations"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Available variables;"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__badge
+msgid "Badge"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__bank_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Banks"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_auth__webhook_auth__basic
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy__auth_type__basic
+msgid "Basic Auth"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_auth__webhook_auth__bearer
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy__auth_type__bearer
+msgid "Bearer Token"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__city_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Cities"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__state_id
+msgid "City"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "City cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "City name is not matched."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Click to make proxy active"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Click to make proxy inactive"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-javascript
+#: code:addons/fsm_api/static/src/js/response_type.js:0
+#, python-format
+msgid "Client Error"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__code
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__code
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_response
+msgid "Code"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__collection
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Collection"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__company_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__company_id
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Company"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Country is missing."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.actions.act_window,help:fsm_api.action_api_auth
+msgid "Create an API key and secret key then use them for making requests"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.actions.act_window,help:fsm_api.action_api_spec
+msgid "Create an API specification then use them for getting requests"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__create_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__create_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__customer_id
+msgid "Customer"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "DEFAULT"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__method__delete
+msgid "DELETE"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Data is missing."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_log
+msgid "Date"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__debug_message
+msgid "Debug Message"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__description
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__description
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Description"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+msgid "Description..."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__direction
+msgid "Direction"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__display_name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__display_type
+msgid "Display Type"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Due to this sale order has stock moves, you cannot cancel it."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__duration
+msgid "Duration"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Enter a SOAP method name..."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Enter a specification name..."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_log__state__error
+msgid "Error"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__example
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__example
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__example
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__example
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__example
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__example
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__example
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__example
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+msgid "Example"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+msgid "Example..."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.search_api_log
+msgid "Failed Requests"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__field_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__field_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__field_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__field_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__field_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__field_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__field_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__field_id
+msgid "Field"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_auth
+msgid "Field Service Management: API Authorization"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_log
+msgid "Field Service Management: API Logs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy
+msgid "Field Service Management: API Proxies"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_bank
+msgid "Field Service Management: API Proxy Bank Codes"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_city
+msgid "Field Service Management: API Proxy City Codes"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_service_io
+msgid "Field Service Management: API Proxy Service IO"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_service_input
+msgid "Field Service Management: API Proxy Service Inputs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_service_model
+msgid "Field Service Management: API Proxy Service Models"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_service_output
+msgid "Field Service Management: API Proxy Service Outputs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_service_response
+msgid "Field Service Management: API Proxy Service Response"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_service
+msgid "Field Service Management: API Proxy Services"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_status
+msgid "Field Service Management: API Proxy Status Codes"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_town
+msgid "Field Service Management: API Proxy Town Codes"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_type
+msgid "Field Service Management: API Proxy Types"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_spec
+msgid "Field Service Management: API Specification"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_spec_service_io
+msgid "Field Service Management: API Specification Service IO"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_spec_service_input
+msgid "Field Service Management: API Specification Service Inputs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_spec_service_model
+msgid "Field Service Management: API Specification Service Models"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_spec_service_output
+msgid "Field Service Management: API Specification Service Outputs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_spec_service
+msgid "Field Service Management: API Specification Services"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_webhook
+msgid "Field Service Management: API Webhook"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_task
+msgid "Field Service Management: Tasks"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model,name:fsm_api.model_fsm_api_proxy_provider
+msgid "Field Service: API Proxy Providers"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Field is missing."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__field_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+msgid "Fields"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__method__get
+msgid "GET"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.search_api_log
+msgid "Group By"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__method__head
+msgid "HEAD"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Help"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_log
+msgid "Hide Debug"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__id
+msgid "ID"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__image
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__image
+msgid "Image"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__info
+msgid "Info"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-javascript
+#: code:addons/fsm_api/static/src/js/response_type.js:0
+#, python-format
+msgid "Information"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__input_ids
+msgid "Inputs"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "Keys"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model____last_update
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__write_uid
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__write_date
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.actions.act_window,name:fsm_api.action_api_log
+#: model:ir.ui.menu,name:fsm_api.menu_conf_api_log
+msgid "Logs"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.actions.act_window,help:fsm_api.action_api_log
+msgid "Logs are listed here"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__bank_ok
+msgid "Map Banks"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__city_ok
+msgid "Map Cities"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__status_ok
+msgid "Map Statuses"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__town_ok
+msgid "Map Towns"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__type_ok
+msgid "Map Types"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Mappings"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__message
+msgid "Message"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__method
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Method"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Method Name..."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Method Reference..."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__model_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__model_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__model_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__model_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__model_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__model_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__model_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__model_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__model_id
+msgid "Model"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__model_field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__model_field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__model_field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__model_field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__model_field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__model_field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__model_field_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__model_field_ids
+msgid "Model Fields"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__model_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__model_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__model_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__model_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__model_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__model_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__model_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__model_type
+msgid "Model Type"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__model_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Models"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__name
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Name"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_response
+msgid "Name..."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.actions.act_window,help:fsm_api.action_api_auth
+msgid "No API authorization yet"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.actions.act_window,help:fsm_api.action_api_spec
+msgid "No API specification yet"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "No Auth"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+msgid "No SOAP method specified"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.actions.act_window,help:fsm_api.action_api_log
+msgid "No logs yet"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "No material found with name \"%s\"."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+msgid "No model selected"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "No product found with name \"%s\"."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__display_type__line_note
+msgid "Note"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_auth__webhook_auth__oauth2
+msgid "OAuth 2.0"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__method__options
+msgid "OPTIONS"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+msgid "Options"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Order cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__output_ids
+msgid "Outputs"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__method__patch
+msgid "PATCH"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__method__post
+msgid "POST"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__method__put
+msgid "PUT"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__parent_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__parent_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__parent_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__parent_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__parent_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__parent_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__parent_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__parent_id
+msgid "Parent"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__partner_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__partner_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__partner_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__partner_id
+#: model_terms:ir.ui.view,arch_db:fsm_api.search_api_log
+msgid "Partner"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "Password"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__path
+msgid "Path"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+msgid "Please select a service..."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__sequence
+msgid "Priority"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Product \"%s\" cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Product does not exist."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__product_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Products"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__project_id
+msgid "Project"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Project cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__provider_id
+msgid "Provider"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.actions.act_window,name:fsm_api.action_api_proxy
+#: model:ir.ui.menu,name:fsm_api.menu_conf_api_proxy
+msgid "Proxies"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_bank__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_status__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__proxy_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__proxy_id
+msgid "Proxy"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Proxy Name..."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Proxy Provider..."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Published"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_provider__type__rest
+msgid "REST"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__request_raw
+msgid "Raw Request Data"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__response_raw
+msgid "Raw Response Data"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__reason_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Reasons"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__reason_current_ids
+msgid "Reasons Filter"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__reason_valid_ids
+msgid "Reasons Valid"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_task
+msgid "Records"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-javascript
+#: code:addons/fsm_api/static/src/js/response_type.js:0
+#, python-format
+msgid "Redirection"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__ref
+msgid "Ref"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_log
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+msgid "Request"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__request_data
+msgid "Request Data"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__request_method
+msgid "Request Method"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__request_url
+msgid "Request URL"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__request_curl
+msgid "Request cURL"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_log.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Request is successful"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__required
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__required
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__required
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__required
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__required
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__required
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__required
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__required
+msgid "Required"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/services/services.py:0
+#, python-format
+msgid ""
+"Required field is missing or schema incompatible field has been specified."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_log
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+msgid "Response"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__response_badge
+msgid "Response Badge"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__response_code
+msgid "Response Code"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__response_data
+msgid "Response Data"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__response_message
+msgid "Response Message"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__response_ids
+msgid "Responses"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "SLA cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_provider__type__soap
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "SOAP"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__soap_ref
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__soap_ref
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+msgid "SOAP Method"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service
+msgid "Schema"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__secret_key
+msgid "Secret Key"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "Secret Key will be here"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service__display_type__line_section
+msgid "Section"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Select reason(s)..."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Select valid reason(s)..."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy__auth_type__param_basic
+msgid "Send as Parameter"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__sequence
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-javascript
+#: code:addons/fsm_api/static/src/js/response_type.js:0
+#, python-format
+msgid "Server Error"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__service_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__service_id
+msgid "Service"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Service does not exist"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__service_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__service_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Services"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_proxy.py:0
+#, python-format
+msgid "Set Default"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__debug_ok
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_log
+msgid "Show Debug"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__spec_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__spec_id
+msgid "Spec"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.actions.act_window,name:fsm_api.action_api_spec
+#: model:ir.ui.menu,name:fsm_api.menu_conf_api_spec
+msgid "Specifications"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__stage_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Stages"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__state
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__state_id
+msgid "State"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_city__name
+msgid "State Name"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.search_api_log
+msgid "Status"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__status_ids
+msgid "Status Codes"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Statuses"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-javascript
+#: code:addons/fsm_api/static/src/js/response_type.js:0
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__status
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_log__state__success
+#, python-format
+msgid "Success"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.search_api_log
+msgid "Successful Requests"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__task_id
+msgid "Task"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "This service cannot be used in \"%s\" stage."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "This status code cannot be used in \"%s\" stage."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/services/services.py:0
+#, python-format
+msgid "This status code cannot be used in this service."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "This type code cannot be used for this project."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_log__auth_id
+msgid "Token"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__name
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_town__town_id
+msgid "Town"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Town cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Town name is not matched."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__town_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Towns"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_provider__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service__proxy_type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_input__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_io__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_model__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_output__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_service_response__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy_type__type_id
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_input__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_io__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_model__type
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec_service_output__type
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+msgid "Type"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Type cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_proxy__type_ids
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__type_ids
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Types"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "URL"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "Username"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_spec__version
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_spec
+msgid "Version"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Warehouse cannot be found for %s."
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "Webhook"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__webhook_auth
+msgid "Webhook Authorization"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__webhook_password
+msgid "Webhook Authorization Password"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__webhook_username
+msgid "Webhook Authorization Username"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields,field_description:fsm_api.field_fsm_api_auth__webhook_url
+msgid "Webhook URL"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Workorder cannot be found."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Workorder could not be cancelled. A server error occured."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Workorder has been %s already."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Workorder has been approved."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Workorder has been cancelled."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Workorder has been continuing."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "Workorder has been rejected."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#: code:addons/fsm_api/services/services.py:0
+#, python-format
+msgid ""
+"You cannot use this service, because task has been reasoned with \"%s "
+"(%s)\"."
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "approved"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__model_type__list
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__list
+msgid "array"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__bool
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__bool
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__bool
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__bool
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__bool
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__bool
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__bool
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__bool
+msgid "boolean"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__byte
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__byte
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__byte
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__byte
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__byte
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__byte
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__byte
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__byte
+msgid "byte"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__date
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__date
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__date
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__date
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__date
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__date
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__date
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__date
+msgid "date"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__datetime
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__datetime
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__datetime
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__datetime
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__datetime
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__datetime
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__datetime
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__datetime
+msgid "datetime"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__float
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__float
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__float
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__float
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__float
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__float
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__float
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__float
+msgid "float"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_auth
+msgid "https://example.com/webhook"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__int
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__int
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__int
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__int
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__int
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__int
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__int
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__int
+msgid "integer"
+msgstr ""
+
+#. module: fsm_api
+#: model_terms:ir.ui.view,arch_db:fsm_api.form_api_proxy_service_io
+msgid "notype"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__model_type__dict
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__dict
+msgid "object"
+msgstr ""
+
+#. module: fsm_api
+#. odoo-python
+#: code:addons/fsm_api/models/fsm_api_spec.py:0
+#, python-format
+msgid "rejected"
+msgstr ""
+
+#. module: fsm_api
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_input__type__str
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_io__type__str
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_model__type__str
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_proxy_service_output__type__str
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_input__type__str
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_io__type__str
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_model__type__str
+#: model:ir.model.fields.selection,name:fsm_api.selection__fsm_api_spec_service_output__type__str
+msgid "string"
+msgstr ""

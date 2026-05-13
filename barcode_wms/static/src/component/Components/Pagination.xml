@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.Pagination" owl="1">
+        <div class="pagination">
+            <div t-on-click="() => env.bus.trigger('go-previous-page')" class="page-left">
+                <i class="fa fa-angle-left"/>
+            </div>
+            <div class="page-number">
+                <span t-if="props.current > 0"><t t-esc="props.current"/> / <t t-esc="props.total"/></span>
+                <span t-else="">All</span>
+            </div>
+            <div t-on-click="() => env.bus.trigger('go-next-page')" class="page-right">
+                <i class="fa fa-angle-right"/>
+            </div>
+        </div>
+    </t>
+</templates>

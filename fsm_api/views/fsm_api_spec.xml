@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="tree_api_spec" model="ir.ui.view">
+    <field name="name">fsm.api.spec.list</field>
+    <field name="model">fsm.api.spec</field>
+    <field name="arch" type="xml">
+        <list decoration-muted="active == False">
+            <field name="sequence" widget="handle"/>
+            <field name="name" decoration-bf="1"/>
+            <field name="version"/>
+            <field name="active" widget="boolean_toggle"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="form_api_spec" model="ir.ui.view">
+    <field name="name">fsm.api.spec.form</field>
+    <field name="model">fsm.api.spec</field>
+    <field name="arch" type="xml">
+        <form class="o_form_fsm_api_spec">
+            <sheet>
+                <div class="row ml4 mr4">
+                    <div class="col-md-8">
+                        <notebook>
+                            <page string="Description">
+                                <field name="description" colspan="2" nolabel="1" widget="ace" options="{'mode': 'python'}"/>
+                            </page>
+                            <page string="Services">
+                                <field name="service_ids" colspan="2" nolabel="1" widget="section_and_note_one2many" class="o_fsm_api_spec_service_tree">
+                                    <list>
+                                        <control>
+                                            <create name="add_service" string="Add a service"/>
+                                            <create name="add_webhook" string="Add a webhook" context="{'default_display_type': 'line_note'}"/>
+                                            <create name="add_section" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                                        </control>
+                                        <field name="sequence" widget="handle"/>
+                                        <field name="name" decoration-bf="1"/>
+                                        <field name="method" widget="badge" decoration-success="method == 'GET'" decoration-warning="method == 'POST'" decoration-info="method == 'PUT'" decoration-primary="method == 'PATCH'" decoration-danger="method == 'DELETE'" decoration-muted="method == 'OPTIONS'"/>
+                                        <field name="path"/>
+                                        <field name="info" string=" " decoration-it="1" decoration-muted="1"/>
+                                        <field name="reason_current_ids" invisible="1"/>
+                                        <field name="reason_valid_all" invisible="1"/>
+                                        <field name="reason_valid_ids" invisible="1"/>
+                                        <field name="display_type" invisible="1"/>
+                                    </list>
+                                    <form>
+                                        <sheet>
+                                            <div class="oe_title">
+                                                <label for="name"/>
+                                                <h1><field name="name" placeholder="Method Name..."/></h1>
+                                                <h3 invisible="display_type != False" required="display_type == False" class="mt-n3 mb-1 text-muted"><field name="ref" class="oe_inline" placeholder="Method Reference..."/></h3>
+                                            </div>
+                                            <group invisible="display_type != False">
+                                                <group>
+                                                    <field name="path" placeholder="/workorder" required="display_type == False"/>
+                                                    <field name="method" widget="radio" required="display_type == False"/>
+                                                </group>
+                                                <group>
+                                                    <separator string="Reasons" colspan="2"/>
+                                                    <div colspan="2">
+                                                        <span class="fst-italic">If reason is one of</span>
+                                                        <br/>
+                                                        <field name="reason_current_ids" class="mt-1" colspan="2" nolabel="1" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" placeholder="Select reason(s)..."/>
+                                                        <br/>
+                                                        <span class="fst-italic">in corresponding tasks, block the process.</span>
+                                                    </div>
+                                                    <newline/>
+                                                    <separator string=" " colspan="2"/>
+                                                    <div colspan="2">
+                                                        <span class="fst-italic mr8">Take all reasons as parameter</span>
+                                                        <field name="reason_valid_all" class="oe_inline" nolabel="1" widget="boolean_toggle"/>
+                                                    </div>
+                                                    <field name="reason_valid_ids" colspan="2" nolabel="1" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" invisible="reason_valid_all == True" placeholder="Select valid reason(s)..."/>
+                                                    <separator string="SOAP" colspan="2"/>
+                                                    <field name="soap_ref" string="Method" placeholder="Enter a SOAP method name..."/>
+                                                </group>
+                                                <field name="info" invisible="1"/>
+                                                <field name="display_type" invisible="1"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </div>
+                    <div class="col-md-4 shadow-sm table-bordered" style="position: sticky; top: 20px; border-radius: 10px;">
+                        <separator string="Name"/>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <field name="name" placeholder="Enter a specification name..."/>
+                            </div>
+                            <div>
+                                <span class="fst-italic mr8">Active</span>
+                                <field name="active" string="Published" widget="boolean_toggle"/>
+                            </div>
+                        </div>
+                        <separator string="Company" groups="base.group_multi_company,base.group_system"/>
+                        <field name="company_id" colspan="2" nolabel="1" options="{'no_create': True, 'no_open': True}" groups="base.group_multi_company,base.group_system"/>
+                        <separator string="Collection"/>
+                        <field name="collection" colspan="2" nolabel="1" placeholder="DEFAULT"/>
+                        <separator string="Version"/>
+                        <field name="version" colspan="2" nolabel="1" placeholder="1.0"/>
+                        <separator string="Types"/>
+                        <div>
+                            <span class="fst-italic mr8">All</span>
+                            <field name="type_all" colspan="2" nolabel="1" widget="boolean_toggle"/>
+                        </div>
+                        <field name="type_ids" colspan="2" nolabel="1" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" invisible="type_all == True"/>
+                        <separator string="Stages"/>
+                        <div>
+                            <span class="fst-italic mr8">All</span>
+                            <field name="stage_all" colspan="2" nolabel="1" widget="boolean_toggle"/>
+                        </div>
+                        <field name="stage_ids" colspan="2" nolabel="1" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" invisible="stage_all == True"/>
+                        <separator string="Products"/>
+                        <div>
+                            <span class="fst-italic mr8">All</span>
+                            <field name="product_all" colspan="2" nolabel="1" widget="boolean_toggle"/>
+                        </div>
+                        <field name="product_ids" colspan="2" nolabel="1" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" invisible="product_all == True"/>
+                        <separator string="Reasons"/>
+                        <div>
+                            <span class="fst-italic mr8">All</span>
+                            <field name="reason_all" colspan="2" nolabel="1" widget="boolean_toggle"/>
+                        </div>
+                        <field name="reason_ids" colspan="2" nolabel="1" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" invisible="reason_all == True"/>
+                        <separator string="Help" class="mt16"/>
+                        <div colspan="2">
+                            <p class="mt16 mb4">Available variables;</p>
+                            <ul class="list-inline">
+                                <li><code>{{type}}</code>: Table of types</li>
+                                <li><code>{{stage}}</code>: Table of stages</li>
+                                <li><code>{{reason}}</code>: Table of reasons</li>
+                                <li><code>{{product}}</code>: Table of products</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="action_api_spec" model="ir.actions.act_window">
+    <field name="name">Specifications</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">fsm.api.spec</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{'active_test': False}</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            No API specification yet
+        </p>
+        <p>
+            Create an API specification then use them for getting requests
+        </p>
+    </field>
+    </record>
+</odoo>

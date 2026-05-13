@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.ProductDetails" owl="1">
+        <div class="o_barcode_action">
+            <div class="overlay-product" t-if="state.visible">
+                <div class="popup-product justify-content-between">
+                    <h2>
+                        <span t-esc="state.details.product.display_name"/>
+                    </h2>
+                    <div class="content">
+                        <label for="price">Sale Price</label>
+                        <input id="price" type="text" t-attf-value="{{ state.details.product.list_price }}"/>
+                        <div>
+                            <button class="popup-button" t-on-click="closePopup">Discard</button>
+                            <button class="popup-button">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div t-if="state.available" class="popup">
+                <div class="popup-header justify-content-between">
+                    <div class="popup-back text-700" t-on-click="back">
+                        <i class="fa fa-angle-left"/>
+                    </div>
+                    <div class="d-flex mr4">
+                        <SearchBar/>
+                    </div>
+                </div>
+                <t t-if="state.details.product">
+                    <div class="popup-body">
+                        <div class="product-info-container">
+                            <div class="d-flex justify-content-between bg-light border p-3 shadow-sm">
+                                <h1 class="text-secondary">
+                                    <span t-esc="state.details.product.display_name"/>
+                                </h1>
+                            </div>
+                            <div class="d-flex justify-content-between flex-wrap-reverse mt-4">
+                                <div class="d-flex">
+                                    <table class="product-table-responsive w-100">
+                                        <tr>
+                                            <td>Product Type</td>
+                                            <td><span t-esc="state.details.product.type"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Part No</td>
+                                            <td><span t-esc="state.details.product.default_code"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Category</td>
+                                            <td><span t-esc="state.details.product.categ_id"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Barcode</td>
+                                            <td><span t-esc="state.details.product.barcode"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sales Description</td>
+                                            <td><span t-esc="state.details.product.description_sale"/></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="flex-fill text-center w-50">
+                                    <div class="product-info-image">
+                                        <img t-attf-src="{{ imageSrc(state.details.product.id) }}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 my-2 mx-0">
+                                <div>
+                                    <WarehouseDetails details="state.details"/>
+                                </div>
+                            </div>
+                            <div class="product-info-clearfix"/>
+                        </div>
+                    </div>
+                </t>
+            </div>
+            <div t-else="" class="popup w-100 bg-light-gray">
+                <div class="popup-header h-auto">
+                    <div class="popup-back text-700" t-on-click="back">
+                        <i class="fa fa-angle-left"/>
+                    </div>
+                </div>
+                <div class="h-100">
+                    <div class="w-100 d-flex flex-row flex-wrap justify-content-center align-items-center">
+                        <div class="w-100">
+                            <SearchBar visible="true"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <NotificationSound t-if="state.sound.src" sound="state.sound"/>
+        </div>
+     </t>
+ </templates>

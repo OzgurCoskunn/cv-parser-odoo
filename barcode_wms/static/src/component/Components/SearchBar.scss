@@ -1,0 +1,255 @@
+.o_barcode_action {
+
+    .search-bar-input {
+        height: 48px;
+        padding: 0 11px;
+        border-radius: 2.5px;
+        transition: color .2s, background .2s, border-color .2s;
+        color: #262626;
+        font-size: 16px;
+        border: 1px solid #f0f0f0;
+    }
+
+    .search-bar-input::-ms-clear {
+        display: none;
+    }
+
+    .search-bar-input::placeholder {
+        transition: opacity 0.15s, transform 0.15s, color 0.15s;
+    }
+
+    .search-bar-input:focus {
+        color: #262626;
+        background-color: #f0f0f0;
+        border: 1px solid #f0f0f0;
+        outline: none;
+    }
+
+    .search-bar-input:focus::placeholder {
+        opacity: 0;
+        transform: translateY(-26px);
+    }
+
+    .content-table {
+        border-collapse: collapse;
+        margin: 5px 0;
+        font-size: 0.9em;
+        min-width: 600px;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .content-table thead tr {
+        background-color: #06516E;
+        color: #ffffff;
+        text-align: left;
+        font-weight: 500;
+    }
+
+    .content-table th {
+        padding: 12px 15px;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+
+    .warehouse-table {
+        background-color: #ceebee;
+    }
+
+    .warehouse-table td {
+        padding: 12px 15px;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .location-table td {
+        padding: 12px 15px;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .location-table {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .location-table tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .product-select-table {
+        width: 100%;
+    }
+
+    .product-select-table td {
+        padding: 10px 12px;
+    }
+
+    .product-select-table tr {
+        border-bottom: 1px solid #dddddd;
+        background-color: #FFFFFF;
+        color: #4a4a4a;
+
+    }
+
+    .product-select-table tr:hover {
+        border-bottom: 1px solid #dddddd;
+        background-color: var(--primary);
+        color: #FFFFFF;
+
+    }
+
+    .scanning-screen-bar {
+        .search-bar-container {
+            width: auto;
+            padding-left: 1em;
+            position: relative;
+            margin: 2rem auto 0 auto;
+
+            input {
+                border-radius: 5px !important;
+            }
+
+            .fa-camera {
+                width: auto;
+                font-size: 1.3em;
+            }
+        }
+    }
+
+    .search-bar-container {
+        width: 90%;
+        position: relative;
+        margin: 2rem auto 0 auto;
+
+        .fa-camera {
+            width: 2em;
+            font-size: 1.3em;
+        }
+    }
+
+    .search-bar-list {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+        position: absolute;
+        overflow-y: auto;
+        border-radius: 0.5rem;
+        top: calc(100% - 5px);
+        left: 0;
+        right: 0;
+        z-index: 2;
+        max-height: calc(100vh - 294px);
+        border: 2px solid #dddddd;
+        cursor: pointer;
+
+        &.search-bar-list-product {
+            max-height: calc(100vh - 224px);
+            top: calc(100% + 10px);
+            border-width: 1px;
+
+            .search-bar-grid-product {
+                display: grid;
+                padding: 10px;
+                grid-row-gap: 10px;
+                grid-column-gap: 10px;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+                .search-bar-item-product {
+                    font-family: 'Argentum Sans';
+
+                    .search-bar-item-product-box {
+                        border-radius: 8px;
+                        margin: 10px auto;
+                        width: 128px;
+                        height: 128px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #ffffff;
+
+                        img {
+                            object-fit: contain;
+                            max-height: 128px;
+                            max-width: 128px;
+                            border-radius: 8px;
+                        }
+                    }
+
+                    .search-bar-item-product-text {
+                        .search-bar-item-product-code {
+                            font-size: 1.05rem;
+                            text-align: left;
+                            overflow: hidden;
+                            margin: 0;
+                            font-weight: 400;
+                        }
+
+                        .search-bar-item-product-name {
+                            font-size: 1.15rem;
+                            overflow: hidden;
+                            margin: 0;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .search-bar-list::-webkit-scrollbar {
+        width: 11px;
+        height: 8px;
+        border-radius: 4px;
+    }
+
+    .search-bar-list::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.2);
+        border: 1px solid transparent;
+        background-clip: content-box;
+        border-radius: 4px;
+    }
+
+    .search-bar-list::-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+        width: 4px;
+    }
+}
+
+.o_web_client.dark_mode {
+    .o_barcode_action {
+        .search-bar-list {
+            &.search-bar-list-product {
+                background: #333333;
+
+                .search-bar-item-product-box {
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
+
+.o_web_client:not(.dark_mode) {
+    .o_barcode_action {
+        .search-bar-input {
+            background-color: #ffffff !important;
+        }
+
+        .search-bar-list {
+            &.search-bar-list-product {
+                background: #ffffff;
+
+                .search-bar-grid-product {
+                    background-color: #f3f3f3;
+
+                    .search-bar-item-product {
+                        background: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+}

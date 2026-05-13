@@ -1,0 +1,454 @@
+.o_web_client {
+    .o_notebook.border-bottom-0 > .tab-content {
+        border-bottom: none !important;
+    }
+
+    .o_fsm_tree_headless {
+        table {
+            thead {
+                display: none !important;
+            }
+
+            td.o_handle_cell {
+                width: 24px !important;
+            }
+        }
+    }
+
+    .o_form_fsm_task {
+        .oe_button_box > button {
+            height: 60px !important;
+            width: 220px !important;
+
+            .o_stat_value {
+                gap: 4px;
+                display: flex !important;
+                justify-content: space-between;
+            }
+        }
+
+        .o_form_statusbar .o_statusbar_buttons.d-flex.align-items-center.align-content-around {
+            width: 25%;
+        }
+    }
+
+    .o_fsm_task_todo {
+        table {
+            thead {
+                display: none !important;
+            }
+            tbody > tr:first-child > td:nth-child(1) {
+                width: 64px !important;
+                max-width: 64px !important;
+            }
+            tbody > tr:first-child > td:nth-child(2) {
+                width: 32px !important;
+                /*max-width: 32px !important;*/
+            }
+            tbody > tr:first-child > td:nth-child(3) {
+                width: 192px !important;
+                /*max-width: 32px !important;*/
+            }
+            tbody > tr:has(.o_fsm_task_todo_type) > td.o_list_many2one {
+                /*padding-left: 32px !important;*/
+                font-weight: 500;
+            }
+            tbody > tr.fw-bold {
+                background-color: rgba(var(--warning-rgb), 0.2) !important;
+            }
+            tbody > tr:has(.o_fsm_task_todo_type) > td.o_many2many_tags_avatar_cell {
+                .o_tag {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    color: #aaa !important;
+                    box-shadow: none !important;
+                }
+
+                .o_m2m_avatar {
+                    box-shadow: 0 0 0 1px #ccc;
+                }
+
+                .o_tag_badge_text {
+                    display: none;
+                }
+            }
+
+            tbody > tr:has(.o_field_x2many_list_row_add) {
+                display: none;
+            }
+
+            tbody td.o_list_record_remove button {
+                display: none;
+            }
+ 
+            tbody .text-muted {
+                color: rgba(73, 80, 87, 0.76) !important;
+            }
+        }
+
+        .o_field_x2many_kanban {
+            .o_x2m_control_panel {
+                display: none;
+            }
+
+            .o_kanban_record {
+                padding-top: 0.25rem !important;
+                padding-bottom: 0.25rem !important;
+            }
+
+            .o_field_many2many_tags_avatar {
+                .o_tag {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    color: #aaa !important;
+                    box-shadow: none !important;
+                }
+
+                .o_m2m_avatar {
+                    box-shadow: 0 0 0 1px #ccc;
+                }
+
+                .o_tag_badge_text {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .o_fsm_task_todo_kanban_view {
+        --KanbanRecord-width: 400px;
+
+        .o_kanban_record {
+            padding-top: 0.25rem !important;
+            padding-bottom: 0.25rem !important;
+        }
+    }
+
+    .o_fsm_task_todo_kanban {
+        .o_field_many2many_tags_avatar {
+            .o_tag {
+                margin: 0 !important;
+                padding: 0 !important;
+                color: #aaa !important;
+                box-shadow: none !important;
+            }
+
+            .o_m2m_avatar {
+                box-shadow: 0 0 0 1px #ccc;
+            }
+
+            .o_tag_badge_text {
+                display: none;
+            }
+        }
+    }
+    
+
+    .o_fsm_project_tree_headless {
+        table {
+            table-layout: unset !important;
+            thead {
+                display: none !important;
+            }
+
+            td.o_handle_cell {
+                width: 24px !important;
+            }
+        }
+    }
+
+    .o_fsm_auto_field, .o_fsm_task_product {
+        .o_field_x2many_kanban {
+            display: flex;
+            flex-direction: column-reverse;
+
+            .o_kanban_renderer {
+                padding: 0;
+                overflow: hidden;
+
+                > div[role=article] {
+                    width: 100% !important;
+                    margin: 0 !important;
+
+                    .oe_kanban_card {
+                        border: none;
+                        border-bottom: 1px solid #ddd;
+
+                        .o_kanban_record_body {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr 32px 1fr;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .o_fsm_auto_field_header, .o_fsm_task_product_header {
+        display: grid;
+        position: relative;
+        overflow: hidden;
+        grid-template-columns: 1fr 1fr 32px 1fr;
+        width: 100%;
+        border-radius: 8px;
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            z-index: 1;
+            border-left: 16px solid var(--odoo);
+            border-right: 16px solid transparent;
+            border-bottom: 16px solid transparent;
+        }
+    }
+
+    .o_form_fsm_form {
+        .o_field_many2many_tags {
+            width: 100% !important;
+
+            .o_field_tags {
+                width: 100% !important;
+            }
+        }
+
+        .o_field_char {
+            width: 100% !important;
+        }
+
+        .o_field_many2one {
+            width: 100% !important;
+        }
+    }
+
+    .o_fsm_auto_todo, .o_fsm_auto_activity, .o_fsm_auto_cron {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+
+        .o_list_renderer {
+            margin: 0;
+        }
+
+        table {
+            thead {
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+                background-color: var(--gray-100) !important;
+                border-radius: 8px;
+
+                th {
+                    padding-left: 16px !important;
+                    border: none !important;
+                    background-color: var(--gray-100) !important;
+                }
+
+                td {
+                    padding-left: 16px !important;
+                }
+            }
+
+            tbody {
+                td {
+                    line-height: 24px !important;
+                    padding-left: 16px !important;
+
+                    &.o_field_x2many_list_row_add {
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            &.table-striped > tbody > tr:nth-of-type(even) > * {
+                --table-accent-bg: unset;
+            }
+
+            &::before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                z-index: 1;
+                border-left: 16px solid var(--odoo);
+                border-right: 16px solid transparent;
+                border-bottom: 16px solid transparent;
+            }
+        }
+    }
+
+    .o_fsm_flow_stage_tree_headless {
+        table {
+            thead {
+                display: none !important;
+            }
+
+            td.o_handle_cell {
+                width: 24px !important;
+            }
+        }
+    }
+
+    .o_fsm_flow_stage_kanban_all {
+        .o_x2m_control_panel .o_cp_pager, .o_kanban_renderer {
+            display: none !important;
+        }
+    }
+
+    .o_fsm_flow_stage_field {
+        > div:first-of-type {
+            margin-top: -16px;
+            border-right: 1px solid #eee;
+
+            > div.o_field_many2many_checkboxes > div > div {
+                border: 1px solid #eee;
+                border-radius: 6px;
+                padding: 6px;
+                margin: 6px 4px;
+                cursor: pointer;
+                font-weight: bold;
+                box-shadow: 0 0 2px 0 #ddd;
+                transition: box-shadow 0.2s;
+
+                &:hover {
+                    box-shadow: 0 0 5px 0 #ddd;
+                }
+
+                &:has(input:checked) {
+                    background-color: var(--primary);
+                    color: var(--white);
+
+                    input {
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+
+        > div:last-of-type {
+            > div.o_field_one2many > .o_field_x2many {
+                margin-left: 0 !important;
+            }
+        }
+    }
+
+    /*.o_field_widget[name=type_ids] {
+        > div {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }*/
+
+    .o_dialog:has(.o_fsm_flow_stage_dialog) footer .o_form_button_cancel {
+        display: none !important;
+    }
+
+    .o_dialog:has(.o_fsm_auto_todo_dialog) footer {
+        display: none;
+    }
+
+    .o_dialog:has(.o_fsm_photo_dialog) {
+        header {
+            display: none !important;
+        }
+
+        footer {
+            border: none !important;
+            padding: 0 !important;
+
+            button {
+                width: 100% !important;
+                padding: 20px !important;
+            }
+        }
+
+        main {
+            border-radius: 6px !important;
+            margin-bottom: 6px !important;
+
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #aaa;
+            }
+        }
+
+        .o_form_view {
+            background: transparent !important;
+            border: none !important;
+        }
+
+        .o_form_sheet_bg {
+            background: transparent !important;
+            border: none !important;
+        }
+
+        .o_form_sheet {
+            background: transparent !important;
+            padding: 0 !important;
+
+            .o_field_image {
+                margin: 0;
+            }
+        }
+    }
+
+    .o_fsm_flow_field_group_dialog.o_form_editable .o_form_sheet {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .o_fsm_file_dialog {
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        background: #000000aa;
+        backdrop-filter: blur(2px);
+        z-index: 99999;
+        inset: 0;
+
+        > div {
+            width: 80%;
+        }
+
+        .filepond--drop-label {
+            font-weight: 500;
+            font-size: 2em;
+            color: #ccc;
+
+            .filepond--label-action {
+                text-decoration: none;
+                font-weight: 600;
+            }
+        }
+
+        .o_fsm_file_dialog_footer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+    .o_ChatterTopbar_controllers {
+        button[id] {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .o_fsm_task_todo {
+        table {
+            tbody button span {
+                display: none !important;
+            }
+        }
+    }
+}
