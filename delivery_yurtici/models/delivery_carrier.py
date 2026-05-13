@@ -10,6 +10,10 @@ class DeliveryCarrier(models.Model):
     delivery_type = fields.Selection(selection_add=[('yurtici', 'Yurtiçi Kargo')], ondelete={'yurtici': 'set default'})
     delivery_yurtici_connector_id = fields.Many2one('syncops.connector', 'Yurtiçi Kargo Connector')
     delivery_yurtici_return_connector_id = fields.Many2one('syncops.connector', 'Yurtiçi Kargo Return Connector')
+    delivery_yurtici_prod_username = fields.Char(string='Delivery Yurtiçi Production Username')
+    delivery_yurtici_prod_password = fields.Char(string='Delivery Yurtiçi Production Password')
+    delivery_yurtici_test_username = fields.Char(string='Delivery Yurtiçi Test Username')
+    delivery_yurtici_test_password = fields.Char(string='Delivery Yurtiçi Test Password')
 
     def toggle_prod_environment(self):
         super().toggle_prod_environment()
