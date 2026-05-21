@@ -5,13 +5,13 @@
     <field name="inherit_id" ref="stock.view_stock_return_picking_form"/>
     <field name="arch" type="xml">
         <xpath expr="//field[@name='product_return_moves']" position="after">
-            <group attrs="{'invisible': [('delivery_yurtici_ok', '=', False)]}">
+            <group invisible="not delivery_yurtici_ok">
                 <separator string="Schedule pickup dates" colspan="2"/>
                 <field name="delivery_yurtici_ok" invisible="1"/>
                 <field name="delivery_yurtici_start_date" string="Start Date"/>
                 <field name="delivery_yurtici_end_date" string="End Date"/>
             </group>
-            <group attrs="{'invisible': [('delivery_yurtici_ok', '=', False)]}">
+            <group invisible="not delivery_yurtici_ok">
                 <p colspan="2">Approval Code Validity Start Date. The date range you can provide for the return/approval code is maximum 60 days; if the date range exceeds 60 days, it will not be accepted.</p>
             </group>
         </xpath>
