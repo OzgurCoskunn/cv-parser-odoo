@@ -4,7 +4,7 @@
     <field name="model">stock.return.picking</field>
     <field name="inherit_id" ref="stock.view_stock_return_picking_form"/>
     <field name="arch" type="xml">
-        <xpath expr="//field[@name='location_id']" position="after">
+        <xpath expr="//field[@name='product_return_moves']" position="after">
             <group attrs="{'invisible': [('delivery_yurtici_ok', '=', False)]}">
                 <separator string="Schedule pickup dates" colspan="2"/>
                 <field name="delivery_yurtici_ok" invisible="1"/>
