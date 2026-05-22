@@ -491,7 +491,7 @@ class SyncopsConnectorLineDefault(models.Model):
                 'datetime': datetime,
                 **values
             }
-            safe_eval(self.code.strip(), context, mode='exec', nocopy=True)
+            safe_eval(self.code.strip(), context, mode='exec')
             return context.get('self')
         return
 
@@ -572,7 +572,7 @@ class SyncopsConnectorHook(models.Model):
         }
         try:
             for hook in self:
-                safe_eval(hook.code.strip(), context, mode='exec', nocopy=True)
+                safe_eval(hook.code.strip(), context, mode='exec')
         except UserError:
             raise
         except:

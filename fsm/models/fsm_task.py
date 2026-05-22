@@ -1208,7 +1208,7 @@ class FsmTask(models.Model):
                 'timezone': timezone,
                 'tasks': tasks,
             }
-            safe_eval(button.visible_code.strip(), context, mode='exec', nocopy=True)
+            safe_eval(button.visible_code.strip(), context, mode='exec')
             if context.get('visible') is not True:
                 return False
         if button.group_ids:

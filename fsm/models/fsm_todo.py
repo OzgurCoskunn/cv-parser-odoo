@@ -41,7 +41,7 @@ class FsmTodo(models.Model):
                         'Command': Command,
                         'UserError': UserError,
                     }
-                    safe_eval(action.code.strip(), context, mode='exec', nocopy=True)
+                    safe_eval(action.code.strip(), context, mode='exec')
                     if 'action' in context:
                         return context
 
