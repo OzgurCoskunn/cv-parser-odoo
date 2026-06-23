@@ -248,7 +248,7 @@
     <field name="name">fsm.flow.stage.form</field>
     <field name="model">fsm.flow.stage</field>
     <field name="arch" type="xml">
-        <form>
+        <form class="o_fsm_flow_stage_dialog">
             <sheet>
                 <group>
                     <group string="Stage">

@@ -422,6 +422,7 @@ class FsmApiSpecService(models.Model):
                 value = {
                     'project_id': project.id,
                     'partner_id': partner.id,
+                    'channel': params.get('channel', False),
                     'order_uid': params.get('customerOrderId', False),
                     'description': params.get('orderDescription', False),
                 }

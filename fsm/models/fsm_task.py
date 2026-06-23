@@ -464,6 +464,7 @@ class FsmTask(models.Model):
         ('done', 'Ready'),
         ('blocked', 'Blocked')
     ], string='Status', copy=False, default='normal', required=True, compute='_compute_kanban_state', readonly=False, store=True)
+    channel = fields.Char()
     parent_id = fields.Many2one('fsm.task', string='Parent Task', index=True, ondelete='cascade')
     parent_type = fields.Many2one(related='parent_id.type_id')
     child_ids = fields.One2many('fsm.task', 'parent_id', string='Sub Tasks')
@@ -635,6 +636,7 @@ class FsmTask(models.Model):
     field_service_zone_id = fields.Integer(compute='_compute_fields', compute_sudo=True)
     field_service_type_id = fields.Integer(compute='_compute_fields', compute_sudo=True)
     field_due_date = fields.Integer(compute='_compute_fields', compute_sudo=True)
+    field_channel = fields.Integer(compute='_compute_fields', compute_sudo=True)
     field_description = fields.Integer(compute='_compute_fields', compute_sudo=True)
     field_barcode = fields.Integer(compute='_compute_fields', compute_sudo=True)
     field_sla_id = fields.Integer(compute='_compute_fields', compute_sudo=True)

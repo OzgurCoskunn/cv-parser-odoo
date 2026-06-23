@@ -15,15 +15,35 @@
         }
     }
 
+    .o_breadcrumb {
+        justify-content: initial !important;
+    }
+
     .o_form_fsm_task {
-        .oe_button_box > button {
-            height: 60px !important;
-            width: 220px !important;
+        .o-form-buttonbox > button {
+            height: 4em !important;
 
             .o_stat_value {
                 gap: 4px;
                 display: flex !important;
                 justify-content: space-between;
+                > span {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+
+            .o_field_empty {
+                min-height: initial !important;
+            }
+        }
+
+        .o-form-buttonbox > div {
+            height: 4em !important;
+
+            .o_button_more {
+                 height: 100%;
             }
         }
 
@@ -331,6 +351,10 @@
         > div:last-of-type {
             > div.o_field_one2many > .o_field_x2many {
                 margin-left: 0 !important;
+
+                .o_list_renderer {
+                    margin: 0 !important;
+                }
             }
         }
     }
@@ -345,6 +369,16 @@
     .o_dialog:has(.o_fsm_flow_stage_dialog) footer .o_form_button_cancel {
         display: none !important;
     }
+
+    .o_dialog:has(.o_fsm_flow_stage_dialog) footer .o_btn_remove {
+        margin: 0 !important;
+
+        i {
+            display: none !important;
+        }
+    }
+
+    
 
     .o_dialog:has(.o_fsm_auto_todo_dialog) footer {
         display: none;

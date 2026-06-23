@@ -145,6 +145,14 @@ class FsmTodoAction(models.Model):
         for action in self:
             action.picking_product_lot_ok = action.picking_product_id.tracking in ('serial', 'lot')
 
+    @api.depends('flow_stage_todo_id.stage_id.stage_next_ids')
+    def _compute_flow_stage_ids(self):
+        for action in self:
+            stages = action.flow_stage_todo_id.stage_id.stage_next_ids
+            if not stages and action.env.context.get('stages'):
+                stages = action.env['fsm.flow.stage'].browse(action.env.context['stages'])
+            action.flow_stage_ids = stages
+
     todo_id = fields.Many2one('fsm.todo', ondelete='cascade', copy=False)
     flow_stage_todo_id = fields.Many2one('fsm.flow.stage.todo', ondelete='cascade', copy=False)
     name = fields.Char(compute='_compute_name')
@@ -165,7 +173,7 @@ class FsmTodoAction(models.Model):
     reason_id = fields.Many2one('fsm.reason', string='Reason')
     reason_desc = fields.Text(string='Reason Description')
     flow_stage_id = fields.Many2one('fsm.flow.stage', string='Stage', domain='[("id", "in", flow_stage_ids)]')
-    flow_stage_ids = fields.Many2many(related='flow_stage_todo_id.stage_id.stage_next_ids')
+    flow_stage_ids = fields.Many2many('fsm.flow.stage', compute='_compute_flow_stage_ids')
     picking_type_id = fields.Many2one('stock.picking.type', string='Picking Type')
     picking_product_id = fields.Many2one('product.product', string='Picking Product', domain='[("fsm_product_type", "=", picking_product_type)]')
     picking_product_type = fields.Selection([

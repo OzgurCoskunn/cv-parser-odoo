@@ -219,7 +219,7 @@ export class FsmTaskButton extends Component {
             if (!this.buttonsReady) {
                 let projectID = 0, taskID = 0;
                 if (this.isForm) {
-                    taskID = this.env.model.root.data.id;
+                    taskID = this.env.model.root.resId || 0;
                 } else {
                     const controller = this.action.currentController;
                     if (controller) {
@@ -242,7 +242,7 @@ export class FsmTaskButton extends Component {
 
         const pairs = new Set();
         for (const record of records) {
-            pairs.add(`${record.data.type_id?.[0] || 0},${record.data.flow_stage_id?.[0] || 0}`);
+            pairs.add(`${record.data.type_id?.id || 0},${record.data.flow_stage_id?.id || 0}`);
         }
         return this.buttonsAll.filter(b => pairs.has(`${b.type},${b.stage}`));
     }
@@ -250,12 +250,12 @@ export class FsmTaskButton extends Component {
     async onClick(type, stage, button) {
         let records;
         if (this.isForm) {
-            records = [this.env.model.root.data.id];
+            records = [this.env.model.root.resId];
         } else {
-            records = this.env.model.root.selection.filter(r => r.data.type_id?.[0] === type && r.data.flow_stage_id?.[0] === stage).map(r => r.resId);
+            records = this.env.model.root.selection.filter(r => r.data.type_id?.id === type && r.data.flow_stage_id?.id === stage).map(r => r.resId);
         }
 
-        $('button.btn-fsm-task').attr('disabled', 1);
+        document.querySelectorAll('button.btn-fsm-task').forEach(b => b.setAttribute('disabled', 'disabled'));
 
         const result = await this.orm.call("fsm.task", "run_button", [button, records]);
         if ('action' in result) {
