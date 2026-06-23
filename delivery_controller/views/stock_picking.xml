@@ -14,7 +14,8 @@
                 groups="base.group_user"
                 invisible="not delivery_method_ok or not carrier_tracking_ref or state in ('done', 'cancel')">
                 <div class="o_form_field o_stat_info mr3">
-                    <span class="o_stat_value">Delivery Method</span><span class="o_stat_text">Personal Sending</span>
+                    <span class="o_stat_value">Delivery Method</span>
+                    <span class="o_stat_text">Personal Sending</span>
                 </div>
             </button>
             <button
@@ -25,7 +26,8 @@
                 groups="base.group_user"
                 invisible="not delivery_method_ok or carrier_tracking_ref or state in ('done', 'cancel')">
                 <div class="o_form_field o_stat_info mr3">
-                    <span class="o_stat_value">Delivery Method</span><span class="o_stat_text">Cargo Sending</span>
+                    <span class="o_stat_value">Delivery Method</span>
+                    <span class="o_stat_text">Cargo Sending</span>
                 </div>
             </button>
         </xpath>

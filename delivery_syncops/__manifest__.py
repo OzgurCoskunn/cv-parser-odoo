@@ -7,6 +7,6 @@
     'author': 'Projet',
     'website': 'https://bulutkobi.io',
     'license': 'OPL-1',
-    'depends': ['delivery', 'stock', 'connector_syncops'],
+    'depends': ['stock_delivery', 'connector_syncops'],
     'data': [],
 }

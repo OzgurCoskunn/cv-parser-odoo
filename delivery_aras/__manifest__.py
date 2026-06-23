@@ -8,7 +8,7 @@
     'website': 'https://bulutkobi.io',
     'license': 'LGPL-3',
     'depends': [
-        'delivery',
+        'stock_delivery',
         'connector_syncops',
         'queue_job',
     ],

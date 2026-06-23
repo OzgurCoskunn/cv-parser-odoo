@@ -9,7 +9,6 @@
     'license': 'LGPL-3',
     'depends': [
         'base',
-        'stock',
         'mail',
         'sms',
         'sale',
@@ -17,7 +16,7 @@
         'crm',
         'sla',
         'l10n_tr_address',
-        'delivery',
+        'stock_delivery',
         'stock_barcode',
         'hr_timesheet',
         'stock_picking_batch',
