@@ -340,7 +340,7 @@
                         <field name="description" readonly="field_description not in (3, 4)"/>
                         <!--<field name="description" invisible="field_description == 0" readonly="field_description not in (3, 4)"/>-->
                         <field name="document_itf" invisible="(stage_type != '2' or document_itf == False)"/>
-                        <field name="channel" attrs="{'invisible': [('field_channel', '=', 0)], 'readonly': [('field_channel', 'not in', (3, 4))]}"/>
+                        <field name="channel" invisible="field_channel == 0" readonly="field_channel not in (3, 4)"/>
                         <field name="package_id" options="{'no_create': True, 'no_open': True}" invisible="field_package_id == 0" readonly="field_package_id not in (3, 4)"/>
                         <field name="barcode" invisible="field_barcode == 0" readonly="field_barcode not in (3, 4)"/>
                     </group>
