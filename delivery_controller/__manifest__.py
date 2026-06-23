@@ -7,7 +7,7 @@
     'author': 'Projet',
     'website': 'https://bulutkobi.io',
     'license': 'LGPL-3',
-    'depends': ['delivery', 'stock'],
+    'depends': ['stock_delivery', 'stock'],
     'data': [
         'views/stock_picking.xml',
         'views/delivery_carrier.xml',

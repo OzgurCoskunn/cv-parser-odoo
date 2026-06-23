@@ -4,14 +4,14 @@
     <field name="name">delivery.log.tree</field>
     <field name="model">delivery.log</field>
     <field name="arch" type="xml">
-        <tree>
+        <list>
             <field name="create_date"/>
             <field name="events" options="{'no_create': True, 'no_open': True}"/>
             <field name="state" widget="badge" decoration-danger="status == False" decoration-success="status == True"/>
             <field name="message" optional="hide"/>
             <field name="company_id" groups="base.group_multi_company" options="{'no_create': True, 'no_open': True}"/>
             <field name="status" invisible="1"/>
-        </tree>
+        </list>
     </field>
     </record>
 

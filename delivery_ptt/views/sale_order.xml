@@ -7,11 +7,11 @@
         <xpath expr="//page[@name='cargo_status']/notebook" position="inside">
             <page string="Ptt">
                 <field name="delivery_tracking_ptt_ids" nolabel="1">
-                    <tree>
+                    <list>
                         <field name="transaction_datetime" widget="date"/>
                         <field name="location"/>
                         <field name="transaction"/>
-                    </tree>
+                    </list>
                 </field>
             </page>
         </xpath>

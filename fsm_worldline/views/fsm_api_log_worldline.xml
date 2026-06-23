@@ -5,10 +5,10 @@
     <field name="name">fsm.api.log.worldline.tree</field>
     <field name="model">fsm.api.log.worldline</field>
     <field name="arch" type="xml">
-        <tree>
+        <list>
             <field name="talepNo" decoration-bf="1" string="Name"/>
             <field name="create_date" string="Date"/>
-        </tree>
+        </list>
     </field>
     </record>
 
