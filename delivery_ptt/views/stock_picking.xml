@@ -30,7 +30,7 @@
         </xpath>
         <xpath expr="//page[@name='note']" position="before">
             <page string="Ptt Kargo" invisible="not delivery_ptt_ok">
-                <field name="delivery_tracking_ids" nolabel="1" mode="tree"/>
+                <field name="delivery_tracking_ids" nolabel="1" mode="list"/>
                 <group>
                     <group/>
                     <group>
