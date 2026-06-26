@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_applicant_cv_parser_button" model="ir.ui.view">
+        <field name="name">hr.applicant.cv.parser.button</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_parse_cv_with_llm"
+                    type="object"
+                    string="CV'den Bilgi Al"
+                    icon="fa-magic"
+                    class="oe_stat_button"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
