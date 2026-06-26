@@ -95,13 +95,28 @@ class HrApplicant(models.Model):
         ], order='id asc', limit=1)
 
     def _call_openrouter(self, api_key, cv_attachment):
+        b64 = cv_attachment.datas.decode('utf-8')
+        mime = cv_attachment.mimetype
+
+        if 'pdf' in mime:
+            file_content = {
+                'type': 'file',
+                'file': {
+                    'filename': cv_attachment.name or 'cv.pdf',
+                    'file_data': 'data:' + mime + ';base64,' + b64,
+                }
+            }
+        else:
+            file_content = {
+                'type': 'image_url',
+                'image_url': {'url': 'data:' + mime + ';base64,' + b64}
+            }
+
         messages = [{
             'role': 'user',
             'content': [
                 {'type': 'text', 'text': PROMPT},
-                {'type': 'image_url', 'image_url': {
-                    'url': 'data:' + cv_attachment.mimetype + ';base64,' + cv_attachment.datas.decode('utf-8')
-                }}
+                file_content,
             ]
         }]
 
