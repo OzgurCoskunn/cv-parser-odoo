@@ -39,7 +39,7 @@ class HrApplicant(models.Model):
             raise UserError("CV eki bulunamadı. Lütfen PDF veya Word formatında CV ekleyin.")
 
         try:
-            cv_data, usage = self._call_openrouter(api_key, cv_attachment)
+            cv_data, usage, req_payload, resp_payload = self._call_openrouter(api_key, cv_attachment)
         except UserError:
             raise
         except Exception as e:
@@ -68,6 +68,8 @@ class HrApplicant(models.Model):
             prompt_tokens=usage.get('prompt_tokens', 0),
             completion_tokens=usage.get('completion_tokens', 0),
             status='success',
+            request_payload=req_payload,
+            response_payload=resp_payload,
         )
 
     def _find_cv_attachment(self):
@@ -138,6 +140,8 @@ class HrApplicant(models.Model):
 
         raw_content = result['choices'][0]['message']['content']
         usage = result.get('usage', {})
+        req_payload = json.dumps({'model': LLM_MODEL, 'prompt': PROMPT}, ensure_ascii=False)
+        resp_payload = raw_content
 
         try:
             cv_data = json.loads(raw_content)
@@ -148,7 +152,7 @@ class HrApplicant(models.Model):
             else:
                 raise UserError("LLM yanıtı JSON olarak okunamadı:\n" + raw_content)
 
-        return cv_data, usage
+        return cv_data, usage, req_payload, resp_payload
 
     def _extract_vals(self, cv_data):
         vals = {}
@@ -158,4 +162,6 @@ class HrApplicant(models.Model):
             vals['partner_phone'] = cv_data['partner_phone']
         if cv_data.get('email_from') and not self.email_from:
             vals['email_from'] = cv_data['email_from']
+        if cv_data.get('linkedin') and not self.linkedin_profile:
+            vals['linkedin_profile'] = cv_data['linkedin']
         return vals
