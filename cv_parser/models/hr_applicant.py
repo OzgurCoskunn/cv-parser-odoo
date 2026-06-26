@@ -20,8 +20,7 @@ PROMPT = """Bu CV'yi analiz et. Yalnızca aşağıdaki JSON formatında döndür
   "partner_name":   "Ad Soyad",
   "partner_phone":  "Telefon numarası (varsa, yoksa boş string)",
   "email_from":     "E-posta adresi (varsa, yoksa boş string)",
-  "linkedin":       "LinkedIn URL (varsa, yoksa boş string)",
-  "description":    "200-300 kelimelik Türkçe özgeçmiş özeti"
+  "linkedin":       "LinkedIn URL (varsa, yoksa boş string)"
 }"""
 
 
@@ -161,6 +160,4 @@ class HrApplicant(models.Model):
             vals['partner_phone'] = cv_data['partner_phone']
         if cv_data.get('email_from') and not self.email_from:
             vals['email_from'] = cv_data['email_from']
-        if cv_data.get('description'):
-            vals['description'] = cv_data['description']
         return vals
