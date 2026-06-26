@@ -1,4 +1,3 @@
-import re
 from odoo import models, fields, api
 
 

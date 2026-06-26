@@ -12,7 +12,7 @@
                 <field name="prompt_tokens"/>
                 <field name="completion_tokens"/>
                 <field name="total_tokens"/>
-                <field name="cost_usd" string="Maliyet (USD)" widget="float" digits="[10,6]"/>
+                <field name="cost_usd" string="Maliyet (USD)"/>
                 <field name="status" widget="badge"
                     decoration-success="status == 'success'"
                     decoration-danger="status == 'error'"/>
@@ -51,7 +51,7 @@
                             <field name="avg_cost" string="Ortalama Maliyet (USD)"/>
                         </group>
                     </group>
-                    <group attrs="{'invisible': [('status', '=', 'success')]}">
+                    <group invisible="status == 'success'">
                         <field name="error_message" string="Hata Detayı"/>
                     </group>
                 </sheet>
@@ -83,7 +83,6 @@
         <field name="context">{'search_default_success': 1}</field>
     </record>
 
-    <!-- Teknik menü altına ekle -->
     <menuitem id="menu_openrouter_root"
         name="OpenRouter"
         parent="base.menu_administration"
