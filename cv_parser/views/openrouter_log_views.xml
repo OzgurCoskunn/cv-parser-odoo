@@ -54,6 +54,10 @@
                     <group invisible="status == 'success'">
                         <field name="error_message" string="Hata Detayı"/>
                     </group>
+                    <group string="API Detayları">
+                        <field name="request_payload" string="Gönderilen İstek"/>
+                        <field name="response_payload" string="Dönen Yanıt"/>
+                    </group>
                 </sheet>
             </form>
         </field>

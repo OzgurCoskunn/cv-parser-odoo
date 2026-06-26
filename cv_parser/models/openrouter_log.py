@@ -20,6 +20,8 @@ class OpenRouterLog(models.Model):
         ('error', 'Hata'),
     ], string='Durum', default='success', readonly=True)
     error_message = fields.Text(string='Hata Mesajı', readonly=True)
+    request_payload = fields.Text(string='Gönderilen İstek', readonly=True)
+    response_payload = fields.Text(string='Dönen Yanıt', readonly=True)
 
     # Özet istatistikler (read-only hesaplanan alanlar)
     total_requests = fields.Integer(
@@ -50,7 +52,8 @@ class OpenRouterLog(models.Model):
 
     @api.model
     def _create_log(self, res_model, res_id, res_name, llm_model,
-                    prompt_tokens, completion_tokens, status='success', error_message=None):
+                    prompt_tokens, completion_tokens, status='success', error_message=None,
+                    request_payload=None, response_payload=None):
         MODEL_PRICES = {
             'anthropic/claude-haiku-4.5': (1.0, 5.0),
             'anthropic/claude-sonnet-4.5': (3.0, 15.0),
@@ -71,4 +74,6 @@ class OpenRouterLog(models.Model):
             'cost_usd': cost,
             'status': status,
             'error_message': error_message,
+            'request_payload': request_payload,
+            'response_payload': response_payload,
         })
