@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_hr_applicant_cv_parser_button" model="ir.ui.view">
-        <field name="name">hr.applicant.cv.parser.button</field>
+    <record id="view_hr_applicant_cv_parser_field" model="ir.ui.view">
+        <field name="name">hr.applicant.cv.parser.field</field>
         <field name="model">hr.applicant</field>
         <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//sheet" position="before">
-                <div class="mb-2 d-flex align-items-center gap-2">
-                    <button name="action_parse_cv_with_llm"
-                        type="object"
-                        string="CV'den Bilgi Al"
-                        class="btn btn-secondary"/>
-                    <field name="x_cv_parsed" string="CV Bilgisi Alındı"/>
-                    <label for="x_cv_parsed" string="CV Bilgisi Alındı"/>
-                </div>
+            <xpath expr="//field[@name='categ_ids']" position="after">
+                <field name="x_cv_parsed" string="CV Bilgisi Alındı"/>
             </xpath>
         </field>
+    </record>
+
+    <record id="action_parse_cv_with_llm" model="ir.actions.server">
+        <field name="name">CV'den Bilgi Al</field>
+        <field name="model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_model_id" ref="hr_recruitment.model_hr_applicant"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">records.action_parse_cv_with_llm()</field>
     </record>
 
 </odoo>
