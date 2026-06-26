@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_openrouter_log_user,openrouter.log.user,model_openrouter_log,base.group_user,1,0,0,0
+access_openrouter_log_manager,openrouter.log.manager,model_openrouter_log,base.group_system,1,1,1,1
