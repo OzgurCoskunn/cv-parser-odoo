@@ -7,11 +7,13 @@
         <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
-                <div class="o_not_editable mb-2">
+                <div class="mb-2 d-flex align-items-center gap-2">
                     <button name="action_parse_cv_with_llm"
                         type="object"
                         string="CV'den Bilgi Al"
                         class="btn btn-secondary"/>
+                    <field name="x_cv_parsed" string="CV Bilgisi Alındı"/>
+                    <label for="x_cv_parsed" string="CV Bilgisi Alındı"/>
                 </div>
             </xpath>
         </field>
