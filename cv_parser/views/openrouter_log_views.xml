@@ -85,16 +85,11 @@
         <field name="context">{'search_default_success': 1}</field>
     </record>
 
-    <menuitem id="menu_openrouter_root"
-        name="OpenRouter"
-        parent="base.menu_administration"
-        sequence="200"
-        groups="base.group_no_one"/>
-
     <menuitem id="menu_openrouter_log"
-        name="Kullanım Kayıtları"
-        parent="menu_openrouter_root"
+        name="OpenRouter Kullanım Kayıtları"
+        parent="hr_recruitment.menu_hr_recruitment_config"
         action="action_openrouter_log"
-        sequence="10"/>
+        sequence="100"
+        groups="base.group_system"/>
 
 </odoo>
