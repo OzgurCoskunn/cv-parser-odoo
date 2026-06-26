@@ -43,16 +43,17 @@ class HrApplicant(models.Model):
         except UserError:
             raise
         except Exception as e:
-            self.env['openrouter.log'].sudo()._create_log(
-                res_model='hr.applicant',
-                res_id=self.id,
-                res_name=self.partner_name or str(self.id),
-                llm_model=LLM_MODEL,
-                prompt_tokens=0,
-                completion_tokens=0,
-                status='error',
-                error_message=str(e),
-            )
+            with self.env.cr.savepoint():
+                self.env['openrouter.log'].sudo()._create_log(
+                    res_model='hr.applicant',
+                    res_id=self.id,
+                    res_name=self.partner_name or str(self.id),
+                    llm_model=LLM_MODEL,
+                    prompt_tokens=0,
+                    completion_tokens=0,
+                    status='error',
+                    error_message=str(e),
+                )
             raise UserError("OpenRouter API hatası: " + str(e))
 
         vals = self._extract_vals(cv_data)
@@ -68,9 +69,6 @@ class HrApplicant(models.Model):
             completion_tokens=usage.get('completion_tokens', 0),
             status='success',
         )
-
-        updated = ', '.join(vals.keys()) if vals else 'Yeni bilgi bulunamadı'
-        raise UserError("CV başarıyla okundu!\n\nGüncellenen alanlar: " + updated)
 
     def _find_cv_attachment(self):
         attachment = self.message_main_attachment_id
