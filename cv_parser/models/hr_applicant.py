@@ -13,7 +13,7 @@ SUPPORTED_MIMES = (
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 )
 
-LLM_MODEL = 'anthropic/claude-3.5-sonnet'
+LLM_MODEL = 'anthropic/claude-sonnet-4.5'
 
 PROMPT = """Bu CV'yi analiz et. Yalnızca aşağıdaki JSON formatında döndür, başka hiçbir şey yazma:
 {

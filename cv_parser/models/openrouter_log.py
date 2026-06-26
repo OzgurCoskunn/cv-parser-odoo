@@ -51,10 +51,11 @@ class OpenRouterLog(models.Model):
     @api.model
     def _create_log(self, res_model, res_id, res_name, llm_model,
                     prompt_tokens, completion_tokens, status='success', error_message=None):
-        # Fiyatlandırma: claude-3.5-sonnet ($3/1M input, $15/1M output)
         MODEL_PRICES = {
-            'anthropic/claude-3.5-sonnet': (3.0, 15.0),
-            'anthropic/claude-3-5-sonnet-20241022': (3.0, 15.0),
+            'anthropic/claude-haiku-4.5': (1.0, 5.0),
+            'anthropic/claude-sonnet-4.5': (3.0, 15.0),
+            'anthropic/claude-sonnet-4.6': (3.0, 15.0),
+            'anthropic/claude-opus-4.6': (15.0, 75.0),
         }
         input_price, output_price = MODEL_PRICES.get(llm_model, (3.0, 15.0))
         cost = (prompt_tokens * input_price + completion_tokens * output_price) / 1_000_000
