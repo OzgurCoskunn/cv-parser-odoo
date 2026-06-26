@@ -68,10 +68,8 @@
                 <field name="llm_model" string="Model"/>
                 <filter name="success" string="Başarılı" domain="[('status','=','success')]"/>
                 <filter name="error" string="Hatalı" domain="[('status','=','error')]"/>
-                <category string="Grupla">
-                    <filter name="group_model" string="LLM Model" context="{'group_by': 'llm_model'}"/>
-                    <filter name="group_date" string="Tarih" context="{'group_by': 'date:month'}"/>
-                </category>
+                <filter name="group_model" string="LLM Modele Göre" context="{'group_by': 'llm_model'}"/>
+                <filter name="group_date" string="Aya Göre" context="{'group_by': 'date:month'}"/>
             </search>
         </field>
     </record>
