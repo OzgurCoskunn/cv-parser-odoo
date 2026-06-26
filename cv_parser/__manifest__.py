@@ -1,6 +1,6 @@
 {
     'name': 'CV Parser - LLM',
-    'version': '1.8',
+    'version': '1.9',
     'author': 'ODE',
     'license': 'LGPL-3',
     'depends': ['hr_recruitment'],

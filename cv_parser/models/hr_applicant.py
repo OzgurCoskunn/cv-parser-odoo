@@ -3,7 +3,7 @@ import json
 import re
 import urllib.request
 
-from odoo import models
+from odoo import models, fields
 from odoo.exceptions import UserError
 
 
@@ -27,8 +27,16 @@ PROMPT = """Bu CV'yi analiz et. Yalnızca aşağıdaki JSON formatında döndür
 class HrApplicant(models.Model):
     _inherit = 'hr.applicant'
 
+    x_cv_parsed = fields.Boolean(string='CV Bilgisi Alındı', default=False)
+
     def action_parse_cv_with_llm(self):
         self.ensure_one()
+
+        if self.x_cv_parsed:
+            raise UserError(
+                "Bu aday için CV bilgisi daha önce alındı.\n"
+                "Tekrar çekmek için 'CV Bilgisi Alındı' işaretini kaldırın."
+            )
 
         api_key = self.env['ir.config_parameter'].sudo().get_param('openrouter.api_key')
         if not api_key:
@@ -57,8 +65,8 @@ class HrApplicant(models.Model):
             raise UserError("OpenRouter API hatası: " + str(e))
 
         vals = self._extract_vals(cv_data)
-        if vals:
-            self.write(vals)
+        vals['x_cv_parsed'] = True
+        self.write(vals)
 
         self.env['openrouter.log'].sudo()._create_log(
             res_model='hr.applicant',
