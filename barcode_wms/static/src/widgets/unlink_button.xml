@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<templates xml:space="preserve">
-    <t t-name="barcode_wms.UnlinkButton">
-        <button class="btn btn-danger text-uppercase o_delete" t-on-click="onClick" t-if="!props.record.isNew">
-            <i class="fa fa-trash-o"/> Delete
-        </button>
-    </t>
-</templates>

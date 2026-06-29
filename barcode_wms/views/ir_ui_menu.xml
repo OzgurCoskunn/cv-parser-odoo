@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <menuitem name="Barcode" id="barcode_menu_root" action="barcode_wms.action_barcode" groups="stock.group_stock_user" web_icon="barcode_wms,static/description/barcode.png"/>
-    <menuitem name="Batch Inventory Adjustments" id="menu_inventory_line" action="barcode_wms.action_inventory_line" groups="stock.group_stock_user" sequence="35" parent="stock.menu_stock_warehouse_mgmt"/>
-</odoo>
