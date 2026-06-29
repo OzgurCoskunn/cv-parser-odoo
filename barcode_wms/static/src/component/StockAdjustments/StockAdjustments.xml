@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.StockAdjustments" t-inherit="barcode_wms.Components" t-inherit-mode="primary" owl="1">
+        <xpath expr="//div[@class='scanning-screen']" position="inside">
+            <div class="scanning-screen-bar">
+                <div class="align-items-center d-flex">
+                    <div t-on-click="onBack" class="back-button-left">
+                        <i class="fa fa-angle-left"/>
+                    </div>
+                    <div class="scanning-screen-title">
+                        <h2>Stock Adjustment</h2>
+                    </div>
+                </div>
+                <div class="align-items-center d-flex">
+                    <div class="scanning-screen-bar-item">
+                        <SearchBar filter="(value) => this.filterMove(value)"/>
+                    </div>
+                    <div class="scanning-screen-bar-item">
+                        <SelectDropdownLocation data="warehouses" selected="state.location.src" trigger="'select-location'"/>
+                    </div>
+                    <div class="scanning-screen-bar-item lg-up">
+                        <SelectDropdownSort key="state.sort" trigger="'select-sort'"/>
+                    </div>
+                    <div class="scanning-screen-bar-item lg-up">
+                        <div class="h-100">
+                            <Pagination current="pages.current" total="pages.total"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scanning-screen-subbar md-down">
+                <div class="align-items-center d-flex">
+                    <div class="scanning-screen-subbar-item">
+                        <SelectDropdownSort key="state.sort" trigger="'select-sort'"/>
+                    </div>
+                </div>
+                <div class="align-items-center d-flex">
+                    <div class="scanning-screen-subbar-item">
+                        <div class="h-100">
+                            <Pagination current="pages.current" total="pages.total"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scanning-screen-body">
+                <div class="scanning-screen-line w-100 h-100 overflow-auto">
+                    <StockMove moves="moves" move="state.move" line="state.line" page="pages.current" groups="state.groups" fields="getFields()" buttons="{ reset: true, check: true, remove: true }"/>
+                </div>
+                <div class="w-100 bottom border-top">
+                    <button class="confirm-button" t-on-click="() => this.openPopup('addMove')" t-att-disabled="state.location.src.length ? undefined : 'disabled'">Add Products</button>
+                    <button class="border-start confirm-button" t-on-click="() => this.openPopup('validate')" t-att-disabled="moves.length ? undefined : 'disabled'">
+                        <t t-if="state.groups.group_stock_manager">Validate</t>
+                        <t t-else="">Apply</t>
+                    </button>
+                </div>
+            </div>
+        </xpath>
+    </t>
+ </templates>

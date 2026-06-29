@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_button_action" model="ir.ui.view">
+    <field name="model">fsm.button.action</field>
+    <field name="inherit_id" ref="fsm.form_button_action"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='picking_location_dest_id']" position="after">
+            <field name="picking_carrier_hepsijet_egyg_location_id" string="Return Location" invisible="picking_carrier_ok == False or picking_carrier_type != 'hepsijet' or picking_carrier_hepsijet_egyg == False"/>
+        </xpath>
+        <xpath expr="//field[@name='picking_carrier_type']" position="after">
+            <field name="picking_carrier_hepsijet_egyg" widget="boolean_toggle" string="Mark as EGYG" invisible="picking_carrier_ok == False or picking_carrier_type != 'hepsijet'"/>
+            <field name="picking_carrier_hepsijet_contract" widget="boolean_toggle" string="Mark as Contract" invisible="picking_carrier_ok == False or picking_carrier_type != 'hepsijet'"/>
+        </xpath>
+    </field>
+    </record>
+</odoo>

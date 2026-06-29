@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="barcode_wms_picking_client_action" model="ir.actions.client">
+        <field name="name">Stock Barcode Client Action</field>
+        <field name="tag">barcode_wms_client_action</field>
+        <field name="target">fullscreen</field>
+        <field name="res_model">stock.picking</field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_form" model="ir.ui.view">
+    <field name="model">delivery.carrier</field>
+    <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//notebook" position="inside">
+            <page name="delivery_status_mapping" string="Statuses">
+                <field name="delivery_status_mapping_ids">
+                    <list editable="bottom">
+                        <field name="sequence" widget="handle"/>
+                        <field name="status_id" string="Name" decoration-bf="1" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="status_code" string="Code" widget="badge"/>
+                        <button class="btn btn-light" icon="fa-exchange fa-2x" string=""/>
+                        <field name="name" decoration-bf="1" placeholder="-"/>
+                        <field name="code" placeholder="-"/>
+                        <field name="ref" placeholder="-" optional="hide"/>
+                    </list>
+                </field>
+            </page>
+        </xpath>
+    </field>
+    </record>
+</odoo>

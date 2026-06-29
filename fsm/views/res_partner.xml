@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_partner" model="ir.ui.view">
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='child_ids']//form//div" position="inside">
+            <p class="mb-0" invisible="type != 'service'">
+                <span>Service address for the company.</span>
+            </p>
+        </xpath>
+    </field>
+    </record>
+
+    <record id="form_partner_basic" model="ir.ui.view">
+    <field name="name">res.partner.form.basic</field>
+    <field name="model">res.partner</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <div class="oe_title mb24">
+                    <field name="is_company" invisible="1"/>
+                    <field name="commercial_partner_id" invisible="1"/>
+                    <field name="active" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="country_code" invisible="1"/>
+                    <field name="company_type" invisible="1"/>
+                    <field name="parent_id" invisible="1"/>
+                    <label for="name"/>
+                    <h1><field name="name" class="oe_inline"/></h1>
+                </div>
+
+                <group>
+                    <group>
+                        <field name="mobile" widget="phone"/>
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+</odoo>

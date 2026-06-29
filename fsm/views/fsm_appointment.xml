@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_appointment" model="ir.ui.view">
+    <field name="name">fsm.appointment.list</field>
+    <field name="model">fsm.appointment</field>
+    <field name="arch" type="xml">
+        <list decoration-muted="valid == False" decoration-info="today == True">
+            <field name="name" decoration-bf="1"/>
+            <field name="create_date"/>
+            <field name="date"/>
+            <field name="partner_id"/>
+            <!--<field name="reason_id"/>-->
+            <field name="today" invisible="1"/>
+            <field name="valid" invisible="1"/>
+            <field name="company_id" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="form_appointment" model="ir.ui.view">
+    <field name="name">fsm.appointment.form</field>
+    <field name="model">fsm.appointment</field>
+    <field name="arch" type="xml">
+        <form>
+            <div class="alert alert-danger" role="alert" invisible="photo_ids != []">
+                Please upload at least one photo for this appointment.
+            </div>
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_task" type="object" class="oe_stat_button" icon="fa-suitcase" invisible="(id == False or task_id == False)">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">1</span>
+                            <span class="o_stat_text">Task</span>
+                        </div>
+                    </button>
+                </div>
+                <field name="id" invisible="1"/>
+                <field name="task_id" invisible="1"/>
+                <field name="task_ids" invisible="1"/>
+                <div class="oe_title">
+                    <label for="name"/>
+                    <h1 invisible="id == False"><field name="name" class="oe_inline"/></h1>
+                    <h1 invisible="id != False">ID #<i class="fa fa-spin fa-circle-o-notch text-600 mx-2"/></h1>
+                </div>
+                <group>
+                    <group>
+                        <separator string="Contact" colspan="2" invisible="task_ids != []"/>
+                        <field name="partner_id" invisible="task_ids != []" string="Contact" context="{'default_type': 'contact', 'default_parent_id': merchant_id, 'default_is_company': False}"/>
+                        <separator string="Reason" colspan="2"/>
+                        <label for="reason_code" string="Code"/>
+                        <div>
+                            <field name="reason_code" nolabel="1" class="oe_inline" invisible="reason_code == False"/>
+                            <em invisible="reason_code != False">No reason selected</em>
+                        </div>
+                        <field name="reason_id" options="{'no_create': True, 'no_open': True}" string="Name"/>
+                        <field name="reason_desc" string="Description"/>
+                        <field name="reason_ids" invisible="1"/>
+                    </group>
+                    <group>
+                        <separator string="Dates" colspan="2"/>
+                        <field name="date"/>
+                        <field name="create_date" invisible="create_date == False" readonly="1"/>
+                    </group>
+                </group>
+                <notebook class="border-bottom-0">
+                    <page name="photo" string="Photos">
+                        <button name="action_photo" type="object" icon="fa-camera mr8" string="Take Photo" class="btn btn-secondary p-1"/>
+                        <field name="photo_ids" invisible="photo_ids == []" mode="kanban">
+                            <kanban>
+                                <field name="id"/>
+                                <field name="mimetype"/>
+                                <field name="type"/>
+                                <field name="create_uid"/>
+                                <field name="url"/>
+                                <field name="create_date"/>
+                                <field name="name"/>
+                                <templates>
+                                    <t t-name="card">
+                                        <div class="oe_kanban_global_area oe_kanban_global_click o_kanban_attachment">
+                                            <div class="row">
+                                                <div class="offset-10">
+                                                    <div class="o_dropdown_kanban dropdown" groups="base.group_user">
+                                                        <a role="button" class="dropdown-toggle o-no-caret btn" data-bs-toggle="dropdown" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                                            <span class="fa fa-ellipsis-v"/>
+                                                        </a>
+                                                        <div class="dropdown-menu" role="menu">
+                                                            <a t-attf-href="/web/content/ir.attachment/#{record.id.raw_value}/datas?download=true" download="" class="dropdown-item">Download</a>
+                                                            <!--<a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete</a>-->
+                                                            <button name="unlink_fsm_file" type="object" class="dropdown-item">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="o_kanban_image">
+                                                <div class="o_kanban_image_wrapper">
+                                                    <t t-set="webimage" t-value="new RegExp('image.*(gif|jpeg|jpg|png)').test(record.mimetype.value)"/>
+                                                    <div t-if="record.type.raw_value == 'url'" class="o_url_image fa fa-link fa-3x text-muted" aria-label="Image is a link"/>
+                                                    <img t-elif="webimage" t-attf-src="/web/image/#{record.id.raw_value}" width="100" height="100" alt="Document" class="o_attachment_image"/>
+                                                    <div t-else="!webimage" class="o_image o_image_thumbnail" t-att-data-mimetype="record.mimetype.value"/>
+                                                </div>
+                                            </div>
+                                            <div class="o_kanban_details">
+                                                <div class="o_kanban_details_wrapper">
+                                                    <div t-att-title="record.name.raw_value" class="o_kanban_record_title">
+                                                        <field name="name" class="o_text_overflow"/>
+                                                    </div>
+                                                    <div class="o_kanban_record_body">
+                                                        <t t-if="record.type.raw_value == 'url'">
+                                                            <span class="o_document_url"><i class="fa fa-globe" aria-label="Document url"/> <field name="url" widget="url"/></span>
+                                                        </t>
+                                                        <samp t-else="" class="text-muted"> </samp>
+                                                    </div>
+                                                    <div class="o_kanban_record_bottom">
+                                                        <time class="oe_kanban_bottom_left">
+                                                            <field name="create_date" widget="date"/>
+                                                        </time>
+                                                        <div class="oe_kanban_bottom_right">
+                                                            <field name="create_uid" widget="many2one_avatar_user"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                            <form class="o_fsm_photo_dialog">
+                                <sheet>
+                                    <field name="datas" widget="image"/>
+                                </sheet>
+                            </form>
+                        </field>
+                        <p class="h1 my-5 text-500 text-center" invisible="photo_ids != []">No photo uploaded</p>
+                    </page>
+                </notebook>
+                <notebook>
+                    <page name="document" string="Documents">
+                        <field name="document_ids" widget="many2many_binary" string="Attach a document" nolabel="1" colspan="2"/>
+                    </page>
+                </notebook>
+                <field name="merchant_id" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+            </sheet>
+            <footer>
+                <button name="confirm" type="object" class="btn-primary" string="Create"/>
+                <button name="cancel" special="cancel" class="btn-secondary" string="Cancel"/>
+            </footer>
+            <chatter/>
+        </form>
+    </field>
+    </record>
+
+    <record id="search_appointment" model="ir.ui.view">
+    <field name="name">fsm.appointment.search</field>
+    <field name="model">fsm.appointment</field>
+    <field name="arch" type="xml">
+        <search string="Appointments">
+            <field name="name" string="Name" filter_domain="['|', ('name', 'ilike', self), ('partner_id', 'ilike', self)]"/>
+            <field name="partner_id"/>
+            <field name="task_id"/>
+            <group>
+                <filter string="Task" name="groupby_task" context="{'group_by': 'task_id'}"/>
+                <filter string="Partner" name="groupby_partner" context="{'group_by': 'partner_id'}"/>
+            </group>
+        </search>
+    </field>
+    </record>
+
+    <record id="action_appointment" model="ir.actions.act_window">
+    <field name="name">Appointments</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="context">{'create': False, 'delete': False}</field>
+    <field name="res_model">fsm.appointment</field>
+    <field name="view_mode">list,form,activity</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            No appointments yet
+        </p>
+        <p>
+            Create appointments from tasks easily
+        </p>
+    </field>
+    </record>
+
+    <!--<record id="action_appointment_date" model="ir.actions.server">
+    <field name="name">Change Appointment Date</field>
+    <field name="groups_id" eval="[(4, ref('fsm.group_manager'))]"/>
+    <field name="model_id" ref="fsm.model_fsm_appointment"/>
+    <field name="binding_model_id" ref="fsm.model_fsm_appointment"/>
+    <field name="binding_view_types">form</field>
+    <field name="state">code</field>
+    <field name="code">action = records.action_change_date()</field>
+    </record>-->
+</odoo>

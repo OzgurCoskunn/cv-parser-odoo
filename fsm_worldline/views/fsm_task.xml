@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_task" model="ir.ui.view">
+    <field name="model">fsm.task</field>
+    <field name="inherit_id" ref="fsm.form_task"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='description']" position="inside">
+            <separator string="Worldline" invisible="api_log_worldline_id == False"/>
+            <field name="api_log_worldline_id" options="{'no_create': True}" string="Details" invisible="api_log_worldline_id == False"/>
+            <field name="api_log_worldline_bank_code" string="Bank Code" invisible="api_log_worldline_id == False or field_api_log_worldline_bank_code == 0"/>
+            <field name="api_log_worldline_channel_info" string="Channel Info" invisible="api_log_worldline_id == False or field_api_log_worldline_channel_info == 0"/>
+            <field name="field_api_log_worldline_bank_code" invisible="1"/>
+            <field name="field_api_log_worldline_channel_info" invisible="1"/>
+        </xpath>
+    </field>
+    </record>
+</odoo>

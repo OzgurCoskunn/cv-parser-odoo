@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_return_picking_hepsijet_warning,access_stock_return_picking_hepsijet_warning,model_stock_return_picking_hepsijet_warning,base.group_user,1,1,1,1
+access_delivery_carrier_hepsijet_contract,access_delivery_carrier_hepsijet_contract,model_delivery_carrier_hepsijet_contract,base.group_user,1,1,1,1

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Stock Quant Barcode Kanban View -->
+    <record id="stock_quant_barcode_kanban_2" model="ir.ui.view">
+        <field name="name">stock.quant.barcode.kanban.2</field>
+        <field name="model">stock.quant</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" create="0">
+                <field name="id"/>
+                <field name="location_id"/>
+                <field name="available_quantity"/>
+                <field name="quantity"/>
+                <field name="product_uom_id"/>
+                <field name="lot_id"/>
+                <field name="package_id"/>
+                <field name="owner_id"/>
+                <templates>
+                    <t t-name="card">
+                        <field name="location_id" class="fw-bolder"/>
+                        <div class="d-flex">
+                            <p class="m-0 me-2">Available: </p>
+                            <div>
+                                <field name="available_quantity"/>
+                                <span invisible="not quantity"> / <field name="quantity"/></span>
+                                <span> <field name="product_uom_id" groups="uom.group_uom"/></span>
+                            </div>
+                        </div>
+                        <div class="mb-2" invisible="not lot_id" groups="stock.group_production_lot">
+                            <field name="lot_id"/>
+                        </div>
+                        <div class="mb-4" invisible="not package_id" groups="stock.group_tracking_lot">
+                            <i class="fa fa-lg fa-archive me-2" title="Package"/><field name="package_id" context="{'show_src_package': True}"/>
+                        </div>
+                        <div class="mb-4" invisible="not owner_id" groups="stock.group_tracking_owner">
+                            <i class="fa fa-lg fa-user-o me-2" title="Owner"/><field name="owner_id"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Stock Quant Tree View for Barcode -->
+    <record id="view_stock_quant_tree" model="ir.ui.view">
+        <field name="name">stock.quant.tree.barcode</field>
+        <field name="model">stock.quant</field>
+        <field name="arch" type="xml">
+            <list string="Stock Quants" create="0">
+                <field name="location_id"/>
+                <field name="lot_id" optional="show" groups="stock.group_production_lot"/>
+                <field name="package_id" optional="show" groups="stock.group_tracking_lot"/>
+                <field name="owner_id" optional="show" groups="stock.group_tracking_owner"/>
+                <field name="available_quantity" string="Available"/>
+                <field name="quantity" string="On Hand"/>
+                <field name="product_uom_id" groups="uom.group_uom"/>
+            </list>
+        </field>
+    </record>
+</odoo>

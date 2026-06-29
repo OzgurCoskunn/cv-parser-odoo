@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[@name='button_box']" position="inside">
+            <button
+                name="action_delivery_hepsijet_picking_egyg"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-exchange"
+                groups="base.group_user"
+                invisible="not delivery_hepsijet_ok or not delivery_hepsijet_egyg_ok or not delivery_hepsijet_egyg_picking_id">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Go to</span><span class="o_stat_text">EGYG</span>
+                </div>
+            </button>
+            <button
+                name="action_delivery_hepsijet_picking_egyg_origin"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-exchange"
+                groups="base.group_user"
+                invisible="not delivery_hepsijet_ok or not delivery_hepsijet_egyg_ok or not delivery_hepsijet_egyg_picking_res_id">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Go to</span><span class="o_stat_text">EGYG</span>
+                </div>
+            </button>
+            <button
+                name="action_delivery_hepsijet_picking_contract"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-file-text-o"
+                groups="base.group_user"
+                invisible="not delivery_hepsijet_ok or not delivery_hepsijet_contract_picking_id">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Go to</span><span class="o_stat_text">Contract</span>
+                </div>
+            </button>
+            <button
+                name="action_delivery_hepsijet_picking_contract_origin"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-ambulance"
+                groups="base.group_user"
+                invisible="not delivery_hepsijet_ok or not delivery_hepsijet_contract_picking_res_id">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Go to</span><span class="o_stat_text">Origin</span>
+                </div>
+            </button>
+            <button
+                name="get_delivery_hepsijet_log"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-chain"
+                groups="base.group_user"
+                invisible="not delivery_hepsijet_ok or not delivery_hepsijet_connector_ok or state == 'draft' or not delivery_hepsijet_connector_state">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Connector</span><span class="o_stat_text">Succeeded</span>
+                </div>
+            </button>
+            <button
+                name="get_delivery_hepsijet_log"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-unlink"
+                groups="base.group_user"
+                invisible="not delivery_hepsijet_ok or not delivery_hepsijet_connector_ok or state == 'draft' or delivery_hepsijet_connector_state">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Connector</span><span class="o_stat_text">Failed</span>
+                </div>
+            </button>
+        </xpath>
+        <xpath expr="/form/header/button[last()]" position="after">
+            <button name="send_to_shipper" string="Send to Shipper" type="object" invisible="carrier_tracking_ref or delivery_type != 'hepsijet' or picking_type_code != 'incoming'" data-hotkey="shift+v"/>
+        </xpath>
+        <xpath expr="//page[@name='note']" position="before">
+            <page string="HepsiJet" invisible="not delivery_hepsijet_ok">
+                <field name="delivery_tracking_ids" nolabel="1" mode="list"/>
+                <group>
+                    <group>
+                        <separator string="Payment Information" colspan="2"/>
+                        <field name="delivery_hepsijet_pod" string="Payment on Delivery" widget="boolean_toggle" readonly="state in ('draft', 'cancel')"/>
+                        <separator string="Delivery Information" colspan="2"/>
+                        <field name="delivery_hepsijet_delivery_type" string="Type" widget="radio"/>
+                        <field name="delivery_hepsijet_recall_picking" string="Recall Picking" widget="boolean_toggle"/>
+                        <field name="delivery_hepsijet_delivery_time" string="Time" widget="radio" invisible="delivery_hepsijet_delivery_type not in ('today', 'tomorrow')"/>
+                    </group>
+                    <group>
+                        <div colspan="2">
+                            <button name="update_delivery_hepsijet_state" type="object" string="Update" icon="fa-refresh" class="btn-secondary text-uppercase float-end"/>
+                            <button name="get_delivery_hepsijet_log" type="object" string="Logs" icon="fa-file-text-o" class="btn-secondary text-uppercase float-end"/>
+                            <button name="recall_delivery_hepsijet_order" type="object" string="Recall Order" icon="fa-backward" class="text-uppercase float-end text-danger"/>
+                        </div>
+                        <separator string="Connector Information" colspan="2"/>
+                        <field name="delivery_hepsijet_connector_state" string="Connected" widget="boolean_toggle"/>
+                        <field name="delivery_hepsijet_connector_message" string="Message" invisible="not delivery_hepsijet_connector_message"/>
+                        <field name="delivery_hepsijet_connector_ok" invisible="1"/>
+                        <field name="delivery_hepsijet_contract_picking_id" invisible="1"/>
+                        <field name="delivery_hepsijet_contract_picking_res_id" invisible="1"/>
+                        <field name="delivery_hepsijet_egyg_ok" invisible="1"/>
+                        <field name="delivery_hepsijet_egyg_picking_id" invisible="1"/>
+                        <field name="delivery_hepsijet_egyg_picking_res_id" invisible="1"/>
+                        <field name="delivery_hepsijet_ok" invisible="1"/>
+                    </group>
+                </group>
+            </page>
+        </xpath>
+        <xpath expr="//field[@name='carrier_tracking_ref']" position="after">
+            <field name="delivery_hepsijet_contract_id" invisible="not delivery_hepsijet_ok"/>
+        </xpath>
+    </field>
+    </record>
+</odoo>

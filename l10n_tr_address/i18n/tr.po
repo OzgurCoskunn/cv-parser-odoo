@@ -1,0 +1,254 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_tr_address
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-30 13:58+0000\n"
+"PO-Revision-Date: 2024-03-30 17:01+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.res_config_settings_view_form
+msgid "<span>List</span>"
+msgstr "<span>Liste</span>"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.res_config_settings_view_form
+msgid "<span>Text</span>"
+msgstr "<span>Metin</span>"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__street3
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__street3
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__street3
+msgid "Address Details"
+msgstr "Adres Detayları"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_company_form
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_partner_form
+msgid "Apartment Number..."
+msgstr "Apartman Numarası..."
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__city
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__city
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__city
+msgid "City Name"
+msgstr "Şehir Adı"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__code
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__code
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__code
+msgid "Code"
+msgstr "Kod"
+
+#. module: l10n_tr_address
+#: model:ir.model,name:l10n_tr_address.model_res_company
+msgid "Companies"
+msgstr "Şirketler"
+
+#. module: l10n_tr_address
+#: model:ir.model,name:l10n_tr_address.model_res_config_settings
+msgid "Config Settings"
+msgstr "Yapılandırma Ayarları"
+
+#. module: l10n_tr_address
+#: model:ir.model,name:l10n_tr_address.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: l10n_tr_address
+#: model:ir.model,name:l10n_tr_address.model_res_country_state
+msgid "Country state"
+msgstr "Ülke şehir"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__create_uid
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__create_date
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__create_date
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__create_date
+msgid "Created on"
+msgstr "Oluşturma Tarihi"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__display_name
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__display_name
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: l10n_tr_address
+#: model:ir.model,name:l10n_tr_address.model_res_country_district
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__district_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__name
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__district_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__district_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__district_id
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.res_config_settings_view_form
+msgid "District"
+msgstr "Mahalle"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__street
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__street
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__street
+msgid "District Name"
+msgstr "Mahalle Adı"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_company_form
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_partner_form
+msgid "District..."
+msgstr "Mahalle..."
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__district_ids
+msgid "Districts"
+msgstr "Mahalleler"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__field_district_selection
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__field_district_selection
+msgid "Field District Selection"
+msgstr "Alan Mahalle Seçim"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__field_street_selection
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__field_street_selection
+msgid "Field Street Selection"
+msgstr "Alan Cadde Seçim"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__field_town_selection
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__field_town_selection
+msgid "Field Town Selection"
+msgstr "Alan İlçe Seçim"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__id
+msgid "ID"
+msgstr "ID"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district____last_update
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street____last_update
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town____last_update
+msgid "Last Modified on"
+msgstr "Son Düzenleme Tarihi"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__write_uid
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__write_date
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__write_date
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme Tarihi"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.res_config_settings_view_form
+msgid "Partner Address Fields"
+msgstr "İş Ortağı Adres Alanları"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__state_id
+msgid "State"
+msgstr "Şehir"
+
+#. module: l10n_tr_address
+#: model:ir.model,name:l10n_tr_address.model_res_country_street
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__street_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_street__name
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__street_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__street_id
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_company_form
+msgid "Street"
+msgstr "Cadde"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__street2
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__street2
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__street2
+msgid "Street Number"
+msgstr "Cadde Numarası"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_partner_form
+msgid "Street..."
+msgstr "Cadde..."
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__street_ids
+msgid "Streets"
+msgstr "Caddeler"
+
+#. module: l10n_tr_address
+#: model:ir.model,name:l10n_tr_address.model_res_country_town
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__town_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_district__town_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_town__name
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_partner__town_id
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_users__town_id
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.res_config_settings_view_form
+msgid "Town"
+msgstr "İlçe"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_company_form
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.view_partner_form
+msgid "Town..."
+msgstr "İlçe..."
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_country_state__town_ids
+msgid "Towns"
+msgstr "İlçeler"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__field_district_selection
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_config_settings__field_district_selection
+msgid "Use District Selection List"
+msgstr "Mahalle Seçim Listesi Kullan"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__field_street_selection
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_config_settings__field_street_selection
+msgid "Use Street Selection List"
+msgstr "Cadde Seçim Listesi Kullan"
+
+#. module: l10n_tr_address
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_company__field_town_selection
+#: model:ir.model.fields,field_description:l10n_tr_address.field_res_config_settings__field_town_selection
+msgid "Use Town Selection List"
+msgstr "İlçe Seçim Listesi Kullan"
+
+#. module: l10n_tr_address
+#: model_terms:ir.ui.view,arch_db:l10n_tr_address.res_config_settings_view_form
+msgid "Use more advanced options for partner address information"
+msgstr "İş ortağı adres bilgisi için daha gelişmiş seçenekler kullanın"

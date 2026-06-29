@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_log" model="ir.ui.view">
+    <field name="name">delivery.log.list</field>
+    <field name="model">delivery.log</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="create_date" decoration-bf="1"/>
+            <field name="picking_id" string="Delivery"/>
+            <field name="state" widget="badge" decoration-danger="status == False" decoration-success="status == True"/>
+            <field name="message" optional="hide"/>
+            <field name="company_id" groups="base.group_multi_company" options="{'no_create': True, 'no_open': True}" optional="hide"/>
+            <field name="status" invisible="True"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="form_log" model="ir.ui.view">
+    <field name="name">delivery.log.form</field>
+    <field name="model">delivery.log</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <field name="state" widget="statusbar" statusbar_visible="success"/>
+            </header>
+            <sheet>
+                <group>
+                    <group>
+                        <field name="picking_id" string="Delivery"/>
+                        <field name="reference" string="Reference"/>
+                        <field name="environment" string="Environment" widget="radio" options="{'horizontal': True}"/>
+                        <field name="message"/>
+                        <field name="status" invisible="True"/>
+                    </group>
+                    <group>
+                        <field name="create_date" string="Date"/>
+                        <label for="duration"/>
+                        <div class="o_row">
+                            <field name="duration" nolabel="1"/>s
+                        </div>
+                        <br colspan="2" groups="base.group_multi_company"/>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True, 'no_open': True}"/>
+                    </group>
+                </group>
+                <group class="mt-5">
+                    <group string="Request">
+                        <div colspan="2">
+                            <field name="request_method" nolabel="1" class="oe_inline fw-bold mr8" widget="badge" decoration-success="request_method == 'get'" decoration-warning="request_method == 'post'" decoration-info="request_method == 'put'" decoration-primary="request_method == 'patch'" decoration-danger="request_method == 'delete'" decoration-muted="request_method == 'options'"/> <field name="request_url" nolabel="1" class="oe_inline"/>
+                        </div>
+                        <br/>
+                        <field name="request_data_formatted" nolabel="1" colspan="2"/>
+                        <field name="request_data" invisible="True"/>
+                    </group>
+                    <group string="Response">
+                        <div colspan="2">
+                            <field name="response_code" nolabel="1" class="oe_inline fw-bold mr8" widget="badge" decoration-success="response_badge == '2'" decoration-warning="response_badge == '4'" decoration-info="response_badge == '1'" decoration-primary="response_badge == '3'" decoration-danger="response_badge == '5'" decoration-muted="response_badge == False"/> <field name="response_message" nolabel="1" class="oe_inline"/>
+                            <field name="response_badge" invisible="True"/>
+                        </div>
+                        <br/>
+                        <field name="response_data_formatted" nolabel="1" colspan="2"/>
+                        <field name="response_data" invisible="True"/>
+                        <div class="position-absolute" style="top: 10px; right: 10px;">
+                            <button name="action_toggle_debug" type="object" class="btn-sm btn-secondary bg-transparent border-0" string="Show Debug" invisible="not debug_message or debug_ok"/>
+                            <button name="action_toggle_debug" type="object" class="btn-sm btn-secondary bg-transparent border-0" string="Hide Debug" invisible="not debug_message or not debug_ok"/>
+                        </div>
+                        <br invisible="not debug_message or not debug_ok"/>
+                        <field name="debug_message" nolabel="1" colspan="2" class="text-400" invisible="not debug_message or not debug_ok"/>
+                        <field name="debug_ok" invisible="True"/>
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="search_log" model="ir.ui.view">
+    <field name="name">delivery.log.search</field>
+    <field name="model">delivery.log</field>
+    <field name="arch" type="xml">
+        <search>
+            <filter string="Failed Requests" name="filterby_error" domain="[('status', '=', False)]"/>
+            <filter string="Successful Requests" name="filterby_success" domain="[('status', '=', True)]"/>
+            <separator/>
+            <filter string="Today" name="filterby_today" domain="[('create_date', '&gt;=', (datetime.datetime.combine(context_today(), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="Yesterday" name="filterby_yesterday" domain="[('create_date','&gt;=', (datetime.datetime.combine(context_today() - relativedelta(days=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')), ('create_date','&lt;', (datetime.datetime.combine(context_today(), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="This Week" name="filterby_this_week" domain="[('create_date','&gt;=', (datetime.datetime.combine(context_today() + relativedelta(weeks=0, weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')), ('create_date','&lt;', (datetime.datetime.combine(context_today() + relativedelta(weeks=1, weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="Last Week" name="filterby_last_week" domain="[('create_date','&gt;=', (datetime.datetime.combine(context_today() + relativedelta(weeks=-1, weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')), ('create_date','&lt;', (datetime.datetime.combine(context_today() + relativedelta(weeks=0, weekday=0), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="This Month" name="filterby_this_month" domain="[('create_date','&gt;=', (datetime.datetime.combine(context_today() + relativedelta(day=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')), ('create_date','&lt;', (datetime.datetime.combine(context_today(), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="Last Month" name="filterby_last_month" domain="[('create_date','&gt;=', (datetime.datetime.combine(context_today() + relativedelta(months=-1, day=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')), ('create_date','&lt;', (datetime.datetime.combine(context_today() + relativedelta(day=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="This Year" name="filterby_this_year" domain="[('create_date','&gt;=', (datetime.datetime.combine(context_today() + relativedelta(month=1, day=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')), ('create_date','&lt;', (datetime.datetime.combine(context_today(), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="Last Year" name="filterby_last_year" domain="[('create_date','&gt;=', (datetime.datetime.combine(context_today() + relativedelta(years=-1, months=1, day=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S')), ('create_date','&lt;', (datetime.datetime.combine(context_today() + relativedelta(month=1, day=1), datetime.time(0,0,0)).to_utc()).strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            <filter string="All Times" name="filterby_all_times" domain="[('create_date','!=', False)]"/>
+            <group>
+                <filter string="Status" name="groupby_status" context="{'group_by': 'status'}"/>
+            </group>
+        </search>
+    </field>
+    </record>
+
+    <record id="action_log" model="ir.actions.act_window">
+    <field name="name">Logs</field>
+    <field name="res_model">delivery.log</field>
+    <field name="view_mode">list,form</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            No delivery logs yet
+        </p>
+        <p>
+            Delivery logs are listed here
+        </p>
+    </field>
+    </record>
+
+    <menuitem
+        id="menu_delivery_log"
+        parent="stock.menu_delivery"
+        name="Delivery Logs"
+        action="action_log"/>
+</odoo>

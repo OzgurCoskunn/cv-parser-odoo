@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="list_ticket" model="ir.ui.view">
+    <field name="name">sla.ticket.list</field>
+    <field name="model">sla.ticket</field>
+    <field name="arch" type="xml">
+        <list string="Tickets" sample="1">
+            <field name="name" decoration-bf="1"/>
+            <field name="stage_id" widget="badge"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="kanban_ticket" model="ir.ui.view">
+    <field name="name">sla.ticket.kanban</field>
+    <field name="model">sla.ticket</field>
+    <field name="arch" type="xml">
+        <kanban
+            default_group_by="stage_id"
+            class="o_kanban_small_column"
+            quick_create="False"
+            sample="1"
+        >
+            <field name="active"/>
+            <field name="user_id"/>
+            <field name="team_id"/>
+            <field name="priority"/>
+            <field name="sequence"/>
+            <field name="stage_type"/>
+            <field name="stage_id"/>
+            <progressbar field="kanban_state" colors='{"done": "success", "blocked": "danger", "normal": "muted"}'/>
+            <templates>
+                <t t-name="card">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <strong class="o_kanban_record_title">
+                                    <s t-if="!record.active.raw_value"><field name="name"/></s>
+                                    <t t-else=""><field name="name"/></t>
+                                </strong>
+                            </div>
+                            <div class="ms-auto" groups="base.group_user">
+                                <field name="priority" widget="priority"/>
+                                <field name="activity_ids" widget="kanban_activity"/>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <field name="agreement_id" widget="badge"/>
+                        </div>
+                        <div t-if="record.due_date.raw_value" class="mt-1">
+                            <field name="due_date" widget="remaining_days"/>
+                        </div>
+                        <div class="d-flex mt-2 align-items-center">
+                            <div class="flex-grow-1">
+                                <field name="kanban_state" widget="state_selection" groups="base.group_user"/>
+                            </div>
+                            <div class="ms-auto">
+                                <t t-if="record.user_id.raw_value"><field name="user_id" widget="many2one_avatar_user"/></t>
+                                <t t-if="record.team_id.raw_value"><field name="user_ids" widget="many2many_avatar_user"/></t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <record id="form_ticket" model="ir.ui.view">
+    <field name="name">sla.ticket.form</field>
+    <field name="model">sla.ticket</field>
+    <field name="arch" type="xml">
+        <form string="Tickets">
+            <header>
+                <field name="stage_id" widget="statusbar" domain="[('id', 'in', stage_ids)]" invisible="stage_id == False"/><!-- options="{'clickable': '1'}" -->
+                <field name="stage_ids" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+                <field name="id" invisible="1"/>
+            </header>
+            <sheet>
+                <div class="oe_button_box" name="button_box"/>
+                <div class="oe_title mw-100" invisible="id == False">
+                    <label for="name"/>
+                    <h1 class="d-flex">
+                        <field name="priority" widget="priority" class="me-3"/>
+                        <field name="name" class="oe_inline flex-fill"/>
+                        <field name="kanban_state" widget="state_selection" class=""/>
+                    </h1>
+                </div>
+                <group>
+                    <group>
+                        <field name="agreement_id" options="{'no_create': True}"/>
+                        <field name="partner_id" options="{'no_create': True}" readonly="1" force_save="1"/>
+                    </group>
+                    <group>
+                        <separator string="User" colspan="2" invisible="user_id == False"/>
+                        <field name="user_id" options="{'no_create': True}" widget="many2one_avatar_user" invisible="user_id == False"/>
+                        <separator string="Team" colspan="2" invisible="team_id == False"/>
+                        <field name="team_id" options="{'no_create': True}" invisible="team_id == False"/>
+                        <field name="user_ids" options="{'no_create': True}" widget="many2many_avatar_user" invisible="team_id == False"/>
+                        <separator string="Dates" colspan="2"/>
+                        <field name="create_date" class="text-nowrap" string="Create Date"/>
+                        <field name="due_date" class="text-nowrap" string="Deadline Date"/>
+                        <separator string="Elapsed Time" colspan="2"/>
+                        <field name="stage_time_all" class="text-nowrap" string="All Times"/>
+                        <field name="stage_time_work" class="text-nowrap" string="Work Times"/>
+                        <separator string="All Hours" colspan="2"/>
+                        <field name="agreement_hour_total" class="text-nowrap" string="Hours Total" widget="float_time" readonly="1" force_save="1"/>
+                        <field name="stage_time_work_spent" class="text-nowrap" string="Hours Spent" widget="float_time"/>
+                        <field name="stage_time_work_left" class="text-nowrap" string="Hours Left" widget="float_time"/>
+                        <field name="stage_time_work_paused" class="text-nowrap" string="Hours Paused" widget="float_time"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="history" string="History">
+                        <field name="stage_log_ids" mode="list">
+                            <list decoration-muted="stage_type == '1'" decoration-it="stage_type == '2'">
+                                <field name="stage_id" options="{'no_create': True, 'no_open': True}" decoration-bf="1"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="time_all" sum="Elapsed Time (All Hours)" widget="float_time"/>
+                                <field name="time_work" sum="Elapsed Time (Work Hours)" widget="float_time"/>
+                                <field name="approval_state" widget="badge" decoration-success="approval_state == '0'" decoration-danger="approval_state == '1'" optional="hide"/>
+                                <field name="approval_date" optional="hide"/>
+                                <field name="approval_code" optional="hide"/>
+                                <field name="approval_desc" optional="hide"/>
+                                <field name="stage_type" invisible="1"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="stage_id" options="{'no_create': True, 'no_open': True}"/>
+                                            <field name="date_from"/>
+                                            <field name="date_to"/>
+                                            <separator string="Approval" colspan="2"/>
+                                            <field name="approval_state" widget="badge" decoration-success="approval_state == '0'" decoration-danger="approval_state == '1'"/>
+                                            <field name="approval_date"/>
+                                            <field name="approval_code"/>
+                                            <field name="approval_desc"/>
+                                        </group>
+                                        <group>
+                                            <separator string="User" colspan="2"/>
+                                            <field name="create_date"/>
+                                            <field name="create_uid" widget="many2one_avatar_user"/>
+                                            <separator string="Elapsed Time" colspan="2"/>
+                                            <field name="time_all" widget="float_time" string="All Hours"/>
+                                            <field name="time_work" widget="float_time" string="Work Hours"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+            <chatter/>
+        </form>
+    </field>
+    </record>
+
+    <record id="action_ticket" model="ir.actions.act_window">
+    <field name="name">Tickets</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">sla.ticket</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="context">{'create': False}</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            No tickets yet
+        </p>
+        <p>
+            Create tickets from agreements easily
+        </p>
+    </field>
+    </record>
+</odoo>

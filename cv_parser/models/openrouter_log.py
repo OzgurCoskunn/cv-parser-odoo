@@ -1,4 +1,8 @@
+import json
+import urllib.request
+
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 
 class OpenRouterLog(models.Model):
@@ -49,6 +53,37 @@ class OpenRouterLog(models.Model):
             rec.total_requests = total
             rec.total_cost = total_cost
             rec.avg_cost = avg
+
+    @api.model
+    def action_check_balance(self):
+        api_key = self.env['ir.config_parameter'].sudo().get_param('openrouter.api_key')
+        if not api_key:
+            raise UserError("OpenRouter API key bulunamadı. Sistem Parametreleri > 'openrouter.api_key'")
+
+        req = urllib.request.Request(
+            'https://openrouter.ai/api/v1/auth/key',
+            headers={'Authorization': 'Bearer ' + api_key},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode('utf-8')).get('data', {})
+        except Exception as e:
+            raise UserError("Bakiye sorgulanamadı: " + str(e))
+
+        limit = data.get('limit')
+        usage = data.get('usage', 0)
+        remaining = (limit - usage) if limit else None
+
+        lines = []
+        if limit:
+            lines.append("Toplam Limit: $%.4f" % limit)
+        lines.append("Kullanılan: $%.4f" % usage)
+        if remaining is not None:
+            lines.append("Kalan: $%.4f" % remaining)
+        if data.get('is_free_tier'):
+            lines.append("(Ücretsiz plan)")
+
+        raise UserError("OpenRouter Bakiye\n\n" + "\n".join(lines))
 
     @api.model
     def _create_log(self, res_model, res_id, res_name, llm_model,

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.InventoryAdjustments" t-inherit="barcode_wms.Components" t-inherit-mode="primary" owl="1">
+        <xpath expr="//div[@class='scanning-screen']" position="inside">
+            <div class="scanning-screen-bar flex-column flex-sm-row gap-2">
+                <div class="d-flex flex-fill align-items-center">
+                    <div t-on-click="onBack" class="back-button-left">
+                        <i class="fa fa-angle-left"/>
+                    </div>
+                    <div class="scanning-screen-title">
+                        <h2>Inventory Adjustment</h2>
+                    </div>
+                </div>
+                <div class="d-flex flex-fill align-items-center justify-content-center justify-content-sm-end">
+                    <div t-if="state.inventory" class="scanning-screen-bar-item">
+                        <button t-on-click="listInventory">
+                            <div class="location-warehouse-icon">
+                                <i class="fa fa-list mx-3"></i>
+                            </div>
+                            <div class="text-start">
+                                <div>
+                                    <h3 class="text-white">List</h3>
+                                </div>
+                                <div>
+                                    <h2 class="text-white">Inventory</h2>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div t-if="state.inventory" class="scanning-screen-bar-item">
+                        <SearchBar filter="(value) => this.filterMove(value)"/>
+                    </div>
+                    <div t-if="!state.inventory" class="scanning-screen-bar-item">
+                        <button t-on-click="createInventory">
+                            <div class="location-warehouse-icon">
+                                <i class="fa fa-plus mx-3"></i>
+                            </div>
+                            <div class="text-start">
+                                <div>
+                                    <h3 class="text-white">New</h3>
+                                </div>
+                                <div>
+                                    <h2 class="text-white">Inventory</h2>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div t-if="!state.inventory" class="scanning-screen-bar-item">
+                        <SelectDropdownLocation data="warehouses" selected="state.location.src" trigger="'select-location'"/>
+                    </div>
+                    <div t-if="state.inventory" class="scanning-screen-bar-item lg-up">
+                        <SelectDropdownSort key="state.sort" trigger="'select-sort'"/>
+                    </div>
+                    <div class="scanning-screen-bar-item lg-up">
+                        <div class="h-100">
+                            <Pagination current="pages.current" total="pages.total"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scanning-screen-subbar md-down">
+                <div class="align-items-center d-flex">
+                    <div t-if="state.inventory" class="scanning-screen-subbar-item">
+                        <SelectDropdownSort key="state.sort" trigger="'select-sort'"/>
+                    </div>
+                </div>
+                <div class="align-items-center d-flex">
+                    <div class="scanning-screen-subbar-item">
+                        <div class="h-100">
+                            <Pagination current="pages.current" total="pages.total"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scanning-screen-body">
+                <t t-if="state.inventory">
+                    <div class="scanning-screen-line w-100 h-100 overflow-auto">
+                        <StockMove moves="moves" move="state.move" line="state.line" page="pages.current" groups="state.groups" fields="getFields()" buttons="{ reset: true, check: true }"/>
+                    </div>
+                    <div class="w-100 bottom">
+                        <button class="confirm-button" t-on-click="() => this.openPopup('addMove')" t-att-disabled="state.location.src.length ? undefined : 'disabled'">Add Products</button>
+                        <button class="border-start confirm-button" t-on-click="() => this.openPopup('validate')" t-att-disabled="moves.length ? undefined : 'disabled'">Save</button>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="table-responsive h-100 overflow-auto flex-fill">
+                        <t t-if="inventories.length">
+                            <table class="table">
+                                <thead>
+                                    <tr class="font-size-20 font-weight-bold text-o-color-2">
+                                        <td>Name</td>
+                                        <td>Date</td>
+                                        <td>User</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="inventories" t-as="inventory" t-key="inventory.id">
+                                        <tr t-on-click="() => this.openInventory(inventory.id)" class="btn-secondary bg-white cursor-pointer">
+                                            <td>Inventory #<t t-esc="inventory.id"/></td>
+                                            <td><t t-esc="inventory.create_date"/></td>
+                                            <td><t t-esc="inventory.create_uid[1]"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-else="">
+                            <div class="align-content-center justify-content-center pb256 d-flex flex-wrap flex-row h-100">
+                                <div class="h1 text-muted">No ongoing inventory operations found</div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+    </t>
+ </templates>

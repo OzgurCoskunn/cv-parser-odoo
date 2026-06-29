@@ -1,0 +1,1755 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* barcode_wms
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20220811\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-07 10:19+0000\n"
+"PO-Revision-Date: 2023-11-07 13:51+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid ".cls-1{fill:#1d1d1b;}"
+msgstr ".cls-1{fill:#1d1d1b;}"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid ".cls-1{fill:#231f20;}"
+msgstr ".cls-1{fill:#231f20;}"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#, python-format
+msgid ".cls-1{fill:#eeeeee;}"
+msgstr ""
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropDown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdownLocation.xml:0
+#: code:addons/barcode_wms/static/src/js/basic_components/SelectDropDown.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid ".cls-1{fill:currentColor;}"
+msgstr ".cls-1{fill:currentColor;}"
+
+#. module: barcode_wms
+#: model_terms:ir.ui.view,arch_db:barcode_wms.form_inventory_wizard
+msgid ""
+"<i class=\"fa fa-3x fa-exclamation-triangle mb-5 text-danger\"/>\n"
+"                    <span class=\"text-center\">Are you sure to remove this "
+"inventory adjustment?</span>"
+msgstr ""
+"<i class=\"fa fa-3x fa-exclamation-triangle mb-5 text-danger\"/>\n"
+"                    <span class=\"text-center\">Bu envanter düzeltme "
+"işlemini silmek istediğinizden emin misiniz?</span>"
+
+#. module: barcode_wms
+#: model_terms:ir.ui.view,arch_db:barcode_wms.form_inventory_wizard
+msgid ""
+"<i class=\"fa fa-3x fa-exclamation-triangle mb-5 text-primary\"/>\n"
+"                    <span class=\"text-center\">Are you sure to validate "
+"this inventory adjustment?</span>"
+msgstr ""
+"<i class=\"fa fa-3x fa-exclamation-triangle mb-5 text-danger\"/>\n"
+"                    <span class=\"text-center\">Bu envanter düzeltme "
+"işlemini onaylamak istediğinizden emin misiniz?</span>"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/Components.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Add Location"
+msgstr "Konum ekle"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/StockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Add Products"
+msgstr "Ürünler Ekle"
+
+#. module: barcode_wms
+#: code:addons/barcode_wms/models/stock_barcode_inventory.py:0
+#, python-format
+msgid "Adjustment Removal"
+msgstr "Sayım Kaldırma"
+
+#. module: barcode_wms
+#: code:addons/barcode_wms/models/stock_barcode_inventory.py:0
+#, python-format
+msgid "Adjustment Validation"
+msgstr "Sayım Onaylama"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.js:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.js:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.js:0
+#, python-format
+msgid "An error occurred while saving the inventory."
+msgstr "Envanteri kaydederken bir hata meydana geldi."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/StockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Apply"
+msgstr "Uygula"
+
+#. module: barcode_wms
+#: model_terms:ir.ui.view,arch_db:barcode_wms.form_inventory_wizard
+msgid ""
+"Are you sure to remove related inventory adjustment lines? This action "
+"cannot be undone!"
+msgstr ""
+"İlgili envanter düzeltme satırlarını silmek istediğinizden emin misiniz? Bu "
+"işlem geri alınamaz!"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Back"
+msgstr "Geri"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#: model:ir.actions.client,name:barcode_wms.action_barcode
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__barcode
+#: model:ir.ui.menu,name:barcode_wms.barcode_menu_root
+#, python-format
+msgid "Barcode"
+msgstr "Barkod"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "Barcode Scanning"
+msgstr "Barkod Tarama"
+
+#. module: barcode_wms
+#: model:ir.ui.menu,name:barcode_wms.menu_inventory_line
+msgid "Batch Inventory Adjustments"
+msgstr "Envanter Düzeltme"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeCamera/BarcodeCamera.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeCamera/BarcodeCamera.xml:0
+#: code:addons/barcode_wms/static/src/js/barcode_camera/barcode_camera.xml:0
+#: model_terms:ir.ui.view,arch_db:barcode_wms.form_inventory_wizard
+#, python-format
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperations.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#, python-format
+msgid "Cancelled"
+msgstr "İptal Edildi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Category"
+msgstr "Kategori"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/Components.xml:0
+#: code:addons/barcode_wms/static/src/component/Controllers/inventoryLine.xml:0
+#: code:addons/barcode_wms/static/src/js/Controllers/inventoryLine.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/views/inventoryLine.xml:0
+#, python-format
+msgid "Close"
+msgstr "Kapat"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Confirm"
+msgstr "Onayla"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#, python-format
+msgid "Confirmed"
+msgstr "Onaylandı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Cost"
+msgstr "Maliyet"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeCamera/BarcodeCamera.js:0
+#: code:addons/barcode_wms/static/src/js/BarcodeCamera/BarcodeCamera.js:0
+#: code:addons/barcode_wms/static/src/js/barcode_camera/barcode_camera.js:0
+#, python-format
+msgid "Could not start scanning. "
+msgstr "Tarama başlatılamadı. "
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__create_uid
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__create_uid
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__create_date
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__create_date
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Customer Lead Time"
+msgstr "Müşteri Teslim Süresi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "Date"
+msgstr "Tarih"
+
+#. module: barcode_wms
+#: model:ir.model.fields,help:barcode_wms.field_stock_barcode_inventory_line__uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr "Tüm stok operasyonlarında kullanılan varsayılan ölçü birimi."
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_stock_picking
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropDownLocation.xml:0
+#: code:addons/barcode_wms/static/src/js/basic_components/SelectDropDownLocation.xml:0
+#, python-format
+msgid "Dest Location"
+msgstr "Hedef Konum"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdownLocation.xml:0
+#, python-format
+msgid "Destination Location"
+msgstr "Hedef Konum"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/Components.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Controllers/inventoryLine.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Controllers/inventoryLine.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/views/inventoryLine.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Discard"
+msgstr "Vazgeç"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__display_name
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__display_name
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__display_name
+msgid "Display Name"
+msgstr "Görünüm Adı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "Do you want to apply the inventory adjustment?"
+msgstr "Envanter düzeltmesini uygulamak istiyor musunuz?"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#, python-format
+msgid "Do you want to apply the stock adjustment?"
+msgstr "Envanter düzeltmesini uygulamak istiyor musunuz?"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#, python-format
+msgid "Do you want to change the operation type?"
+msgstr "İşlem türünü değiştirmek istiyor musunuz?"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#, python-format
+msgid "Do you want to change the operation type? This will erase the progress."
+msgstr ""
+"İşlem türünü değiştirmek istiyor musunuz? Bu işlem ilerlemeyi silecektir."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#, python-format
+msgid "Do you want to create the inventory transfer?"
+msgstr "Envanter transferini oluşturmak istiyor musunuz?"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Do you want to exit without saving"
+msgstr "Kaydetmeden çıkmak istiyor musunuz"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/Components.xml:0
+#, python-format
+msgid "Do you want to exit without saving?"
+msgstr "Kaydetmeden çıkmak istiyor musunuz?"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/Components.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Do you want to save the changes?"
+msgstr "Değişiklikleri kaydetmek istiyor musunuz?"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/models/stock_barcode_inventory.py:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperations.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__done
+#: model:ir.model.fields.selection,name:barcode_wms.selection__stock_barcode_inventory__state__done
+#: model:ir.model.fields.selection,name:barcode_wms.selection__stock_barcode_inventory_line__state__done
+#: model_terms:ir.ui.view,arch_db:barcode_wms.search_inventory_line
+#: model_terms:ir.ui.view,arch_db:barcode_wms.tree_inventory_line
+#, python-format
+msgid "Done"
+msgstr "Biten"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperations.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#, python-format
+msgid "Draft"
+msgstr "Taslak"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Expand All"
+msgstr "Tümünü Genişlet"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Forecast Quantity"
+msgstr "Tahmin Miktarı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropDownLocation.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdownLocation.xml:0
+#: code:addons/barcode_wms/static/src/js/basic_components/SelectDropDownLocation.xml:0
+#, python-format
+msgid "From"
+msgstr "Kimden"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "General UOM"
+msgstr "Ölçü Birimi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Go Back"
+msgstr "Geri Dön"
+
+#. module: barcode_wms
+#: model_terms:ir.ui.view,arch_db:barcode_wms.search_inventory_line
+msgid "Group By"
+msgstr "Grupla"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Hide No Stock Locations"
+msgstr "Stok Bulunmayan Konumları Gizle"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__id
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__id
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_warehouse__internal_location_ids
+msgid "Internal Location"
+msgstr "İç Konum"
+
+#. module: barcode_wms
+#: model:ir.model.fields,help:barcode_wms.field_stock_barcode_inventory_line__barcode
+msgid "International Article Number used for product identification."
+msgstr "Ürün tanımlarken kullanılan Uluslararası Madde Numarası."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__inventory_id
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__inventory_id
+#: model_terms:ir.ui.view,arch_db:barcode_wms.search_inventory_line
+#, python-format
+msgid "Inventory"
+msgstr "Stok"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "Inventory #"
+msgstr "Envanter #"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "Inventory Adjustment"
+msgstr "Envanter Düzeltme"
+
+#. module: barcode_wms
+#: model:ir.actions.act_window,name:barcode_wms.action_inventory_wizard
+msgid "Inventory Confirmation"
+msgstr "Envanter Onaylama"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.js:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.js:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.js:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: model:ir.actions.act_window,name:barcode_wms.action_inventory_line
+#, python-format
+msgid "Inventory Lines"
+msgstr "Envanter Satırları"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "LEAD TIME"
+msgstr "TESLİM SÜRESİ"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory____last_update
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line____last_update
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard____last_update
+msgid "Last Modified on"
+msgstr "Son Düzenleme"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__write_uid
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__write_uid
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__write_date
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__write_date
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__line_ids
+msgid "Lines"
+msgstr "Satırlar"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "List"
+msgstr "Liste"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__location_id
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__location_id
+#, python-format
+msgid "Location"
+msgstr "Konum"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Logistic"
+msgstr "Lojistik"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectSortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#, python-format
+msgid "Name"
+msgstr "İsim"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "New"
+msgstr "Yeni"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeCamera/BarcodeCamera.js:0
+#: code:addons/barcode_wms/static/src/js/BarcodeCamera/BarcodeCamera.js:0
+#: code:addons/barcode_wms/static/src/js/barcode_camera/barcode_camera.js:0
+#, python-format
+msgid "No device can be found."
+msgstr "Bir cihaz bulunamadı."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: model_terms:ir.actions.act_window,help:barcode_wms.action_inventory_line
+#, python-format
+msgid "No inventory lines found"
+msgstr "Envanter satırı bulunamadı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "No ongoing inventory operations found"
+msgstr "Devam eden envanter operasyonu bulunamadı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SearchBar.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SearchBar.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SearchBar.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "No results"
+msgstr "Sonuç yok"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeCamera/BarcodeCamera.js:0
+#: code:addons/barcode_wms/static/src/js/BarcodeCamera/BarcodeCamera.js:0
+#: code:addons/barcode_wms/static/src/js/barcode_camera/barcode_camera.js:0
+#, python-format
+msgid "Odoo needs your authorization first."
+msgstr "Odoo öncelikle yetkili olmanızı istiyor."
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__onhand
+msgid "On Hand"
+msgstr "Stokta"
+
+#. module: barcode_wms
+#: code:addons/barcode_wms/models/stock_barcode_inventory.py:0
+#: model:ir.model.fields.selection,name:barcode_wms.selection__stock_barcode_inventory__state__draft
+#: model:ir.model.fields.selection,name:barcode_wms.selection__stock_barcode_inventory_line__state__draft
+#: model_terms:ir.ui.view,arch_db:barcode_wms.search_inventory_line
+#, python-format
+msgid "Ongoing"
+msgstr "Süren"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_warehouse__user_ids
+msgid "Operation Users"
+msgstr "Operasyon Kullanıcıları"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#, python-format
+msgid "Operations"
+msgstr "Operasyonlar"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "PRICE"
+msgstr "FİYAT"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "PRICING SCHEME"
+msgstr "FİYAT ŞEMASI"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectSortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Part No"
+msgstr "Parça No"
+
+#. module: barcode_wms
+#: code:addons/barcode_wms/models/stock_picking.py:0
+#, python-format
+msgid "Please add 'Done' quantities to the picking to create a new pack."
+msgstr "Yeni bir paket oluşturmak için lütfen 'Biten' miktarları ekleyin."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.js:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.js:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.js:0
+#, python-format
+msgid "Please select a source location"
+msgstr "Lütfen bir kaynak konum seçin"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SearchBar.js:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SearchBar.js:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.js:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.js:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.js:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.js:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.js:0
+#, python-format
+msgid "Please, Scan again !"
+msgstr "Lütfen, tekrar tarayın !"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Pricing & Cost"
+msgstr "Fiyatlandırma ve Maliyet"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: model:ir.model,name:barcode_wms.model_product_product
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__product_id
+#, python-format
+msgid "Product"
+msgstr "Ürün"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "Product Information"
+msgstr "Ürün Bilgileri"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Product Type"
+msgstr "Ürün Tipi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#, python-format
+msgid "Products"
+msgstr "Ürünler"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Purchase UOM"
+msgstr "Alım Ölçü Birimi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Put in Pack"
+msgstr "Pakete Koy"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Qty"
+msgstr "Miktar"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectSortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__quantity
+#, python-format
+msgid "Quantity"
+msgstr "Miktar"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Quantity On Hand"
+msgstr "Eldeki Miktar"
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_stock_quant
+msgid "Quants"
+msgstr "Stoklar"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperations.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#, python-format
+msgid "Ready"
+msgstr "Hazır"
+
+#. module: barcode_wms
+#: model_terms:ir.ui.view,arch_db:barcode_wms.form_inventory_wizard
+#: model_terms:ir.ui.view,arch_db:barcode_wms.tree_inventory_line
+msgid "Remove"
+msgstr "Kaldır"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "SALES PRICE"
+msgstr "SATIŞ FİYATI"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Sale Price"
+msgstr "Satış Fiyatı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/ProductComponents/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/product_info_components/ProductDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Sales Description"
+msgstr "Satış Açıklaması"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "Save"
+msgstr "Kaydet"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "Scan a"
+msgstr "Tara"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "Scan an"
+msgstr "Tara"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Scan product or location"
+msgstr "Ürünü veya konumu tarayın"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectSortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#, python-format
+msgid "Scanned Order"
+msgstr "Taranmış Sipariş"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SearchBar.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SearchBar.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SearchBar.xml:0
+#, python-format
+msgid "Search The Product..."
+msgstr "Ürün Ara..."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Search The Product...."
+msgstr "Üründe Arama Yapın...."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#, python-format
+msgid "Search The Transfers by Name,Contact,Source Document...."
+msgstr "Transferleri İsim, Kişi, Kaynak Belgeye Göre Arayın...."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Search by Reference"
+msgstr "Referansa göre Ara"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperations.xml:0
+#, python-format
+msgid "Search pickings by Name, Contact, Source Document..."
+msgstr "Transferleri İsim, Kişi, Kaynak belgeye göre arayın..."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "Search..."
+msgstr "Ara..."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#, python-format
+msgid "Select the transfer"
+msgstr "Transferi seçin"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperations.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#, python-format
+msgid "Select the warehouse operation type"
+msgstr "Depo operasyon türünü seçin"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#, python-format
+msgid "Sequence"
+msgstr "Sıra"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#, python-format
+msgid "Serial/Lot Number"
+msgstr "Seri/Lot Numarası"
+
+#. module: barcode_wms
+#: model:res.groups,name:barcode_wms.group_product_price
+msgid "Show Full Product Price"
+msgstr "Tam Ürün Fiyatını Göster"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#, python-format
+msgid "Source"
+msgstr "Kaynak"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdownLocation.xml:0
+#, python-format
+msgid "Source Location"
+msgstr "Kaynak Konum"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropDownLocation.xml:0
+#: code:addons/barcode_wms/static/src/js/basic_components/SelectDropDownLocation.xml:0
+#, python-format
+msgid "Src Location"
+msgstr "Kaynak Konum"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory__state
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__state
+msgid "State"
+msgstr "Durumu"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/StockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#, python-format
+msgid "Stock Adjustment"
+msgstr "Stok Düzeltme"
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_stock_barcode_inventory_line
+msgid "Stock Barcode Inventory Adjustment Lines"
+msgstr "Stok Barkod Envanter Düzeltme Satırları"
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_stock_barcode_inventory_wizard
+msgid "Stock Barcode Inventory Adjustment Wizard"
+msgstr "Stok Barkod Envanter Düzeltme Sihirbazı"
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_stock_barcode_inventory
+msgid "Stock Barcode Inventory Adjustments"
+msgstr "Stok Barkod Envanter Düzeltmeleri"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Suppliers"
+msgstr "Tedarikçiler"
+
+#. module: barcode_wms
+#: model_terms:ir.actions.act_window,help:barcode_wms.action_inventory_line
+msgid ""
+"There is not any inventory lines related to according inventory adjustment."
+msgstr "İlgili envanter sayımı ile ilişkili bir envanter satırı bulunamadı."
+
+#. module: barcode_wms
+#: code:addons/barcode_wms/models/stock_barcode_inventory.py:0
+#, python-format
+msgid "This inventory operation has already been validated"
+msgstr "Bu envanter operasyonu zaten onaylanmış"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#, python-format
+msgid "This picking has been cancelled"
+msgstr "Bu teslimat emri iptal edildi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#, python-format
+msgid "This picking has been done"
+msgstr "Bu teslimat emri tamamlandı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "This picking is cancelled"
+msgstr "Bu toplama listesi iptal edildi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "This picking is done"
+msgstr "Bu toplama listesi tamamlandı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#, python-format
+msgid "This will erase the progress."
+msgstr "Bu süreci sıfırlayacaktır."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropDownLocation.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdownLocation.xml:0
+#: code:addons/barcode_wms/static/src/js/basic_components/SelectDropDownLocation.xml:0
+#, python-format
+msgid "To"
+msgstr "Kime"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "Transfer"
+msgstr "Aktarım"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#, python-format
+msgid "Transfers"
+msgstr "Transferler"
+
+#. module: barcode_wms
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_wizard__type
+msgid "Type"
+msgstr "Tür"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "UOM"
+msgstr "Ölçü Birimi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "Unit"
+msgstr "Birim"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: model:ir.model.fields,field_description:barcode_wms.field_stock_barcode_inventory_line__uom_id
+#, python-format
+msgid "Unit of Measure"
+msgstr "Ölçü Birimi"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/StockMove.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/EditPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/EditPopUpComponent.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Units"
+msgstr "Birim"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#, python-format
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "VENDOR"
+msgstr "TEDARİKÇİ"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/Components.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/StockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#: model_terms:ir.ui.view,arch_db:barcode_wms.form_inventory_wizard
+#, python-format
+msgid "Validate"
+msgstr "Doğrula"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Volume"
+msgstr "Hacim"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/component/WarehouseOperations/WarehouseOperations.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperationDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperationDisplay.xml:0
+#, python-format
+msgid "Waiting"
+msgstr "Bekleyen"
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_stock_warehouse
+msgid "Warehouse"
+msgstr "Depo"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "Warehouse Operations"
+msgstr "Depo Operasyonları"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectDropdown.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SelectSortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/SortBy.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "Weight"
+msgstr "Ağırlık"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/Components.xml:0
+#: code:addons/barcode_wms/static/src/component/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryAdjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryTransfer/InventoryTransfer.xml:0
+#: code:addons/barcode_wms/static/src/js/StockAdjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/WarehouseOperation.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_adjustments/InventoryAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/inventory_transfer_components/ScanningDisplay.xml:0
+#: code:addons/barcode_wms/static/src/js/stock_adjustments/stockAdjustments.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/WarehouseOperation.xml:0
+#, python-format
+msgid "Yes"
+msgstr "Evet"
+
+#. module: barcode_wms
+#: code:addons/barcode_wms/models/barcode_operation.py:0
+#: code:addons/barcode_wms/models/view.py:0
+#, python-format
+msgid ""
+"You need to activate storage locations to be able to do internal operation "
+"types."
+msgstr ""
+"Dahili işlem türlerini yapabilmek için depolama konumlarını etkinleştirmeniz "
+"gerekir."
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_barcode_operation
+msgid "barcode.operation"
+msgstr ""
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_barcode_stock_quant
+msgid "barcode.quant.operation"
+msgstr ""
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_barcode_transfer_operation
+msgid "barcode.transfer.operation"
+msgstr ""
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_barcode_warehouse_operation
+msgid "barcode.warehouse.operation"
+msgstr ""
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/component/Widgets/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/Components/WarehouseDetails.xml:0
+#: code:addons/barcode_wms/static/src/js/InventoryComponents/AddProductPopup.xml:0
+#: code:addons/barcode_wms/static/src/js/WarehouseOperations/AddProductsPopUp.xml:0
+#: code:addons/barcode_wms/static/src/js/warehouse_operations/AddProductsPopUp.xml:0
+#, python-format
+msgid "days"
+msgstr "gün"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "document"
+msgstr "belge"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "location"
+msgstr "konum"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "operation type"
+msgstr "operasyon Türü"
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "product"
+msgstr "ürün"
+
+#. module: barcode_wms
+#: model:ir.model,name:barcode_wms.model_stock_barcode_inventory_line_reload
+msgid "stock.barcode.inventory.line.reload"
+msgstr ""
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "to create a new transfer from this location."
+msgstr "bu konumdan yeni bir aktarım oluşturmak için."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "to create a new transfer."
+msgstr "yeni bir aktarım oluşturmak için."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "to open it."
+msgstr "açmak için."
+
+#. module: barcode_wms
+#. openerp-web
+#: code:addons/barcode_wms/static/src/component/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/BarcodeScreen/BarcodeScreen.xml:0
+#: code:addons/barcode_wms/static/src/js/main_screen/MainScreen.xml:0
+#, python-format
+msgid "to show its location and quantity."
+msgstr "yerini ve miktarını göstermek için."
+
+#~ msgid "stock.operation.data.prepare"
+#~ msgstr "stock.operation.data.prepare"
+
+#~ msgid "stock.quant.line.prepare"
+#~ msgstr "stock.quant.line.prepare"

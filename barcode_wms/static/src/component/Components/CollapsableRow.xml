@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.CollapsableRow" owl="1">
+        <div>
+            <div class="collapse-row" t-on-click="clickExpand">
+                <t t-if="(state.hideEmpty and props.warehouse.available_quantity > 0) or (!state.hideEmpty)">
+                    <div class="d-flex w-100 py-2 px-4">
+                        <div style="width: 55%;">
+                            <p><span t-esc="props.warehouse.name"/></p>
+                        </div>
+                        <div style="width: 20%;">
+                            <p><span t-esc="props.warehouse.available_quantity"/></p>
+                        </div>
+                        <div style="width: 20%;">
+                            <p><span t-esc="props.warehouse.forecasted_quantity"/></p>
+                        </div>
+                        <div style="width: 5%;">
+                            <t t-if="!state.visible">
+                                <i class="fa fa-arrow-down"/>
+                            </t>
+                            <t t-elif="state.visible">
+                                <i class="fa fa-arrow-up"/>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </div>
+            <t t-if="state.visible">
+                <t t-foreach="props.warehouse.child_locations" t-as="location" t-key="location.id">
+                    <div class="d-flex w-100 py-2 px-4 bg-dark-odoo">
+                        <div style="width: 55%;">
+                            <p class="pl-3"><span t-esc="location.location"/></p>
+                        </div>
+                        <div style="width: 20%;">
+                            <p><span t-esc="location.available_quantity"/></p>
+                        </div>
+                        <div style="width: 20%;">
+                            <p><span t-esc="location.forecasted_quantity"/></p>
+                        </div>
+                        <div style="width: 5%;"/>
+                    </div>
+                </t>
+            </t>
+        </div>
+    </t>
+</templates>
