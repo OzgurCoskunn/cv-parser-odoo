@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <menuitem id="menu_conf_api" name="APIs" parent="fsm.menu_conf" sequence="10"/>
-    <menuitem id="menu_conf_api_auth" name="Authorizations" parent="menu_conf_api" action="action_api_auth" sequence="0"/>
-    <menuitem id="menu_conf_api_spec" name="Specifications" parent="menu_conf_api" action="action_api_spec" sequence="1"/>
-    <menuitem id="menu_conf_api_proxy" name="Proxies" parent="menu_conf_api" action="action_api_proxy" sequence="2"/>
-    <menuitem id="menu_conf_api_log" name="Logs" parent="menu_conf_api" action="action_api_log" sequence="3"/>
-</odoo>

@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_barcode_inventory_user,access.barcode.inventory.user,model_stock_barcode_inventory,stock.group_stock_user,1,1,1,1
-access_barcode_inventory_line_user,access.barcode.inventory.line.user,model_stock_barcode_inventory_line,stock.group_stock_user,1,1,1,1
-access_barcode_inventory_wizard_user,access.barcode.inventory.wizard.user,model_stock_barcode_inventory_wizard,stock.group_stock_manager,1,1,1,1
