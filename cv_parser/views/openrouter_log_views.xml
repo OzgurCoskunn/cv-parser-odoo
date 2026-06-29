@@ -6,6 +6,9 @@
         <field name="model">openrouter.log</field>
         <field name="arch" type="xml">
             <list string="OpenRouter Kullanım Kayıtları" decoration-danger="status == 'error'">
+                <header>
+                    <button name="action_check_balance" type="object" string="Bakiye Kontrol Et" class="btn btn-secondary"/>
+                </header>
                 <field name="date"/>
                 <field name="res_name" string="Aday"/>
                 <field name="llm_model" string="Model"/>
