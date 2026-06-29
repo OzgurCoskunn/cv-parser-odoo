@@ -82,9 +82,9 @@
         <field name="name">OpenRouter Bakiye Kontrol</field>
         <field name="model_id" ref="cv_parser.model_openrouter_log"/>
         <field name="binding_model_id" ref="cv_parser.model_openrouter_log"/>
-        <field name="binding_view_types">list</field>
+        <field name="binding_view_types">list,form</field>
         <field name="state">code</field>
-        <field name="code">model.action_check_balance()</field>
+        <field name="code">env['openrouter.log'].action_check_balance()</field>
     </record>
 
     <record id="action_openrouter_log" model="ir.actions.act_window">
