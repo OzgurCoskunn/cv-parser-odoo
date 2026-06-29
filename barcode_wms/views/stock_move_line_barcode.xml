@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Stock Move Line Barcode Form View -->
+    <record id="stock_move_line_product_selector" model="ir.ui.view">
+        <field name="name">stock.move.line.product.selector</field>
+        <field name="model">stock.move.line</field>
+        <field name="arch" type="xml">
+            <form string="Select a Product" class="o_barcode_line_form flex-column" js_class="barcode_wms_sml_form">
+                <field name="id" invisible="1"/>
+                <field name="location_id" invisible="1"/>
+                <field name="company_id" force_save="1" invisible="1"/>
+                <field name="move_id" invisible="1"/>
+                <field name="picked" invisible="1"/>
+                <field name="picking_code" invisible="1"/>
+                <field name="picking_id" invisible="1"/>
+                <field name="picking_type_use_create_lots" invisible="1"/>
+                <field name="picking_type_use_existing_lots" invisible="1"/>
+                <field name="quantity" invisible="1"/>
+                <field name="quant_id" invisible="1"/>
+                <div name="product" class="row my-2">
+                    <div class="col d-flex align-items-baseline">
+                        <div class="flex-column lh-1">
+                            <div invisible="not product_reference_code">
+                                <i class="fa fs-4 fa-tags me-1" title="Product"/>
+                                <field name="product_reference_code"/>
+                            </div>
+                            <div class="fs-5">
+                                <field name="product_id" placeholder="Product" context="{'default_is_storable': True}" domain="[('type', '=', 'consu'), '|', ('company_id', '=', False), ('company_id', 'parent_of', company_id)]" required="1" readonly="state == 'done' or move_id" nolabel="1"/>
+                            </div>
+                            <div class="text-muted">
+                                <field name="formatted_product_barcode" invisible="not product_id"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3" invisible="not image_1920">
+                        <field name="image_1920" class="oe_avatar" widget="image_preview"/>
+                    </div>
+                </div>
+                <div name="quantity" class="row my-2">
+                    <div class="col">
+                        <field name="qty_done" force_save="1" class="text-end" options="{'type': 'number'}" placeholder="Quantity"/>
+                    </div>
+                    <div class="col-3 ps-0" groups="uom.group_uom">
+                        <field name="product_uom_id" options="{'no_open': True}" groups="uom.group_uom" widget="many2one_uom"/>
+                    </div>
+                </div>
+                <div name="digipad" class="row">
+                    <widget name="digipad" field_to_edit="qty_done" fulfilled_at="quantity" invisible="tracking == 'serial' and (not hide_lot_name or not hide_lot)"/>
+                </div>
+                <div name="location_src" class="row" groups="stock.group_stock_multi_locations" invisible="picking_code == 'incoming'">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-map-marker me-1"/>
+                        <label for="location_id" string="Source Location" class="p-0"/>
+                    </div>
+                    <field name="location_id" placeholder="Source Location" domain="[('id', 'child_of', parent_location_id)]" options="{'no_create': True, 'no_open': True}"/>
+                </div>
+                <div name="location_dest" class="row" groups="stock.group_stock_multi_locations" invisible="picking_code == 'outgoing'">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-map-marker me-1"/>
+                        <label for="location_dest_id" string="Destination Location" class="p-0"/>
+                    </div>
+                    <field name="location_dest_id" placeholder="Destination Location" domain="[('id', 'child_of', parent_location_dest_id)]" options="{'no_create': True, 'no_open': True}"/>
+                </div>
+                <div name="package" class="row" groups="stock.group_tracking_lot">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-archive me-1"/>
+                        <label for="package_id" string="Source Package" class="p-0"/>
+                    </div>
+                    <field name="package_id" placeholder="Source Package"/>
+                </div>
+                <div name="result_package" class="row" groups="stock.group_tracking_lot">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-archive me-1"/>
+                        <label for="result_package_id" string="Destination Package" class="p-0"/>
+                    </div>
+                    <field name="result_package_id" placeholder="Destination Package" context="{'picking_id': picking_id}"/>
+                </div>
+                <div name="outermost_package" class="row" groups="stock.group_tracking_lot">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-archive me-1"/>
+                        <label for="outermost_result_package_id" string="Destination Container Package" class="p-0"/>
+                    </div>
+                    <field name="outermost_result_package_id" placeholder="Destination Container Package"/>
+                </div>
+                <div name="owner" class="row" groups="stock.group_tracking_owner">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-user me-1"/>
+                        <label for="owner_id" string="Owner" class="p-0"/>
+                    </div>
+                    <field name="owner_id" placeholder="Owner"/>
+                </div>
+                <div name="tracking_number" class="row" groups="stock.group_production_lot" invisible="hide_lot_name and hide_lot">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-barcode me-1"/>
+                        <label for="lot_name" string="Serial/Lot Number" class="p-0" invisible="hide_lot_name"/>
+                        <label for="lot_id" string="Serial/Lot Number" class="p-0" invisible="hide_lot"/>
+                    </div>
+                    <field name="lot_name" force_save="1" placeholder="Serial/Lot Number" invisible="hide_lot_name"/>
+                    <field name="lot_id" force_save="1" placeholder="Serial/Lot Number" invisible="hide_lot" context="{'default_product_id': product_id, 'active_picking_id': picking_id}"/>
+                </div>
+                <div name="properties" class="row" groups="stock.group_production_lot" invisible="tracking == 'none' or not lot_id">
+                    <div class="text-black-50 mt-2 fs-5">
+                        <span class="fa fa-puzzle-piece me-1"/>
+                        <label for="lot_properties" string="Properties" class="p-0"/>
+                    </div>
+                    <field name="lot_properties" widget="properties" readonly="1"/>
+                </div>
+                <div class="row mb-5" invisible="not product_stock_quant_ids">
+                    <div class="col-12 d-flex mt-2 ms-0 justify-contents-center">
+                        <hr class="flex-grow-1"/>
+                        <div class="d-flex flex-column">
+                            <p class="fw-bold text-center text-black-25 m-0">
+                            Quantity in Stock
+                            </p>
+                            <p class="fw-bold text-center text-black-25 px-1" groups="stock.group_stock_multi_locations,stock.group_production_lot,stock.group_tracking_owner">
+                                Select where else to pick the product from
+                            </p>
+                        </div>
+                        <hr class="flex-grow-1"/>
+                    </div>
+                    <div class="col-12 mb-5 d-flex">
+                        <field name="product_stock_quant_ids" widget="barcode_wms_quant_one2many" mode="kanban" context="{                             'kanban_view_ref': 'barcode_wms.stock_quant_barcode_kanban_2',
+                        'list_view_ref': 'barcode_wms.view_stock_quant_tree'}"/>
+                    </div>
+                </div>
+                <div class="fixed-bottom">
+                    <div class="o_barcode_control d-flex justify-content-between p-2 gap-2">
+                        <button string="Discard" class="btn btn-secondary o_discard" special="cancel"/>
+                        <button string="Confirm" class="btn btn-primary o_save" special="save"/>
+                    </div>
+                    <widget name="barcode_wms_unlink_button" class="o_barcode_control d-flex px-2 pb-2" invisible="context.get('hide_unlink_button')"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</odoo>

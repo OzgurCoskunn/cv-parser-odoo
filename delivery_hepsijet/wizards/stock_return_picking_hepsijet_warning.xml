@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_stock_return_picking_hepsijet_warning" model="ir.ui.view">
+    <field name="model">stock.return.picking.hepsijet.warning</field>
+    <field name="arch" type="xml">
+        <form>
+            <p>The specified return date is not appropriate for initiating the return process. You can continue the process unless you prefer not to use HepsiJet as the provider.</p>
+
+            <footer>
+                <button name="action_back" string="Back" class="btn-secondary" type="object"/>
+                <button string="Close" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+    </record>
+</odoo>

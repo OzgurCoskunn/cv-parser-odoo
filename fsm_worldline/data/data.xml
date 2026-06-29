@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    	<record id="provider_worldline" model="fsm.api.proxy.provider">
+            <field name="name">Worldline</field>
+            <field name="code">worldline</field>
+            <field name="type">soap</field>
+            <field name="image" type="base64" file="fsm_worldline/static/src/img/logo.png"/>
+        </record>
+    </data>
+</odoo>

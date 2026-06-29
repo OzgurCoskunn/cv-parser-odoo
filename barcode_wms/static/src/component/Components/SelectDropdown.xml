@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.SelectDropdown" owl="1">
+        <div class="dropdown-lists" t-ref="root">
+            <div t-on-click="clickDropDown" class="dropdown-div align-items-center py-2 px-3"/>
+        </div>
+    </t>
+
+    <t t-name="barcode_wms.SelectDropdownOperation" owl="1">
+        <div class="dropdown-lists" t-ref="root">
+            <div t-on-click="clickDropDown" class="dropdown-div align-items-center py-2 px-3">
+                <div class="sm-up">
+                    <i class="fa fa-map-signs mx-2"/>
+                </div>
+                <div>
+                    <t t-if="props.selected.id">
+                        <h2 class="text-700 text-nowrap"><span t-esc="props.selected.warehouse_id[1]"/></h2>
+                        <h2 class="text-700 text-nowrap"><span t-esc="props.selected.name"/></h2>
+                    </t>
+                    <t t-else="">
+                        <h2 class="text-700 text-nowrap"><span t-esc="props.text"/></h2>
+                    </t>
+                </div>
+                <div class="d-flex"><i class="fa fa-chevron-down"/></div>
+            </div>
+            <t t-if="state.visible">
+                <div class="search-bar-list">
+                    <div>
+                        <input type="text" class="border rounded search-bar-input" placeholder="Search..." t-on-input="setQuery"/>
+                    </div>
+                    <div class="dropdown-product-select">
+                        <t t-foreach="state.operations" t-as="operation" t-key="operation.id">
+                            <div t-on-click="() => this.onClickDropdownList(operation)">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <i class="fa fa-map-signs mx-3"/>
+                                    </div>
+                                    <div class="text-start">
+                                        <p class="overflow-hidden m-0">
+                                            <span t-esc="operation.warehouse_id[1]"/>
+                                        </p>
+                                        <p class="text-start overflow-hidden m-0">
+                                            <span t-esc="operation.name"/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="barcode_wms.SelectDropdownLocation" owl="1">
+        <div class="dropdown-lists" t-ref="root">
+            <div t-on-click="clickDropDown" class="dropdown-div align-items-center py-2 px-3">
+                <div class="sm-up">
+                    <i class="fa fa-home"/>
+                </div>
+                <div class="mx-2">
+                    <div class="text-start">
+                        <span class="font-weight-bold text-700">Source</span>
+                    </div>
+                    <div>
+                        <h2 class="text-700">
+                            <span t-if="props.selected.length" t-esc="props.selected[1]"/>
+                            <span t-else="">Location</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="d-flex"><i class="fa fa-chevron-down"/></div>
+            </div>
+            <t t-if="state.visible">
+                <div class="search-bar-list">
+                    <div>
+                        <input type="text" class="border rounded search-bar-input" placeholder="Search..." t-on-input="setQuery"/>
+                    </div>
+                    <div t-foreach="state.warehouses" t-as="warehouse" t-key="warehouse[0]">
+                        <div class="bg-light-gray border-top h2 m-0 p-1 text-center text-o-color-2" t-esc="warehouse.warehouse[1]"/>
+                        <div t-foreach="warehouse.locations" t-as="location" t-key="location[0]" class="border-top cursor-pointer h6 m-0 p-2 text-800" t-on-click="() => this.onClickDropdownList(location)" t-esc="location[1]"/>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="barcode_wms.SelectDropdownLocationAdd" owl="1">
+        <div class="bg-white border dropdown-lists shadow-sm" t-on-click="clickDropDown" t-ref="root">
+            <div class="dropdown-div align-items-center py-2 px-3">
+                <div>
+                    <i class="fa fa-home mx-3"/>
+                </div>
+                <div class="text-start">
+                    <t t-if="props.selected.id">
+                        <h2 class="text-start"><span t-esc="props.selected.warehouse_id[1]"/></h2>
+                        <h2 class="text-start"><span t-esc="props.selected.display_name"/></h2>
+                    </t>
+                    <t t-else="">
+                        <h2><span t-esc="props.text"/></h2>
+                    </t>
+                </div>
+            </div>
+            <t t-if="state.visible">
+                <div class="search-bar-list">
+                    <table class="dropdown-product-select" >
+                        <t t-foreach="props.data" t-as="location" t-key="location.id">
+                            <tr t-on-click="() => this.onClickDropdownList(location)">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <i class="fa fa-2x fa-home mx-3"/>
+                                        </div>
+                                        <div class="text-start">
+                                            <p class="overflow-hidden m-0">
+                                                <span t-esc="location.warehouse_id[1]"/>
+                                            </p>
+                                            <p class="text-start overflow-hidden m-0">
+                                                <span t-esc="location.display_name"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="barcode_wms.SelectDropdownLocationSrc" owl="1">
+        <div class="dropdown-lists" t-ref="root" t-att-class="{'bg-primary': props.selected?.[2]}">
+            <div t-on-click="clickDropDown" class="dropdown-div align-items-center py-2 px-3">
+                <div class="sm-up">
+                    <i class="fa fa-home"/>
+                </div>
+                <div class="mx-2">
+                    <div class="text-start">
+                        <span class="font-weight-bold text-700">From</span>
+                    </div>
+                    <div>
+                        <h2 class="text-700">
+                            <span t-if="props.selected?.[0]" t-esc="props.selected[1]"/>
+                            <span t-elif="locations?.[0]?.[0]" class="">-</span>
+                            <span t-else="" class="">All</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="d-flex"><i class="fa fa-chevron-down"/></div>
+            </div>
+            <div t-if="state.visible and locations.length" class="dropdown-location-list">
+                <div>
+                    <input type="text" class="border rounded search-bar-input" placeholder="Search..." t-on-input="setQuery"/>
+                </div>
+                <ul>
+                    <t t-foreach="state.locations" t-as="location" t-key="location[0]">
+                        <li t-on-click="() => this.onClickDropdownList(location)" t-att-class="{'shadow-sm text-secondary': !location[0]}">
+                            <i class="fa fa-home"/>
+                            <span t-if="location[0]" class="text-start" t-esc="location[1]"/>
+                            <span t-else="" class="text-start">All Locations</span>
+                        </li>
+                    </t>
+                </ul>
+            </div>
+        </div>
+     </t>
+
+    <t t-name="barcode_wms.SelectDropdownLocationDest" owl="1">
+        <div class="dropdown-lists" t-ref="root" t-att-class="{'bg-primary': props.selected?.[2]}">
+            <div t-on-click="clickDropDown" class="dropdown-div align-items-center py-2 px-3">
+                <div class="sm-up">
+                    <i class="fa fa-home"/>
+                </div>
+                <div class="mx-2">
+                    <div class="text-start">
+                        <span class="font-weight-bold text-700">To</span>
+                    </div>
+                    <div>
+                        <h2 class="text-700">
+                            <span t-if="props.selected?.[0]" t-esc="props.selected[1]"/>
+                            <span t-elif="locations?.[0]?.[0]" class="">-</span>
+                            <span t-else="">All</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="d-flex"><i class="fa fa-chevron-down"/></div>
+            </div>
+            <div t-if="state.visible and locations.length" class="dropdown-location-list">
+                <div>
+                    <input type="text" class="border rounded search-bar-input" placeholder="Search..." t-on-input="setQuery"/>
+                </div>
+                <ul>
+                    <t t-foreach="state.locations" t-as="location" t-key="location[0]">
+                        <li t-on-click="() => this.onClickDropdownList(location)" t-att-class="{'shadow-sm text-secondary': !location[0]}">
+                            <i class="fa fa-home"/>
+                            <span t-if="location[0]" class="text-start" t-esc="location[1]"/>
+                            <span t-else="" class="text-start">All Locations</span>
+                        </li>
+                    </t>
+                </ul>
+            </div>
+        </div>
+     </t>
+
+     <t t-name="barcode_wms.SelectDropdownSort" owl="1">
+        <div class="sortby-list h-100" t-ref="root">
+            <div t-on-click="clickDropDown" class="dropdown-div align-items-center gap-2 h-100">
+                <div class="ml4 align-items-center d-flex">
+                    <i class="fa fa-sort"/>
+                </div>
+                <div>
+                    <h2 class="m-0 text-700 text-nowrap">
+                        <t t-if="props.key == 'sequence'">
+                            <t>Sequence</t>
+                        </t>
+                        <t t-elif="props.key == 'name'">
+                            <t>Name</t>
+                        </t>
+                        <t t-elif="props.key == 'reference'">
+                            <t>Part No</t>
+                        </t>
+                        <t t-elif="props.key == 'quantity'">
+                            <t>Quantity</t>
+                        </t>
+                        <t t-elif="props.key == 'weight'">
+                            <t>Weight</t>
+                        </t>
+                    </h2>
+                </div>
+            </div>
+            <div t-if="state.visible" class="dropdown-list">
+                <div>
+                    <div t-on-click="() => this.onClickDropdownList('sequence')" class="sort-by-list-item">
+                        <h2><i class="fa fa-sort-numeric-asc mx-2"/> Sequence</h2>
+                    </div>
+                    <div t-on-click="() => this.onClickDropdownList('name')" class="sort-by-list-item">
+                        <h2><i class="fa fa-sort-alpha-asc mx-2"/> Name</h2>
+                    </div>
+                    <div t-on-click="() => this.onClickDropdownList('quantity')" class="sort-by-list-item">
+                        <h2><i class="fa fa-sort-amount-asc mx-2"/> Quantity</h2>
+                    </div>
+                    <div t-on-click="() => this.onClickDropdownList('reference')" class="sort-by-list-item">
+                        <h2><i class="fa fa-list-ol mx-2"/> Part No</h2>
+                    </div>
+                    <div t-on-click="() => this.onClickDropdownList('weight')" class="sort-by-list-item">
+                        <h2><i class="fa fa-balance-scale mx-2"/> Weight</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

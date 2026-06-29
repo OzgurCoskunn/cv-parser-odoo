@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="form_task_create" model="ir.ui.view">
+    <field name="name">fsm.task.create.form</field>
+    <field name="model">fsm.task.create</field>
+    <field name="arch" type="xml">
+        <form string="Create Task">
+            <sheet>
+                <group>
+                    <group>
+                        <p class="h3 mx-5 text-600 text-center" colspan="2">
+                            Please specify which type will be used for this task.
+                        </p>
+                    </group>
+                    <group>
+                        <field name="type_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="type_ids" invisible="1"/>
+                        <field name="project_id" invisible="1"/>
+                        <field name="project_item_id" invisible="1"/>
+                    </group>
+                </group>
+            </sheet>
+            <footer>
+                <button name="confirm" type="object" class="btn-primary" string="Create"/>
+                <button name="cancel" special="cancel" class="btn-secondary" string="Cancel"/>
+            </footer>
+        </form>
+    </field>
+    </record>
+
+    <record id="action_task_create" model="ir.actions.act_window">
+    <field name="name">Create Task</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">fsm.task.create</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record>
+</odoo>

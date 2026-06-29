@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+delivery_tracking_user,delivery_tracking_user,model_delivery_tracking,base.group_user,1,0,0,0
+delivery_log_user,delivery_log_manager,model_delivery_log,base.group_user,1,0,0,0
+delivery_status_user,delivery_status_user,model_delivery_status,base.group_user,1,0,0,0
+delivery_status_mapping_user,delivery_status_mapping_user,model_delivery_status_mapping,base.group_user,1,0,0,0
+delivery_status_manager,delivery_status_manager,model_delivery_status,stock.group_stock_manager,1,1,1,1
+delivery_status_mapping_manager,delivery_status_mapping_manager,model_delivery_status_mapping,stock.group_stock_manager,1,1,1,1

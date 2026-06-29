@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Main FSM API Spec -->
+        <record id="fsm_api_spec_default" model="fsm.api.spec">
+            <field name="name">Default API Spec</field>
+            <field name="version">1.0</field>
+            <field name="collection" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+        <!-- Services -->
+        <record id="service_create_workorder" model="fsm.api.spec.service">
+            <field name="name">Create Workorder</field>
+            <field name="code">createWorkorder</field>
+            <field name="method">POST</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_workorder" model="fsm.api.spec.service">
+            <field name="name">Get Workorder</field>
+            <field name="code">getWorkorder</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_approve_workorder" model="fsm.api.spec.service">
+            <field name="name">Approve Workorder</field>
+            <field name="code">approveWorkorder</field>
+            <field name="method">POST</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_cancel_workorder" model="fsm.api.spec.service">
+            <field name="name">Cancel Workorder</field>
+            <field name="code">cancelWorkorder</field>
+            <field name="method">POST</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_inventory_city" model="fsm.api.spec.service">
+            <field name="name">Get Inventory City</field>
+            <field name="code">getInventoryCity</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_inventory_city_product" model="fsm.api.spec.service">
+            <field name="name">Get Inventory City Product</field>
+            <field name="code">getInventoryCityProduct</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_inventory_city_material" model="fsm.api.spec.service">
+            <field name="name">Get Inventory City Material</field>
+            <field name="code">getInventoryCityMaterial</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_create_sale_order" model="fsm.api.spec.service">
+            <field name="name">Create Sale Order</field>
+            <field name="code">createSaleOrder</field>
+            <field name="method">POST</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_approve_sale_order" model="fsm.api.spec.service">
+            <field name="name">Approve Sale Order</field>
+            <field name="code">approveSaleOrder</field>
+            <field name="method">POST</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_cancel_sale_order" model="fsm.api.spec.service">
+            <field name="name">Cancel Sale Order</field>
+            <field name="code">cancelSaleOrder</field>
+            <field name="method">POST</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_sale_order" model="fsm.api.spec.service">
+            <field name="name">Get Sale Order</field>
+            <field name="code">getSaleOrder</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_ordertype" model="fsm.api.spec.service">
+            <field name="name">Get Info Order Type</field>
+            <field name="code">getInfoOrdertype</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_project" model="fsm.api.spec.service">
+            <field name="name">Get Info Project</field>
+            <field name="code">getInfoProject</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_subpartner" model="fsm.api.spec.service">
+            <field name="name">Get Info Subpartner</field>
+            <field name="code">getInfoSubpartner</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_city" model="fsm.api.spec.service">
+            <field name="name">Get Info City</field>
+            <field name="code">getInfoCity</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_town" model="fsm.api.spec.service">
+            <field name="name">Get Info Town</field>
+            <field name="code">getInfoTown</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_district" model="fsm.api.spec.service">
+            <field name="name">Get Info District</field>
+            <field name="code">getInfoDistrict</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_zone" model="fsm.api.spec.service">
+            <field name="name">Get Info Zone</field>
+            <field name="code">getInfoZone</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_taxoffice" model="fsm.api.spec.service">
+            <field name="name">Get Info Tax Office</field>
+            <field name="code">getInfoTaxoffice</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+
+        <record id="service_get_info_statuscode" model="fsm.api.spec.service">
+            <field name="name">Get Info Status Code</field>
+            <field name="code">getInfoStatuscode</field>
+            <field name="method">GET</field>
+            <field name="spec_id" ref="fsm_api_spec_default"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_stock_lot" model="ir.ui.view">
+    <field name="model">stock.lot</field>
+    <field name="inherit_id" ref="stock.view_production_lot_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='description']" position="before">
+            <group string="Field Service" name="fsm">
+                <group>
+                    <group string="Tasks">
+                        <field name="fsm_task_ids" mode="list" nolabel="1" colspan="2">
+                            <list>
+                                <field name="name" decoration-bf="1"/>
+                                <field name="type_id" widget="badge"/>
+                                <field name="stage_id" widget="badge"/>
+                            </list>
+                        </field>
+                    </group>
+                    <group string="Owners">
+                        <field name="fsm_partner_id" options="{'no_create': True}" string="Owner"/>
+                        <field name="fsm_subpartner_id" options="{'no_create': True}" string="Subpartner"/>
+                        <field name="fsm_subpartner_ids" invisible="1"/>
+                    </group>
+                </group>
+                <group>
+                    <group string="Sale Orders">
+                        <field name="fsm_sale_order_ids" mode="list" nolabel="1" colspan="2">
+                            <list>
+                                <field name="name" decoration-bf="1"/>
+                                <field name="partner_id" options="{'no_create': True}"/>
+                                <field name="state" widget="badge" decoration-success="state == 'sale' or state == 'done'" decoration-info="state == 'draft' or state == 'sent'"/>
+                            </list>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </xpath>
+    </field>
+    </record>
+</odoo>

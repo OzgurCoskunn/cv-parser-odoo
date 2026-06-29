@@ -6,9 +6,6 @@
         <field name="model">openrouter.log</field>
         <field name="arch" type="xml">
             <list string="OpenRouter Kullanım Kayıtları" decoration-danger="status == 'error'">
-                <header>
-                    <button name="action_check_balance" type="object" string="Bakiye Kontrol Et" class="btn btn-secondary"/>
-                </header>
                 <field name="date"/>
                 <field name="res_name" string="Aday"/>
                 <field name="llm_model" string="Model"/>
@@ -79,6 +76,15 @@
                 <filter name="group_date" string="Aya Göre" context="{'group_by': 'date:month'}"/>
             </search>
         </field>
+    </record>
+
+    <record id="action_check_openrouter_balance" model="ir.actions.server">
+        <field name="name">OpenRouter Bakiye Kontrol</field>
+        <field name="model_id" ref="cv_parser.model_openrouter_log"/>
+        <field name="binding_model_id" ref="cv_parser.model_openrouter_log"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">model.action_check_balance()</field>
     </record>
 
     <record id="action_openrouter_log" model="ir.actions.act_window">

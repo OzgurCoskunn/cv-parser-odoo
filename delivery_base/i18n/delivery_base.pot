@@ -1,0 +1,238 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* delivery_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20240304\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-08 14:46+0000\n"
+"PO-Revision-Date: 2024-04-08 14:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_order_form
+msgid ""
+"<span class=\"o_stat_value\">View</span><span class=\"o_stat_text\">Tracking"
+" Details</span>"
+msgstr ""
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_picking_form
+msgid "Cargo State"
+msgstr ""
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_order_form
+msgid "Cargo Status"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__carrier_id
+msgid "Carrier"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_stock_picking__carrier_doc_id
+msgid "Carrier Document ID"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_stock_picking__carrier_state
+msgid "Carrier State"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__collected
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__collected
+msgid "Collected"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__on_delivery_courier
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__on_delivery_courier
+msgid "Courier On Delivery"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__customer_barcode
+msgid "Customer Barcode"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__date_promised
+msgid "Date Promised"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__delivered
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__delivered
+msgid "Delivered"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__location
+msgid "Delivery Location"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__delivery_status
+msgid "Delivery Status"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.actions.act_window,name:delivery_base.action_delivery_tracking
+#: model:ir.ui.menu,name:delivery_base.menu_delivery_tracking
+#: model_terms:ir.ui.view,arch_db:delivery_base.tree_delivery_tracking
+msgid "Delivery Tracking"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_delivery_tracking
+#: model:ir.model.fields,field_description:delivery_base.field_stock_picking__delivery_tracking_ids
+msgid "Delivery Tracking Status"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__delivery_type
+msgid "Delivery Type"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_stock_picking
+msgid "Description"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__id
+msgid "ID"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__name
+msgid "Name"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__delivery_status__cancel
+msgid "Not as Promised"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__on_delivery_branch
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__on_delivery_branch
+msgid "On Delivery Branch"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__delivery_on_promised
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__delivery_status__done
+msgid "On Promised"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__other
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__other
+msgid "Other"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__picking_id
+msgid "Picking"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__delivery_status__recall
+msgid "Recalled"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_stock_return_picking
+msgid "Return Picking"
+msgstr ""
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_stock_return_picking_form
+msgid "Return without carrier"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__sale_order_id
+msgid "Sale Order"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__state
+msgid "State"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__status
+msgid "Status"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction
+msgid "Transaction"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction_date
+msgid "Transaction Date"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction_datetime
+msgid "Transaction Datetime"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction_time
+msgid "Transaction Time"
+msgstr ""
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__transferring
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__transferring
+msgid "Transferring"
+msgstr ""

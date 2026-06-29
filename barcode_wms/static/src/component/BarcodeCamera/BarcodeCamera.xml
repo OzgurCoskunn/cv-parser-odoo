@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.BarcodeCameraDialog" owl="1">
+        <Dialog title="'Barcode Scanner'" onClosed="props.onClose" fullscreen="true" renderFooter="false" contentClass="'o-barcode-modal'">
+            <CropOverlay onResize.bind="this.onResize" isReady="state.isReady">
+                <video t-ref="videoPreview" muted="true" autoplay="true" playsinline="true" class="w-100 h-100"/>
+            </CropOverlay>
+            <div class="slider slider-red" data-style="red">
+                <output class="slider-tooltip"></output>
+                <input class="slider-range" type="range" min="1" max="3" step="0.1" value="1" t-on-input="onZoomChange"/>
+            </div>
+        </Dialog>
+    </t>
+</templates>

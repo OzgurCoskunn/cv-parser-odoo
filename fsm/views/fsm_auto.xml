@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_auto" model="ir.ui.view">
+    <field name="name">fsm.auto.list</field>
+    <field name="model">fsm.auto</field>
+    <field name="arch" type="xml">
+        <list string="Automations" decoration-muted="active == False" sample="1">
+            <field name="sequence" widget="handle"/>
+            <field name="trigger" decoration-bf="1"/>
+            <field name="action_ids" widget="many2many_tags"/>
+            <field name="description"/>
+            <field name="active" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="form_auto" model="ir.ui.view">
+    <field name="name">fsm.auto.form</field>
+    <field name="model">fsm.auto</field>
+    <field name="arch" type="xml">
+        <form string="Automation">
+            <sheet>
+                <group>
+                    <group>
+                        <field name="type_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="trigger" widget="radio"/>
+                        <field name="filter" widget="domain" options="{'model': 'model', 'in_dialog': True}"/>
+                        <field name="model" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="active" widget="boolean_toggle" invisible="1"/>
+                        <div class="o_fsm_auto_field_header bg-100 shadow-sm fw-bold p-2" colspan="2" invisible="trigger != 'field'">
+                            <div class="px-3">Field</div>
+                            <div class="px-1">Previous</div>
+                            <div class="px-1">Next</div>
+                        </div>
+                        <div class="o_fsm_auto_field_header bg-100 shadow-sm fw-bold p-2" colspan="2" invisible="trigger != 'picking'">
+                            <div class="px-3">Field</div>
+                            <div class="px-1">Value</div>
+                        </div>
+                        <field name="field_ids" mode="kanban" class="o_fsm_auto_field" nolabel="1" colspan="2" invisible="trigger != 'field'"/>
+                        <field name="todo_all" widget="boolean_toggle" invisible="trigger != 'todo'"/>
+                        <field name="todo_ids" mode="list" class="o_fsm_auto_todo" nolabel="1" colspan="2" invisible="(trigger != 'todo' or todo_all != False)" options="{'no_create': True, 'no_open': True}">
+                            <list create="0" edit="0">
+                                <field name="name" decoration-bf="1"/>
+                            </list>
+                            <form create="0" edit="0" class="o_fsm_auto_todo_dialog">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="name" readonly="1"/>
+                                        </group>
+                                        <group>
+                                            <field name="code" readonly="1"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                                <footer/>
+                            </form>
+                        </field>
+                        <field name="picking_ids" mode="kanban" class="o_fsm_auto_field" nolabel="1" colspan="2" invisible="trigger != 'picking'"/>
+                        <field name="activity_ids" mode="list" class="o_fsm_auto_activity" nolabel="1" colspan="2" invisible="trigger != 'activity'">
+                            <list editable="bottom">
+                                <field name="activity_id" decoration-bf="1" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="trigger"/>
+                            </list>
+                            <form class="o_fsm_auto_activity_dialog">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="activity_id" decoration-bf="1" options="{'no_create': True, 'no_open': True}"/>
+                                        </group>
+                                        <group>
+                                            <field name="trigger" widget="radio"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                                <footer/>
+                            </form>
+                        </field>
+                        <field name="cron_ids" mode="list" class="o_fsm_auto_cron" nolabel="1" colspan="2" invisible="trigger != 'cron'">
+                            <list editable="bottom">
+                                <field name="field_id" decoration-bf="1" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="time"/>
+                                <field name="range"/>
+                                <field name="expr" string=" "/>
+                            </list>
+                            <form class="o_fsm_auto_cron_dialog">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="field_id" decoration-bf="1" options="{'no_create': True, 'no_open': True}"/>
+                                        </group>
+                                        <group>
+                                            <label for="time"/>
+                                            <div>
+                                                <field name="time" class="oe_inline"/>
+                                                <field name="range" class="oe_inline"/>
+                                                <field name="expr" class="oe_inline"/>
+                                            </div>
+                                        </group>
+                                    </group>
+                                </sheet>
+                                <footer/>
+                            </form>
+                        </field>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="action" string="Actions">
+                        <field name="action_ids" mode="kanban"/>
+                    </page>
+                    <page name="desc" string="Description">
+                        <field name="description"/>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="tree_auto_field" model="ir.ui.view">
+    <field name="name">fsm.auto.field.list</field>
+    <field name="model">fsm.auto.field</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="field_id" options="{'no_create': True, 'no_open': True}"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="kanban_auto_field" model="ir.ui.view">
+    <field name="name">fsm.auto.field.kanban</field>
+    <field name="model">fsm.auto.field</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <field name="field_id"/>
+            <field name="field_type"/>
+            <field name="field_model"/>
+            <field name="value_prev"/>
+            <field name="value_next"/>
+            <templates>
+                <t t-name="card">
+                    <div class="oe_kanban_card oe_kanban_global_click overflow-hidden p-0">
+                        <div class="oe_kanban_content">
+                            <div class="o_kanban_record_top"/>
+                            <div class="o_kanban_record_body px-1">
+                                <div class="px-3 fw-bold">
+                                    <field name="field_name" class="text-700"/>
+                                </div>
+                                <div class="px-1">
+                                    <t t-if="record.field_type.raw_value === 'one2many'">
+                                        -
+                                    </t>
+                                    <t t-elif="record.field_type.raw_value === 'boolean'">
+                                        <i t-if="record.value_prev.value === '1'" class="fa fa-toggle-on"/>
+                                        <i t-else="" class="fa fa-toggle-off"/>
+                                    </t>
+                                    <t t-else="">
+                                        <field name="value_prev" class="text-600"/>
+                                    </t>
+                                </div>
+                                <div class="px-1">
+                                    <t t-if="record.field_type.raw_value === 'one2many'">
+                                        -
+                                    </t>
+                                    <t t-elif="record.field_type.raw_value === 'boolean'">
+                                        <i t-if="record.value_next.value === '1'" class="fa fa-toggle-on"/>
+                                        <i t-else="" class="fa fa-toggle-off text-600"/>
+                                    </t>
+                                    <t t-else="">
+                                        <field name="value_next" class="text-700"/>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom"/>
+                        </div>
+                        <div class="clearfix"/>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <record id="form_auto_field" model="ir.ui.view">
+    <field name="name">fsm.auto.field.form</field>
+    <field name="model">fsm.auto.field</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <field name="field_id" class="w-100 text-center text-600 border border-5 overflow-hidden rounded-3 h1" placeholder="Select a field..." options="{'no_create': True, 'no_open': True}"/>
+                <div class="text-center text-500 mt-n2">Field</div>
+                <group invisible="field_id == False">
+                    <group string="Previous Value" class="text-center text-600">
+                        <div colspan="2" class="position-relative">
+                            <div colspan="2" class="position-absolute" style="top: -40px; right: 10px;">
+                                <em class="mr16">Any</em>
+                                <field name="value_prev_any" widget="boolean_toggle" nolabel="1" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <field name="value_prev_many2one" nolabel="1" colspan="2" options="{'no_create': True, 'no_open': True, 'model_field': 'field_model_id', 'hide_model': True}" invisible="field_type != 'many2one'" readonly="value_prev_any == True" force_save="1"/>
+                        <field name="value_prev_char" nolabel="1" colspan="2" invisible="field_type != 'char'" readonly="value_prev_any == True" force_save="1"/>
+                        <field name="value_prev_text" nolabel="1" colspan="2" invisible="field_type != 'text'" readonly="value_prev_any == True" force_save="1"/>
+                        <field name="value_prev_integer" nolabel="1" colspan="2" invisible="field_type != 'integer'" readonly="value_prev_any == True" force_save="1"/>
+                        <field name="value_prev_boolean" class="d-flex justify-content-center" nolabel="1" colspan="2" widget="boolean_toggle" invisible="field_type != 'boolean'" readonly="value_prev_any == True" force_save="1"/>
+                    </group>
+                    <group string="Next Value" class="text-center text-600">
+                        <div colspan="2" class="position-relative">
+                            <div colspan="2" class="position-absolute" style="top: -40px; right: 10px;">
+                                <em class="mr16">Any</em>
+                                <field name="value_next_any" widget="boolean_toggle" nolabel="1" class="oe_inline"/>
+                            </div>
+                        </div>
+                        <field name="value_next_many2one" nolabel="1" colspan="2" options="{'no_create': True, 'no_open': True, 'model_field': 'field_model_id', 'hide_model': True}" invisible="field_type != 'many2one'" readonly="value_next_any == True" force_save="1"/>
+                        <field name="value_next_char" nolabel="1" colspan="2" invisible="field_type != 'char'" readonly="value_next_any == True" force_save="1"/>
+                        <field name="value_next_text" nolabel="1" colspan="2" invisible="field_type != 'text'" readonly="value_next_any == True" force_save="1"/>
+                        <field name="value_next_integer" nolabel="1" colspan="2" invisible="field_type != 'integer'" readonly="value_next_any == True" force_save="1"/>
+                        <field name="value_next_boolean" class="d-flex justify-content-center" nolabel="1" colspan="2" widget="boolean_toggle" invisible="field_type != 'boolean'" readonly="value_next_any == True" force_save="1"/>
+                    </group>
+                    <field name="value_next" invisible="1"/>
+                    <field name="value_next_raw" invisible="1"/>
+                    <field name="value_prev" invisible="1"/>
+                    <field name="value_prev_raw" invisible="1"/>
+                    <field name="field_name" invisible="1"/>
+                    <field name="field_type" invisible="1"/>
+                    <field name="field_model" invisible="1"/>
+                    <field name="field_model_id" invisible="1"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="tree_auto_picking" model="ir.ui.view">
+    <field name="name">fsm.auto.picking.list</field>
+    <field name="model">fsm.auto.picking</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="field_id" options="{'no_create': True, 'no_open': True}"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="kanban_auto_picking" model="ir.ui.view">
+    <field name="name">fsm.auto.picking.kanban</field>
+    <field name="model">fsm.auto.picking</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <field name="field_id"/>
+            <field name="field_type"/>
+            <field name="field_model"/>
+            <field name="value"/>
+            <templates>
+                <t t-name="card">
+                    <div class="oe_kanban_card oe_kanban_global_click overflow-hidden p-0">
+                        <div class="oe_kanban_content">
+                            <div class="o_kanban_record_top"/>
+                            <div class="o_kanban_record_body px-1">
+                                <div class="px-3 fw-bold">
+                                    <field name="field_name" class="text-700"/>
+                                </div>
+                                <div class="px-1">
+                                    <field name="value" class="text-600"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom"/>
+                        </div>
+                        <div class="clearfix"/>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <record id="form_auto_picking" model="ir.ui.view">
+    <field name="name">fsm.auto.picking.form</field>
+    <field name="model">fsm.auto.picking</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <field name="field_id" class="w-100 text-center text-600 border border-5 overflow-hidden rounded-3 h1" placeholder="Select a field..." options="{'no_create': True, 'no_open': True}"/>
+                <div class="text-center text-500 mt-n2">Field</div>
+                <group invisible="field_id == False">
+                    <group string="Value" class="text-center text-600" colspan="2">
+                        <field name="value_selection_id" class="d-flex justify-content-center" nolabel="1" colspan="2" widget="radio" options="{'horizontal': True}" invisible="field_type != 'selection'" required="field_type == 'selection'"/>
+                    </group>
+                    <field name="value" invisible="1"/>
+                    <field name="value_raw" invisible="1"/>
+                    <field name="field_name" invisible="1"/>
+                    <field name="field_type" invisible="1"/>
+                    <field name="field_model" invisible="1"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="tree_auto_action" model="ir.ui.view">
+    <field name="name">fsm.auto.action.list</field>
+    <field name="model">fsm.auto.action</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="type"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="kanban_auto_action" model="ir.ui.view">
+    <field name="name">fsm.auto.action.kanban</field>
+    <field name="model">fsm.auto.action</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <field name="name"/>
+            <field name="type"/>
+            <field name="code"/>
+            <field name="stage_id"/>
+            <field name="stage_type"/>
+            <field name="action_id"/>
+            <field name="display_name"/>
+            <field name="picking_location_id"/>
+            <field name="picking_location_dest_id"/>
+            <field name="sequence" widget="handle"/>
+            <templates>
+                <t t-name="card">
+                    <div class="oe_kanban_card oe_kanban_global_click overflow-hidden p-0 rounded-2">
+                        <div class="oe_kanban_content">
+                            <div class="o_kanban_record_top bg-100 border-4 border-primary border-start mx-4 my-3 p-2 rounded-2 shadow-sm text-center">
+                                <div class="o_kanban_record_headings">
+                                    <div class="o_kanban_record_title d-flex flex-column">
+                                        <field name="type" class="h3 text-700"/>
+                                        <span class="mt-n2 small text-500">Type</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_body px-4 text-truncate">
+                                <t t-if="record.type?.raw_value === 'code'">
+                                    <code t-esc="record.code.raw_value and record.code.raw_value.split('\n', 1)[0] or '# No Code'"/>
+                                </t>
+                                <t t-elif="record.type?.raw_value === 'email'">
+                                    <field name="mail_template_id"/>
+                                </t>
+                                <t t-elif="record.type?.raw_value === 'sms'">
+                                    <field name="sms_template_id"/>
+                                </t>
+                                <t t-elif="record.type?.raw_value === 'activity'">
+                                    <div class="h5 d-block text-600 text-center">
+                                        <i class="fa fa-history mx-3"/>
+                                        <field name="activity_type_id"/>
+                                    </div>
+                                </t>
+                                <t t-elif="record.type?.raw_value === 'stage'">
+                                    <div class="h5 d-block text-600 text-center">
+                                        <i t-if="record.stage_type?.raw_value === '2'" class="fa fa-flag-checkered mx-3"/>
+                                        <i t-else="" class="fa fa-flag mx-3"/>
+                                        <span t-esc="record.stage_id?.value"/>
+                                    </div>
+                                </t>
+                                <t t-elif="record.type?.raw_value === 'picking'">
+                                    <div class="h5 d-block text-600 text-center">
+                                        <span t-esc="record.picking_location_id?.value or ''"/>
+                                        <i class="fa fa-truck fa-flip-horizontal mx-3"/>
+                                        <span t-esc="record.picking_location_dest_id?.value or ''"/>
+                                    </div>
+                                </t>
+                                <t t-elif="record.type?.raw_value === 'action'">
+                                    <div class="h5 d-block text-600 text-center">
+                                        <t t-if="record.action_id?.raw_value?.resModel === 'ir.actions.report'">
+                                            <span>Report</span>
+                                            <i class="fa fa-file-text mx-3"/>
+                                            <span t-esc="record.action_id?.value"/>
+                                        </t>
+                                        <t t-elif="record.action_id?.raw_value?.resModel === 'ir.actions.server'">
+                                            <span>Server</span>
+                                            <i class="fa fa-server mx-3"/>
+                                            <span t-esc="record.action_id?.value"/>
+                                        </t>
+                                        <t t-elif="record.action_id?.raw_value?.resModel === 'ir.actions.client'">
+                                            <span>Client</span>
+                                            <i class="fa fa-user mx-3"/>
+                                            <span t-esc="record.action_id?.value"/>
+                                        </t>
+                                        <t t-elif="record.action_id?.raw_value?.resModel === 'ir.actions.act_url'">
+                                            <span>Address</span>
+                                            <i class="fa fa-code mx-3"/>
+                                            <span t-esc="record.action_id?.value"/>
+                                        </t>
+                                        <t t-elif="record.action_id?.raw_value?.resModel === 'ir.actions.act_window'">
+                                            <span>Window</span>
+                                            <i class="fa fa-window-restore mx-3"/>
+                                            <span t-esc="record.action_id?.value"/>
+                                        </t>
+                                    </div>
+                                </t>
+                            </div>
+                            <div class="o_kanban_record_bottom"/>
+                        </div>
+                        <div class="clearfix"/>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <record id="form_auto_action" model="ir.ui.view">
+    <field name="name">fsm.auto.action.form</field>
+    <field name="model">fsm.auto.action</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <group>
+                        <field name="type"/>
+                        <field name="name" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="mail_template_id" string="Template" options="{'no_create': True, 'no_open': True}" invisible="type != 'email'" required="type == 'email'"/>
+                        <field name="sms_template_id" string="Template" options="{'no_create': True, 'no_open': True}" invisible="type != 'sms'" required="type == 'sms'"/>
+                        <field name="activity_type_id" string="Type" options="{'no_create': True, 'no_open': True}" invisible="type != 'activity'" required="type == 'activity'"/>
+                        <field name="activity_summary" string="Summary" placeholder="e.g. Discuss proposal" invisible="type != 'activity'"/>
+                        <field name="stage_id" string="Stage" options="{'no_create': True, 'no_open': True}" required="type == 'stage'" invisible="1"/>
+                        <field name="flow_stage_id" string="Stage" options="{'no_create': True, 'no_open': True}" invisible="type != 'stage'" required="type == 'stage'"/>
+                        <field name="flow_stage_ids" invisible="1"/>
+                        <field name="reason_id" string="Reason" options="{'no_create': True, 'no_open': True}" invisible="type != 'stage'" required="(stage_type == '2' and stage_success == False)"/>
+                        <field name="reason_desc" invisible="1"/>
+                        <field name="stage_success" string="Success" widget="boolean_toggle" invisible="(type != 'stage' or stage_type != '2')"/>
+                        <label for="stage_appointment_date_period" string="Date" invisible="(type != 'stage' or stage_code != 'RANDEVU')"/>
+                        <div invisible="(type != 'stage' or stage_code != 'RANDEVU')">
+                            <field name="stage_appointment_date_value" nolabel="1" class="oe_inline" required="(type == 'stage' and stage_code == 'RANDEVU')"/>
+                            <field name="stage_appointment_date_period" nolabel="1" class="oe_inline" required="(type == 'stage' and stage_code == 'RANDEVU')"/>
+                            <span class="ml8">later</span>
+                        </div>
+                        <field name="stage_type" invisible="1"/>
+                        <field name="stage_code" invisible="1"/>
+                        <field name="picking_type_id" string="Type" options="{'no_create': True, 'no_open': True}" invisible="type != 'picking'" required="type == 'picking'"/>
+                        <field name="picking_location_id" string="Location" options="{'no_create': True, 'no_open': True}" invisible="type != 'picking'"/>
+                        <field name="picking_location_dest_id" string="Destination" options="{'no_create': True, 'no_open': True}" invisible="type != 'picking'"/>
+                        <field name="picking_done" string="Mark as Done" widget="boolean_toggle" invisible="type != 'picking'"/>
+                        <field name="picking_type_company_id" invisible="1"/>
+                        <field name="action_id" string="Action" invisible="type != 'action'" required="type == 'action'" context="{'model': 'fsm.task'}"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="code" string="Code" invisible="type != 'code'">
+                        <field name="code" widget="ace" options="{'mode': 'python'}" placeholder="Enter python code here. You can take a look at Help tab for available expressions."/>
+                    </page>
+                    <page name="help" string="Help" invisible="type != 'code'">
+                        <div style="margin-top: 4px;">
+                            <h3>Help with Python expressions</h3>
+                            <p>Various fields may use Python code or Python expressions. The following variables can be used:</p>
+                            <ul>
+                                <li><code>task</code>: task on which the action is triggered</li>
+                                <li><code>time</code>, <code>datetime</code>, <code>dateutil</code>, <code>timezone</code>: useful Python libraries</li>
+                                <li><code>UserError</code>: Warning Exception to use with <code>raise</code></li>
+                                <li><code>Command</code>: x2Many commands namespace</li>
+                                <li>To return an action, assign: <code>action = {...}</code></li>
+                            </ul>
+                        </div>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="action_auto" model="ir.actions.act_window">
+    <field name="name">Automations</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">fsm.auto</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{'active_test': False}</field>
+    <field name="domain">[('project_id', '=', False)]</field>
+    </record>
+</odoo>

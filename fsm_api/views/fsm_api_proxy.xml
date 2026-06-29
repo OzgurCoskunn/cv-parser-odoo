@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_api_proxy" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.list</field>
+    <field name="model">fsm.api.proxy</field>
+    <field name="arch" type="xml">
+        <list decoration-muted="active == False" sample="1">
+            <field name="sequence" widget="handle"/>
+            <field name="name" decoration-bf="1"/>
+            <field name="provider_id"/>
+            <field name="type"/>
+            <field name="active" widget="boolean_toggle"/>
+            <field name="company_id" groups="base.group_multi_company"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="form_api_proxy" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.form</field>
+    <field name="model">fsm.api.proxy</field>
+    <field name="arch" type="xml">
+        <form class="o_form_api_proxy">
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_toggle_active" type="object" class="oe_stat_button text-primary" icon="fa-toggle-on" invisible="active == False" title="Click to make proxy inactive">
+                        <span class="font-weight-bold text-700">Active</span>
+                    </button>
+                    <button name="action_toggle_active" type="object" class="oe_stat_button text-muted" icon="fa-toggle-off" invisible="active != False" title="Click to make proxy active">
+                        <span class="font-weight-bold">Passive</span>
+                    </button>
+                </div>
+                <field name="image" widget="image" class="oe_avatar shadow-sm" invisible="image == False"/>
+                <div class="oe_title text-muted mb-3">
+                    <label for="name"/>
+                    <h1><field name="name" placeholder="Proxy Name..."/></h1>
+                    <h3 class="mt-n3 text-muted"><field name="provider_id" class="oe_inline" placeholder="Proxy Provider..." options="{'no_create': True, 'no_open': True}"/></h3>
+                    <!--<h3 class="mt-n3 text-muted"><field name="code" class="oe_inline" placeholder="Proxy Code..."/></h3>-->
+                </div>
+                <group>
+                    <group>
+                        <field name="partner_id" options="{'no_create': True, 'no_open': True}" domain="[('company_id', 'in', (False, company_id))]"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+                    <group class="o_config_proxy">
+                        <field name="auth_type" widget="radio"/>
+                    </group>
+                    <group invisible="1">
+                        <field name="type"/>
+                        <field name="code"/>
+                        <field name="type_ok"/>
+                        <field name="bank_ok"/>
+                        <field name="city_ok"/>
+                        <field name="town_ok"/>
+                        <field name="status_ok"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page name="services" string="Services">
+                        <field name="service_ids" context="{'default_company_id': company_id}"/>
+                    </page>
+                    <page name="models" string="Models">
+                        <field name="model_ids" context="{'default_parent_id': id}">
+                            <list>
+                                <field name="sequence" widget="handle"/>
+                                <field name="name" decoration-bf="1"/>
+                                <field name="model_type" widget="badge" string="Type"/>
+                                <field name="description" optional="hide"/>
+                                <field name="example" optional="hide"/>
+                                <field name="parent_id" invisible="1"/>
+                                <field name="required" invisible="1"/>
+                                <field name="type" invisible="1"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <div class="oe_title text-muted mb-3">
+                                        <label for="name"/>
+                                        <h1><field name="name" placeholder="Name..."/></h1>
+                                    </div>
+                                    <group>
+                                        <group>
+                                            <separator string="Options"/>
+                                            <field name="model_type" widget="radio" required="1" string="Type"/>
+                                            <field name="parent_id" invisible="1"/>
+                                            <field name="model_id" invisible="1"/>
+                                            <field name="required" invisible="1"/>
+                                            <field name="sequence" invisible="1"/>
+                                            <field name="type" invisible="1"/>
+                                        </group>
+                                        <group>
+                                            <separator string="Description"/>
+                                            <field name="description" nolabel="1" colspan="2" placeholder="Description..."/>
+                                            <separator string="Example"/>
+                                            <field name="example" nolabel="1" colspan="2" placeholder="Example..."/>
+                                        </group>
+                                    </group>
+                                    <notebook>
+                                        <page string="Fields" invisible="type not in ('list', 'dict')">
+                                            <field name="field_ids" nolabel="1" colspan="2" invisible="model_id == False"/>
+                                            <field name="model_field_ids" nolabel="1" colspan="2" invisible="model_id != False"/>
+                                        </page>
+                                    </notebook>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                    <page name="mappings" string="Mappings">
+                        <notebook>
+                            <page name="types" string="Types" invisible="type_ok == False">
+                                <field name="type_ids" context="{'default_company_id': company_id}"/>
+                            </page>
+                            <page name="banks" string="Banks" invisible="bank_ok == False">
+                                <field name="bank_ids" context="{'default_company_id': company_id}"/>
+                            </page>
+                            <page name="statutes" string="Statuses" invisible="status_ok == False">
+                                <field name="status_ids" context="{'default_company_id': company_id}"/>
+                            </page>
+                            <page name="cities" string="Cities" invisible="city_ok == False">
+                                <field name="city_ids" context="{'default_company_id': company_id}"/>
+                            </page>
+                            <page name="towns" string="Towns" invisible="town_ok == False">
+                                <field name="town_ids" context="{'default_company_id': company_id}"/>
+                            </page>
+                        </notebook>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_service" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.list</field>
+    <field name="model">fsm.api.proxy.service</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="service_id" options="{'no_create': True, 'no_open': True}" decoration-bf="1"/>
+            <field name="name" invisible="1"/>
+            <field name="proxy_type" invisible="1"/>
+            <field name="company_id" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="form_api_proxy_service" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.form</field>
+    <field name="model">fsm.api.proxy.service</field>
+    <field name="arch" type="xml">
+        <form class="o_form_api_proxy">
+            <sheet>
+                <group>
+                    <group>
+                        <field name="name" invisible="1"/>
+                        <field name="partner_id" invisible="1"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="proxy_type" invisible="1"/>
+                    </group>
+                    <group class="o_config_proxy">
+                        <div class="o_td_label">
+                            <div class="o_config_type o_config_method">Method</div>
+                        </div>
+                        <div class="o_row">
+                            <field name="service_id" options="{'no_create': True, 'no_open': True}" nolabel="1" placeholder="Please select a service..."/>
+                        </div>
+                        <div class="o_td_label bg-100 text-primary">
+                            <div>SOAP Method</div>
+                        </div>
+                        <div class="o_row">
+                            <field name="soap_ref" placeholder="No SOAP method specified" invisible="service_id == False or proxy_type != 'soap'"/>
+                        </div>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Request">
+                        <field name="input_ids" nolabel="1" colspan="2"/>
+                        <notebook>
+                            <page string="Code">
+                                <field name="code" nolabel="1" colspan="2" widget="ace" options="{'mode': 'python'}"/>
+                            </page>
+                        </notebook>
+                    </page>
+                    <page string="Response">
+                        <field name="response_ids" nolabel="1" colspan="2"/>
+                        <notebook>
+                            <page string="Schema">
+                                <field name="output_ids" nolabel="1" colspan="2"/>
+                            </page>
+                        </notebook>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_service_io" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.io.list</field>
+    <field name="model">fsm.api.proxy.service.io</field>
+    <field name="arch" type="xml">
+        <list limit="20">
+            <field name="sequence" widget="handle"/>
+            <field name="name" decoration-bf="1"/>
+            <field name="type" widget="badge"/>
+            <field name="required" optional="show"/>
+            <field name="description" optional="show"/>
+            <field name="example" optional="hide"/>
+            <field name="parent_id" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_service_input" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.input.list</field>
+    <field name="model">fsm.api.proxy.service.input</field>
+    <field name="inherit_id" ref="tree_api_proxy_service_io"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <xpath expr="." position="attributes"/>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_service_output" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.output.list</field>
+    <field name="model">fsm.api.proxy.service.output</field>
+    <field name="inherit_id" ref="tree_api_proxy_service_io"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <xpath expr="." position="attributes"/>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_service_model" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.model.list</field>
+    <field name="model">fsm.api.proxy.service.model</field>
+    <field name="inherit_id" ref="tree_api_proxy_service_io"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <xpath expr="." position="attributes"/>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_service_response" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.response.list</field>
+    <field name="model">fsm.api.proxy.service.response</field>
+    <field name="arch" type="xml">
+        <list>
+            <field name="type" widget="badge" decoration-success="badge == '2'" decoration-warning="badge == '4'" decoration-info="badge == '1'" decoration-primary="badge == '3'" decoration-danger="badge == '5'" decoration-muted="badge == False"/>
+            <field name="name" decoration-bf="1"/>
+            <field name="badge" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="form_api_proxy_service_io" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.input.form</field>
+    <field name="model">fsm.api.proxy.service.input</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <div class="oe_title text-muted mb-3">
+                    <label for="name"/>
+                    <h1><field name="name" placeholder="Name..."/></h1>
+                </div>
+                <group>
+                    <group>
+                        <separator string="Options"/>
+                        <field name="type" placeholder="notype"/>
+                        <field name="model_id" placeholder="No model selected" options="{'no_create': True, 'no_open': True}" invisible="type not in ('list', 'dict')"/>
+                        <field name="required" widget="boolean_toggle"/>
+                        <field name="parent_id" invisible="1"/>
+                        <field name="sequence" invisible="1"/>
+                    </group>
+                    <group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1" colspan="2" placeholder="Description..."/>
+                        <separator string="Example"/>
+                        <field name="example" nolabel="1" colspan="2" placeholder="Example..."/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Fields" invisible="type not in ('list', 'dict')">
+                        <field name="field_ids" nolabel="1" colspan="2" invisible="model_id == False"/>
+                        <field name="model_field_ids" nolabel="1" colspan="2" invisible="model_id != False"/>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="form_api_proxy_service_input" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.input.form</field>
+    <field name="model">fsm.api.proxy.service.input</field>
+    <field name="inherit_id" ref="form_api_proxy_service_io"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <xpath expr="." position="attributes"/>
+    </field>
+    </record>
+
+    <record id="form_api_proxy_service_output" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.output.form</field>
+    <field name="model">fsm.api.proxy.service.output</field>
+    <field name="inherit_id" ref="form_api_proxy_service_io"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <xpath expr="." position="attributes"/>
+    </field>
+    </record>
+
+    <record id="form_api_proxy_service_model" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.model.form</field>
+    <field name="model">fsm.api.proxy.service.model</field>
+    <field name="inherit_id" ref="form_api_proxy_service_io"/>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+        <xpath expr="." position="attributes"/>
+    </field>
+    </record>
+
+    <record id="form_api_proxy_service_response" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.service.response.form</field>
+    <field name="model">fsm.api.proxy.service.response</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <div class="oe_title text-muted mb-3">
+                    <label for="name"/>
+                    <h1><field name="name" placeholder="Name..."/></h1>
+                    <h3 class="mt-n3 text-muted"><field name="type" class="oe_inline" placeholder="--- No Response" widget="fsm_api_response_type_selection"/></h3>
+                    <field name="badge" invisible="1"/>
+                </div>
+                <notebook>
+                    <page string="Code">
+                        <field name="code" nolabel="1" colspan="2" widget="ace" options="{'mode': 'python'}"/>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_type" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.type.list</field>
+    <field name="model">fsm.api.proxy.type</field>
+    <field name="arch" type="xml">
+        <list editable="bottom">
+            <field name="name" decoration-bf="1"/>
+            <field name="direction" string="→" decoration-bf="1"/>
+            <field name="type_id" options="{'no_create': True, 'no_open': True}"/>
+            <field name="company_id" invisible="1"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_bank" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.bank.list</field>
+    <field name="model">fsm.api.proxy.bank</field>
+    <field name="arch" type="xml">
+        <list editable="bottom">
+            <field name="code" decoration-bf="1"/>
+            <field name="name"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_status" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.status.list</field>
+    <field name="model">fsm.api.proxy.status</field>
+    <field name="arch" type="xml">
+        <list editable="bottom">
+            <field name="code" decoration-bf="1"/>
+            <field name="name"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_city" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.city.list</field>
+    <field name="model">fsm.api.proxy.city</field>
+    <field name="arch" type="xml">
+        <list editable="bottom">
+            <field name="name"/>
+            <field name="state_id"/>
+            <field name="proxy_id"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="tree_api_proxy_town" model="ir.ui.view">
+    <field name="name">fsm.api.proxy.town.list</field>
+    <field name="model">fsm.api.proxy.town</field>
+    <field name="arch" type="xml">
+        <list editable="bottom">
+            <field name="code" decoration-bf="1"/>
+            <field name="state_id" options="{'no_create': True}"/>
+            <field name="town_id" options="{'no_create': True}"/>
+        </list>
+    </field>
+    </record>
+
+    <record id="action_api_proxy" model="ir.actions.act_window">
+    <field name="name">Proxies</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">fsm.api.proxy</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{'active_test': False}</field>
+    </record>
+</odoo>

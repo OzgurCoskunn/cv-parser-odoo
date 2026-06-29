@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_form" model="ir.ui.view">
+        <field name="name">delivery.carrier.form (in aras cargo)</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position='inside'>
+                <page
+                    string="Aras Kargo"
+                    invisible="delivery_type != 'aras'"
+                >
+                    <group>
+                        <group string="General Options">
+                            <field name="delivery_aras_payor_type_code" string="Type" widget="radio" required="delivery_type == 'aras'"/>
+                            <field name="delivery_aras_connector_id" string="Connector" required="delivery_type == 'aras'"/>
+                        </group>
+                        <group string="Cash on Delivery Options">
+                            <field name="delivery_aras_cod_ok" string="Cash on Delivery" widget="radio" options="{'horizontal' : True}" required="delivery_type == 'aras'"/>
+                            <field name="delivery_aras_cod_collection_type" string="Type" widget="radio" options="{'horizontal' : True}" invisible="delivery_aras_cod_ok == '0'"/>
+                            <field name="delivery_aras_cod_amount" string="Amount" invisible="delivery_aras_cod_ok == '0'"/>
+                            <field name="delivery_aras_cod_billing_type" string="Billing Type" invisible="1"/>
+                            <field name="delivery_aras_currency_id" string="Currency" invisible="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

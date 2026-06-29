@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+    <field name="model">stock.picking</field>
+    <field name="inherit_id" ref="stock.view_picking_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[@name='button_box']" position="inside">
+            <button
+                name="get_delivery_yurtici_log"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-chain"
+                groups="base.group_user"
+                invisible="not delivery_yurtici_ok or not delivery_yurtici_connector_ok or not delivery_yurtici_connector_state">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Connector</span><span class="o_stat_text">Succeeded</span>
+                </div>
+            </button>
+            <button
+                name="get_delivery_yurtici_log"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-unlink"
+                groups="base.group_user"
+                invisible="not delivery_yurtici_ok or not delivery_yurtici_connector_ok or not delivery_yurtici_connector_state">
+                <div class="o_form_field o_stat_info mr3">
+                    <span class="o_stat_value">Connector</span><span class="o_stat_text">Failed</span>
+                </div>
+            </button>
+        </xpath>
+        <xpath expr="//page[@name='note']" position="before">
+            <page string="Yurtiçi Kargo" invisible="not delivery_yurtici_ok">
+                <field name="delivery_tracking_ids" nolabel="1" mode="list"/>
+                <group>
+                    <group/>
+                    <group>
+                        <div colspan="2">
+                            <button name="update_delivery_yurtici_state" type="object" string="Update" icon="fa-refresh" class="btn-secondary text-uppercase float-end"/>
+                            <button name="get_delivery_yurtici_log" type="object" string="Logs" icon="fa-file-text-o" class="btn-secondary text-uppercase float-end"/>
+                        </div>
+                        <separator string="Connector Information" colspan="2"/>
+                        <field name="delivery_yurtici_connector_state" string="Connected" widget="boolean_toggle"/>
+                        <field name="delivery_yurtici_connector_message" string="Message" invisible="delivery_yurtici_connector_message == False"/>
+                        <field name="delivery_yurtici_date_query" string="Last Query"/>
+                        <field name="delivery_yurtici_date_update" string="Last Update"/>
+                        <field name="delivery_yurtici_connector_ok" invisible="1"/>
+                        <field name="delivery_yurtici_ok" invisible="1"/>
+                    </group>
+                </group>
+            </page>
+        </xpath>
+    </field>
+    </record>
+</odoo>

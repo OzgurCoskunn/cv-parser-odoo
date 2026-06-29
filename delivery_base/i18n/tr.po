@@ -1,0 +1,251 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* delivery_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-08 14:46+0000\n"
+"PO-Revision-Date: 2024-04-08 17:50+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_order_form
+msgid ""
+"<span class=\"o_stat_value\">View</span><span class=\"o_stat_text\">Tracking "
+"Details</span>"
+msgstr ""
+"<span class=\"o_stat_value\">Teslimat Detaylarını</span><span "
+"class=\"o_stat_text\">Görüntüle</span>"
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_picking_form
+msgid "Cargo State"
+msgstr "Kargo Durumu"
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_order_form
+msgid "Cargo Status"
+msgstr "Kargo Durumu"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__carrier_id
+msgid "Carrier"
+msgstr "Nakliyeci"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_stock_picking__carrier_doc_id
+msgid "Carrier Document ID"
+msgstr "Kargo Takip No"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_stock_picking__carrier_state
+msgid "Carrier State"
+msgstr "Kargo Durumu"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__collected
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__collected
+msgid "Collected"
+msgstr "Gönderi Alındı"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__on_delivery_courier
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__on_delivery_courier
+msgid "Courier On Delivery"
+msgstr "Kurye Dağıtıma Çıktı"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__create_date
+msgid "Created on"
+msgstr "Oluşturma Tarihi"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__customer_barcode
+msgid "Customer Barcode"
+msgstr "Müşteri Barkodu"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__date_promised
+msgid "Date Promised"
+msgstr "Taahhüt Tarihi"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__delivered
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__delivered
+msgid "Delivered"
+msgstr "Teslim Edildi"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__location
+msgid "Delivery Location"
+msgstr "Teslimat Konumu"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__delivery_status
+msgid "Delivery Status"
+msgstr "Teslimat Durumu"
+
+#. module: delivery_base
+#: model:ir.actions.act_window,name:delivery_base.action_delivery_tracking
+#: model:ir.ui.menu,name:delivery_base.menu_delivery_tracking
+#: model_terms:ir.ui.view,arch_db:delivery_base.tree_delivery_tracking
+msgid "Delivery Tracking"
+msgstr "Teslimat Takip"
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_delivery_tracking
+#: model:ir.model.fields,field_description:delivery_base.field_stock_picking__delivery_tracking_ids
+msgid "Delivery Tracking Status"
+msgstr "Teslimat Takip Durumu"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__delivery_type
+msgid "Delivery Type"
+msgstr "Teslimat Türü"
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_stock_picking
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__display_name
+msgid "Display Name"
+msgstr "Görünen Adı"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__id
+msgid "ID"
+msgstr "ID"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking____last_update
+msgid "Last Modified on"
+msgstr "Son Düzenleme Tarihi"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme Tarihi"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__name
+msgid "Name"
+msgstr "Adı"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__delivery_status__cancel
+msgid "Not as Promised"
+msgstr "Taahhüt Edilmedi"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__on_delivery_branch
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__on_delivery_branch
+msgid "On Delivery Branch"
+msgstr "Teslimat Şubesinde"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__delivery_on_promised
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__delivery_status__done
+msgid "On Promised"
+msgstr "Taahhüt Edildi"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__other
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__other
+msgid "Other"
+msgstr "Diğer"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__picking_id
+msgid "Picking"
+msgstr "Teslimat"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__delivery_status__recall
+msgid "Recalled"
+msgstr "Geri Çağrıldı"
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_stock_return_picking
+msgid "Return Picking"
+msgstr "İade Teslimat"
+
+#. module: delivery_base
+#: model_terms:ir.ui.view,arch_db:delivery_base.view_stock_return_picking_form
+msgid "Return without carrier"
+msgstr "Teslimatsız İade Al"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__sale_order_id
+msgid "Sale Order"
+msgstr "Satış Siparişi"
+
+#. module: delivery_base
+#: model:ir.model,name:delivery_base.model_sale_order
+msgid "Sales Order"
+msgstr "Satış Siparişi"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__state
+msgid "State"
+msgstr "Durumu"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__status
+msgid "Status"
+msgstr "Durumu"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction
+msgid "Transaction"
+msgstr "İşlem"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction_date
+msgid "Transaction Date"
+msgstr "İşlem Tarihi"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction_datetime
+msgid "Transaction Datetime"
+msgstr "İşlem Zamanı"
+
+#. module: delivery_base
+#: model:ir.model.fields,field_description:delivery_base.field_delivery_tracking__transaction_time
+msgid "Transaction Time"
+msgstr "İşlem Saati"
+
+#. module: delivery_base
+#: model:ir.model.fields.selection,name:delivery_base.selection__delivery_tracking__state__transferring
+#: model:ir.model.fields.selection,name:delivery_base.selection__stock_picking__carrier_state__transferring
+msgid "Transferring"
+msgstr "Transfer Sürecinde"
+
+#~ msgid "Tracking"
+#~ msgstr "Takip"
+
+#~ msgid "Transaction Hours"
+#~ msgstr "İşlem Saati"
+
+#~ msgid "Transfer"
+#~ msgstr "Transfer"

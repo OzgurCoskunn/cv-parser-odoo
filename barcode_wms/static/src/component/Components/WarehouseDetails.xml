@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="barcode_wms.WarehouseDetails" owl="1">
+        <div class="warehouse-info-container">
+            <div>
+                <div class="d-flex flex-wrap">
+                    <div class="flex-fill bg-light-gray m-1 text-700 shadow-sm">
+                        <div>
+                            <h3 class="pb-2 pt-3 px-4 text-700 font-weight-400 font-size-20">Pricing &amp; Cost</h3>
+                        </div>
+                        <div class="border my-0 mx-4"/>
+                        <div t-if="state.showPrice" class="d-flex w-100 bg-light-gray py-2 px-4">
+                            <div class="flex-fill" style="width: 60%;">
+                                <p class="pl-2 m-0">Cost</p>
+                            </div>
+                            <div class="text-end">
+                                <p class="m-0">
+                                    <span t-if="props.details.currency.position === 'before'" t-esc="props.details.currency.symbol" class="mr4"/>
+                                    <span t-esc="formatMonetary(props.details.product.standard_price)"/>
+                                    <span t-if="props.details.currency.position === 'after'" t-esc="props.details.currency.symbol" class="ml4"/>
+                                </p>
+                             </div>
+                         </div>
+                        <div class="d-flex w-100 bg-light-gray py-2 px-4">
+                            <div class="flex-fill" style="width: 60%;">
+                                <p class="pl-2 m-0">Sale Price</p>
+                            </div>
+                            <div class="text-end">
+                                <p class="m-0">
+                                    <span t-if="props.details.currency.position === 'before'" t-esc="props.details.currency.symbol" class="mr4"/>
+                                    <span t-esc="formatMonetary(props.details.product.list_price)"/>
+                                    <span t-if="props.details.currency.position === 'after'" t-esc="props.details.currency.symbol" class="ml4"/>
+                                </p>
+                            </div>
+                         </div>
+                        <div class="border my-0 mx-4"/>
+                        <div t-if="state.showPrice" class="d-flex w-100 bg-light-gray py-2 px-4 justify-content-between">
+                            <div>
+                                <p class="m-0">PRICING SCHEME</p>
+                            </div>
+                            <div class="text-end">
+                                <p class="m-0">SALES PRICE</p>
+                            </div>
+                        </div>
+                        <t t-if="state.showPrice" t-foreach="props.details.pricelists" t-as="pricelist" t-key="pricelist.id">
+                            <div class="d-flex w-100 bg-light-gray py-2 px-4 justify-content-between">
+                                <div>
+                                    <p class="m-0"><span t-esc="pricelist.name"/></p>
+                                </div>
+                                <div class="text-end">
+                                    <p class="m-0">
+                                        <span t-if="pricelist.currency.position === 'before'" t-esc="pricelist.currency.symbol" class="mr4"/>
+                                        <span t-esc="formatMonetary(pricelist.price)"/>
+                                        <span t-if="pricelist.currency.position === 'after'" t-esc="pricelist.currency.symbol" class="ml4"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </t>
+                        <div class="p-2"/>
+                    </div>
+                    <div class="flex-fill bg-odoo text-white m-1 shadow-sm">
+                        <div class="d-flex justify-content-around px-4 py-2">
+                            <div class="mr32">
+                                <p>Quantity On Hand</p>
+                                <h1 class="text-white"><span t-esc="props.details.product.qty_available"/></h1>
+                            </div>
+                            <div>
+                                <p>Forecast Quantity</p>
+                                <h1 class="text-white"><span t-esc="props.details.product.virtual_available"/></h1>
+                            </div>
+                            <div class="d-flex ml-auto align-items-center">
+                                <div>
+                                    <div class="d-flex align-items-center m-1 cursor-pointer">
+                                        <input type="checkbox" class="checkbox-input-1 cursor-pointer" t-on-change="selectHideEmpty" t-att-checked="state.hideEmpty"/>
+                                        <div class="checkbox-box-1 cursor-pointer"/>
+                                        <label class="position-static p-0 pl-2 ml4 cursor-pointer">
+                                            Hide No Stock Locations
+                                        </label>
+                                    </div>
+                                    <div class="d-flex align-items-center m-1 cursor-pointer">
+                                        <input type="checkbox" class="checkbox-input-2 cursor-pointer" t-on-change="selectExpandAll" t-att-checked="state.expanded"/>
+                                        <div class="checkbox-box-2 cursor-pointer"/>
+                                        <label class="position-static p-0 pl-2 ml4 cursor-pointer">Expand All</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border my-0 mx-2"/>
+                        <div>
+                            <div class="d-flex w-100 py-2 px-4">
+                                <div style="width:55%;">
+                                    <p>Location</p>
+                                </div>
+                                <div style="width:20%;">
+                                    <p>Quantity</p>
+                                </div>
+                                <div style="width:25%;">
+                                    <p>Forecast Quantity</p>
+                                </div>
+                            </div>
+                            <div t-if="state.hideEmpty">
+                                <t t-foreach="props.details.warehouses_ready" t-as="warehouse" t-key="warehouse.id">
+                                    <CollapsableRow warehouse="warehouse" hideEmpty="state.hideEmpty" expanded="state.expanded"/>
+                                </t>
+                            </div>
+                            <div t-else="">
+                                <t t-foreach="props.details.warehouses" t-as="warehouse" t-key="warehouse.id">
+                                    <CollapsableRow warehouse="warehouse" hideEmpty="state.hideEmpty" expanded="state.expanded"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div t-if="state.showPrice" class="d-flex flex-column flex-fill bg-light-gray text-700 shadow-sm w-100 m-1">
+                        <div class="p-3 text-700">
+                            <p class="m-0">Suppliers</p>
+                        </div>
+                        <div class="border my-0 mx-3"/>
+                        <div class="d-flex w-100 bg-light-gray py-2 px-4 mt-3 text-700">
+                            <div style="width: 60%;">
+                                <p class="pl-3 m-0">VENDOR</p>
+                            </div>
+                            <div class="text-end" style="width: 15%;">
+                                <p class="pl-3 m-0">LEAD TIME</p>
+                            </div>
+                            <div class="text-end" style="width: 15%;">
+                                <p class="pl-3 m-0">Qty</p>
+                            </div>
+                            <div class="text-end" style="width: 15%;">
+                                <p class="pl-3 m-0">UOM</p>
+                            </div>
+                            <div class="text-end" style="width: 15%;">
+                                <p class="pl-3 m-0">PRICE</p>
+                            </div>
+                        </div>
+                        <t t-foreach="props.details.suppliers" t-as="supplier" t-key="supplier.id">
+                            <div class="d-flex w-100 bg-light-gray py-2 px-4">
+                                <div style="width: 60%;">
+                                    <p class="pl-3 m-0">
+                                        <span t-esc="supplier.name"/>
+                                    </p>
+                                </div>
+                                <div class="text-end" style="width: 15%;">
+                                    <p class="pl-3 m-0">
+                                        <span t-esc="supplier.delay"/>
+                                    </p>
+                                </div>
+                                <div class="text-end" style="width: 15%;">
+                                    <p class="pl-3 m-0">
+                                        <span t-esc="supplier.min_qty"/>
+                                    </p>
+                                </div>
+                                <div class="text-end" style="width: 15%;">
+                                    <p class="pl-3 m-0">
+                                        <span t-esc="supplier.product_uom"/>
+                                    </p>
+                                </div>
+                                <div class="text-end" style="width: 15%;">
+                                    <p class="pl-3 m-0">
+                                        <span t-if="supplier.currency.position =='before'" t-esc="supplier.currency.symbol" class="mr4"/>
+                                        <span t-esc="formatMonetary(supplier.price)"/>
+                                        <span t-if="supplier.currency.position =='after'" t-esc="supplier.currency.symbol" class="ml4"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </t>
+                        <div class="p-2"/>
+                    </div>
+                    <div class="d-flex flex-column flex-fill bg-light-gray m-1 text-700 shadow-sm">
+                        <div class="p-3 text-700 font-size-20 font-weight-400">
+                            <p class="m-0">UOM</p>
+                        </div>
+                        <div class="border my-0 mx-3"/>
+                        <div class="d-flex w-100 bg-light-gray py-2 px-4 mt-3 text-700">
+                            <div style="width: 60%;">
+                                <p class="pl-3 m-0">General UOM</p>
+                            </div>
+                            <div class="text-end" style="width: 40%;">
+                                <p class="m-0"><span t-esc="props.details.product.uom_id"/></p>
+                            </div>
+                        </div>
+                        <div class="d-flex w-100 bg-light-gray py-2 px-4 mt-3 text-700">
+                            <div style="width:60%;">
+                                <p class="pl-3 m-0">Purchase UOM</p>
+                            </div>
+                            <div class="text-end" style="width: 40%;">
+                                <p class="m-0">
+                                    <span t-esc="props.details.product.uom_po_id"/>
+                                </p>
+                             </div>
+                         </div>
+                        <div class="py-3 px-4 text-700">
+                            <p class="m-0 mt-3 font-size-20 font-weight-400">Logistic</p>
+                        </div>
+                        <div class="border my-0 mx-3"/>
+                        <div class="d-flex w-100 bg-light-gray py-2 px-4 mt-3 text-700">
+                            <div style="width: 60%;">
+                                <p class="pl-3 m-0">Weight</p>
+                            </div>
+                            <div class="text-end" style="width: 40%;">
+                                <p class="m-0">
+                                    <span t-esc="props.details.product.weight" class="mr4"/>
+                                    <span t-esc="props.details.product.weight_uom_name"/>
+                                </p>
+                             </div>
+                         </div>
+                        <div class="d-flex w-100 bg-light-gray py-2 px-4 mt-3 text-700">
+                            <div style="width: 60%;">
+                                <p class="pl-3 m-0">Volume</p>
+                            </div>
+                            <div class="text-end" style="width: 40%;">
+                                 <p class="m-0">
+                                    <span t-esc="props.details.product.volume" class="mr4"/>
+                                    <span t-esc="props.details.product.volume_uom_name"/>
+                                </p>
+                             </div>
+                        </div>
+                        <div class="d-flex w-100 bg-light-gray py-2 px-4 mt-3 text-700">
+                            <div style="width: 60%;">
+                                <p class="pl-3 m-0">Customer Lead Time</p>
+                            </div>
+                            <div class="text-end" style="width: 40%;">
+                                 <p class="m-0">
+                                    <span t-esc="props.details.product.sale_delay" class="mr4"/>days
+                                </p>
+                             </div>
+                         </div>
+                        <div class="p-0"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

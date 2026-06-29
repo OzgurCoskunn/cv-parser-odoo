@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="form_stock_location_user_assign" model="ir.ui.view">
+    <field name="name">stock.location.user.assign.form</field>
+    <field name="model">stock.location.user.assign</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <group>
+                        <p class="h3 mx-5 my-2 mb-4 text-600 text-center" colspan="2">
+                            Please select an action
+                        </p>
+                        <field name="type" nolabel="1" colspan="2" widget="radio" class="justify-content-around"/>
+                    </group>
+                    <group>
+                        <field name="line_ids" nolabel="1" colspan="2" force_save="1" widget="section_and_note_one2many">
+                            <list editable="bottom" create="0" delete="0">
+                                <field name="name" decoration-bf="1" string="Name"/>
+                                <field name="solid" widget="boolean_toggle" string="Solid"/>
+                                <field name="faulty" widget="boolean_toggle" string="Faulty"/>
+                                <field name="repair" widget="boolean_toggle" string="Repair"/>
+                                <field name="display_type" invisible="1"/>
+                                <field name="warehouse_id" invisible="1"/>
+                                <field name="user_id" invisible="1"/>
+                            </list>
+                            <form/>
+                        </field>
+                    </group>
+                </group>
+            </sheet>
+            <footer>
+                <button name="confirm" type="object" class="btn-primary" string="Confirm"/>
+                <button name="cancel" special="cancel" class="btn-secondary" string="Cancel"/>
+            </footer>
+        </form>
+    </field>
+    </record>
+
+    <record id="action_stock_location_user_assign" model="ir.actions.act_window">
+    <field name="name">Assign Location</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">stock.location.user.assign</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="status_collected" model="delivery.status">
+            <field name="name">Collected</field>
+            <field name="code">collected</field>
+        </record>
+
+        <record id="status_transferring" model="delivery.status">
+            <field name="name">Transferring</field>
+            <field name="code">transferring</field>
+        </record>
+
+        <record id="status_on_delivery_branch" model="delivery.status">
+            <field name="name">On Delivery Branch</field>
+            <field name="code">on_delivery_branch</field>
+        </record>
+
+        <record id="status_on_delivery_courier" model="delivery.status">
+            <field name="name">Courier On Delivery</field>
+            <field name="code">on_delivery_courier</field>
+        </record>
+
+        <record id="status_delivered" model="delivery.status">
+            <field name="name">Delivered</field>
+            <field name="code">delivered</field>
+        </record>
+
+        <record id="status_undelivered" model="delivery.status">
+            <field name="name">Undelivered</field>
+            <field name="code">undelivered</field>
+        </record>
+
+        <record id="status_return_to_seller" model="delivery.status">
+            <field name="name">Return to Seller</field>
+            <field name="code">return_to_seller</field>
+        </record>
+
+        <record id="status_unable_to_collect" model="delivery.status">
+            <field name="name">Receiver Aborted Return</field>
+            <field name="code">unable_to_collect</field>
+        </record>
+
+        <record id="status_retry" model="delivery.status">
+            <field name="name">Retry</field>
+            <field name="code">retry</field>
+        </record>
+
+        <record id="status_signing" model="delivery.status">
+            <field name="name">Signing</field>
+            <field name="code">signing</field>
+        </record>
+
+        <record id="status_signed" model="delivery.status">
+            <field name="name">Signed</field>
+            <field name="code">signed</field>
+        </record>
+
+        <record id="status_not_signed" model="delivery.status">
+            <field name="name">Not Signed</field>
+            <field name="code">not_signed</field>
+        </record>
+
+        <record id="status_dispatching" model="delivery.status">
+            <field name="name">Dispatching</field>
+            <field name="code">dispatching</field>
+        </record>
+
+        <record id="status_other" model="delivery.status">
+            <field name="name">Other</field>
+            <field name="code">other</field>
+        </record>
+    </data>
+</odoo>

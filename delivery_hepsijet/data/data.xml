@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="delivery_carrier" model="delivery.carrier">
+            <field name="name">HepsiJet</field>
+            <field name="delivery_type">hepsijet</field>
+            <field name="product_id" ref="delivery.product_product_delivery"/>
+        </record>
+
+        <record id="product_contract" model="product.product">
+            <field name="name">HepsiJet Contract</field>
+            <field name="type">consu</field>
+        </record>
+
+        <record id="cron_update_order" model="ir.cron">
+            <field name="name">Hepsijet: Update Deliveries</field>
+            <field name="interval_number">15</field>
+            <field name="interval_type">minutes</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="code">model.update_delivery_hepsijet_state()</field>
+            <field name="state">code</field>
+        </record>
+
+        <record id="paperformat_zpl" model="report.paperformat">
+            <field name="name">HepsiJet ZPL Label Format</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">100</field>
+            <field name="page_width">100</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">4</field>
+            <field name="margin_bottom">4</field>
+            <field name="margin_left">4</field>
+            <field name="margin_right">4</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="status_mapping_deliver" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_delivered"/>
+            <field name="code">DELIVER</field>
+        </record>
+
+        <record id="status_mapping_undeliver" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_undelivered"/>
+            <field name="code">UNDELIVER</field>
+        </record>
+
+        <record id="status_mapping_collected" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_collected"/>
+            <field name="code">COLLECTED</field>
+        </record>
+
+        <record id="status_mapping_transferring_collect" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_transferring"/>
+            <field name="code">TRANSFERRING_COLLECT</field>
+        </record>
+
+        <record id="status_mapping_transferring_transfer" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_transferring"/>
+            <field name="code">TRANSFERRING_TRANSFER</field>
+        </record>
+
+        <record id="status_mapping_on_delivery_branch" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_on_delivery_branch"/>
+            <field name="code">WAITING_FOR_DISPATCH</field>
+        </record>
+
+        <record id="status_mapping_on_delivery_courier" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_on_delivery_courier"/>
+            <field name="code">DELIVERING</field>
+        </record>
+
+        <record id="status_mapping_undelivered" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_undelivered"/>
+            <field name="code">UNDELIVERED</field>
+        </record>
+
+        <record id="status_mapping_retry" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_retry"/>
+            <field name="code">RETRY</field>
+        </record>
+
+        <record id="status_mapping_signing" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_signing"/>
+            <field name="code">SIGNING</field>
+        </record>
+
+        <record id="status_mapping_signed" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_signed"/>
+            <field name="code">SIGNED</field>
+        </record>
+
+        <record id="status_mapping_not_signed" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_not_signed"/>
+            <field name="code">NOT_SIGNED</field>
+        </record>
+
+        <record id="status_mapping_dispatching" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_dispatching"/>
+            <field name="code">DISPATCHING</field>
+        </record>
+
+        <record id="status_mapping_unable_to_collect" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_unable_to_collect"/>
+            <field name="code">UNABLE_TO_COLLECT</field>
+        </record>
+
+        <record id="status_mapping_delivered" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_delivered"/>
+            <field name="code">DELIVERED</field>
+        </record>
+
+        <record id="status_mapping_return_to_seller" model="delivery.status.mapping">
+            <field name="carrier_id" ref="delivery_carrier"/>
+            <field name="status_id" ref="delivery_base.status_return_to_seller"/>
+            <field name="name">Satıcıya iade edildi</field>
+            <field name="code">DELIVERED</field>
+        </record>
+    </data>
+</odoo>
