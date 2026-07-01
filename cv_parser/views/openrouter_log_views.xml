@@ -44,13 +44,7 @@
                             <field name="cost_usd" string="Tahmini Maliyet (USD)"/>
                         </group>
                     </group>
-                    <group string="İstatistikler (Tüm Zamanlar)">
-                        <group>
-                            <field name="total_requests" string="Toplam Başarılı İstek"/>
-                            <field name="total_cost" string="Toplam Maliyet (USD)"/>
-                            <field name="avg_cost" string="Ortalama Maliyet (USD)"/>
-                        </group>
-                    </group>
+
                     <group invisible="status == 'success'">
                         <field name="error_message" string="Hata Detayı"/>
                     </group>
