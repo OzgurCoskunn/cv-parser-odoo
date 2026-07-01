@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_openrouter_log_user,openrouter.log.user,model_openrouter_log,base.group_user,1,0,0,0
-access_openrouter_log_manager,openrouter.log.manager,model_openrouter_log,base.group_system,1,1,1,1
+access_cv_parser_log_user,cv.parser.log.user,model_cv_parser_log,base.group_user,1,0,0,0
+access_cv_parser_log_manager,cv.parser.log.manager,model_cv_parser_log,base.group_system,1,1,1,1
 access_cv_parser_provider_manager,cv.parser.provider.manager,model_cv_parser_provider,base.group_system,1,1,1,1
 access_cv_parser_config_manager,cv.parser.config.manager,model_cv_parser_config,base.group_system,1,1,1,1
 access_cv_parser_provider_model_manager,cv.parser.provider.model.manager,model_cv_parser_provider_model,base.group_system,1,1,1,1

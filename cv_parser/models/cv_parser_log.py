@@ -2,15 +2,15 @@ from odoo import models, fields, api
 from odoo.exceptions import UserError
 
 
-class OpenRouterLog(models.Model):
-    _name = 'openrouter.log'
-    _description = 'OpenRouter Kullanım Kaydı'
+class CvParserLog(models.Model):
+    _name = 'cv.parser.log'
+    _description = 'CV Parser Log'
     _order = 'date desc'
 
     date = fields.Datetime(string='Tarih', default=fields.Datetime.now, readonly=True)
     provider_id = fields.Many2one('cv.parser.provider', string='Sağlayıcı', readonly=True)
     config_id = fields.Many2one('cv.parser.config', string='Konfigürasyon', readonly=True, ondelete='set null')
-    res_model = fields.Char(string='Model', readonly=True)
+    res_model = fields.Char(string='İlgili Model', readonly=True)
     res_id = fields.Integer(string='Kayıt ID', readonly=True)
     res_name = fields.Char(string='Kayıt Adı', readonly=True)
     llm_model = fields.Char(string='LLM Model', readonly=True)

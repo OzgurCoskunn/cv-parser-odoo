@@ -65,7 +65,7 @@ class HrApplicant(models.Model):
             vals['x_cv_parsed'] = True
             self.write(vals)
 
-            self.env['openrouter.log'].sudo()._create_log(
+            self.env['cv.parser.log'].sudo()._create_log(
                 res_model='hr.applicant',
                 res_id=self.id,
                 res_name=cv_data.get('partner_name') or self.partner_name or str(self.id),
@@ -91,7 +91,7 @@ class HrApplicant(models.Model):
             registry = self.env.registry
             with registry.cursor() as cr:
                 env = self.env(cr=cr)
-                env['openrouter.log'].sudo()._create_log(
+                env['cv.parser.log'].sudo()._create_log(
                     res_model='hr.applicant',
                     res_id=self.id,
                     res_name=res_name,

@@ -67,7 +67,7 @@ class CvParserConfig(models.Model):
         if not self.max_spend_usd:
             return False
         total_spent = sum(
-            self.env['openrouter.log'].search([
+            self.env['cv.parser.log'].search([
                 ('provider_id', '=', self.provider_id.id),
                 ('status', '=', 'success'),
             ]).mapped('cost_usd')
