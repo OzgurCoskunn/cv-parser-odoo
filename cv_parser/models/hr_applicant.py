@@ -47,19 +47,13 @@ class HrApplicant(models.Model):
                 )
             except Exception as e:
                 last_error = str(e)
-                with self.env.cr.savepoint():
-                    self.env['openrouter.log'].sudo()._create_log(
-                        res_model='hr.applicant',
-                        res_id=self.id,
-                        res_name=self.partner_name or str(self.id),
-                        llm_model=config.llm_model,
-                        prompt_tokens=0,
-                        completion_tokens=0,
-                        status='error',
-                        error_message=str(e),
-                        provider_id=provider.id,
-                        config_id=config.id,
-                    )
+                self._log_error_independent(
+                    res_name=self.partner_name or str(self.id),
+                    llm_model=config.llm_model,
+                    error_message=str(e),
+                    provider_id=provider.id,
+                    config_id=config.id,
+                )
                 config.write({
                     'active': False,
                     'deactivation_reason': 'API hatası: ' + str(e)[:200],
@@ -90,6 +84,27 @@ class HrApplicant(models.Model):
             "Tüm konfigürasyonlar başarısız oldu veya pasife alındı.\n"
             "Son hata: " + (last_error or 'Bilinmiyor')
         )
+
+    def _log_error_independent(self, res_name, llm_model, error_message, provider_id, config_id):
+        # Ayrı cursor: dış transaction rollback olsa bile log kalır
+        try:
+            registry = self.env.registry
+            with registry.cursor() as cr:
+                env = self.env(cr=cr)
+                env['openrouter.log'].sudo()._create_log(
+                    res_model='hr.applicant',
+                    res_id=self.id,
+                    res_name=res_name,
+                    llm_model=llm_model,
+                    prompt_tokens=0,
+                    completion_tokens=0,
+                    status='error',
+                    error_message=error_message,
+                    provider_id=provider_id,
+                    config_id=config_id,
+                )
+        except Exception:
+            pass
 
     def _find_cv_attachment(self):
         attachment = self.message_main_attachment_id
