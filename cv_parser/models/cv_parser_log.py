@@ -9,6 +9,7 @@ class CvParserLog(models.Model):
 
     date = fields.Datetime(string='Tarih', default=fields.Datetime.now, readonly=True)
     user_id = fields.Many2one('res.users', string='Kullanıcı', readonly=True)
+    applicant_id = fields.Many2one('hr.applicant', string='Başvuru', readonly=True, ondelete='set null')
     provider_id = fields.Many2one('cv.parser.provider', string='Sağlayıcı', readonly=True)
     config_id = fields.Many2one('cv.parser.config', string='Konfigürasyon', readonly=True, ondelete='set null')
     res_model = fields.Char(string='İlgili Model', readonly=True)
@@ -39,7 +40,7 @@ class CvParserLog(models.Model):
     def _create_log(self, res_model, res_id, res_name, llm_model,
                     prompt_tokens, completion_tokens, status='success', error_message=None,
                     request_payload=None, response_payload=None, provider_id=None, config_id=None,
-                    user_id=None, changed_fields=None):
+                    user_id=None, changed_fields=None, applicant_id=None):
         MODEL_PRICES = {
             'anthropic/claude-haiku-4.5': (1.0, 5.0),
             'anthropic/claude-sonnet-4.5': (3.0, 15.0),
@@ -53,6 +54,7 @@ class CvParserLog(models.Model):
             'provider_id': provider_id,
             'config_id': config_id,
             'user_id': user_id,
+            'applicant_id': applicant_id,
             'res_model': res_model,
             'res_id': res_id,
             'res_name': res_name,

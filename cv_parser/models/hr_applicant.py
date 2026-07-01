@@ -22,8 +22,7 @@ class HrApplicant(models.Model):
     def _compute_cv_log_count(self):
         for rec in self:
             rec.cv_log_count = self.env['cv.parser.log'].search_count([
-                ('res_model', '=', 'hr.applicant'),
-                ('res_id', '=', rec.id),
+                ('applicant_id', '=', rec.id),
             ])
 
     def action_view_cv_logs(self):
@@ -33,8 +32,7 @@ class HrApplicant(models.Model):
             'name': 'CV Parser Log',
             'res_model': 'cv.parser.log',
             'view_mode': 'list,form',
-            'domain': [('res_model', '=', 'hr.applicant'), ('res_id', '=', self.id)],
-            'context': {'default_res_model': 'hr.applicant', 'default_res_id': self.id},
+            'domain': [('applicant_id', '=', self.id)],
         }
 
     def action_parse_cv_with_llm(self):
@@ -107,6 +105,7 @@ class HrApplicant(models.Model):
                 config_id=config.id,
                 user_id=self.env.uid,
                 changed_fields=changed_fields,
+                applicant_id=self.id,
             )
             return
 
@@ -134,6 +133,7 @@ class HrApplicant(models.Model):
                     provider_id=provider_id,
                     config_id=config_id,
                     user_id=uid,
+                applicant_id=self.id,
                 )
         except Exception:
             pass

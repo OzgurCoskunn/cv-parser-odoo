@@ -8,6 +8,7 @@
             <list string="CV Parser Log" decoration-danger="status == 'error'">
                 <field name="date"/>
                 <field name="user_id" string="Kullanıcı"/>
+                <field name="applicant_id" string="Başvuru"/>
                 <field name="res_name" string="Aday"/>
                 <field name="provider_id" string="Sağlayıcı"/>
                 <field name="config_id" string="Konfigürasyon"/>
@@ -37,6 +38,7 @@
                         <group string="Genel">
                             <field name="date"/>
                             <field name="user_id" string="Kullanıcı"/>
+                            <field name="applicant_id" string="Başvuru"/>
                             <field name="provider_id" string="Sağlayıcı"/>
                             <field name="config_id" string="Konfigürasyon"/>
                             <field name="res_model" string="İlgili Model"/>
