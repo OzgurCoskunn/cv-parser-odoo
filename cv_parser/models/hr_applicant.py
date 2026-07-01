@@ -60,7 +60,10 @@ class HrApplicant(models.Model):
                         provider_id=provider.id,
                         config_id=config.id,
                     )
-                config.active = False
+                config.write({
+                    'active': False,
+                    'deactivation_reason': 'API hatası: ' + str(e)[:200],
+                })
                 continue
 
             # başarılı

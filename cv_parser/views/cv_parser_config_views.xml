@@ -5,13 +5,14 @@
         <field name="name">cv.parser.config.list</field>
         <field name="model">cv.parser.config</field>
         <field name="arch" type="xml">
-            <list string="CV Parser Konfigürasyonları">
+            <list string="CV Parser Konfigürasyonları" decoration-muted="not active">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="provider_id"/>
                 <field name="provider_model_id" string="Model"/>
                 <field name="max_spend_usd" string="Maks. Harcama ($)"/>
                 <field name="limit_action"/>
+                <field name="deactivation_reason" string="Pasife Alınma Nedeni" optional="show"/>
                 <field name="active" widget="boolean_toggle"/>
             </list>
         </field>
@@ -27,6 +28,11 @@
                         <label for="name"/>
                         <h1><field name="name"/></h1>
                     </div>
+                    <group invisible="active">
+                        <field name="deactivation_reason" string="Pasife Alınma Nedeni"
+                            readonly="1"
+                            style="color: #dc3545; font-weight: bold;"/>
+                    </group>
                     <group>
                         <group string="AI Ayarları">
                             <field name="provider_id"/>
@@ -43,10 +49,26 @@
                         </group>
                     </group>
                     <group string="Prompt">
-                        <field name="prompt" nolabel="1"/>
+                        <field name="prompt" nolabel="1" style="min-height: 200px;"/>
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="view_cv_parser_config_search" model="ir.ui.view">
+        <field name="name">cv.parser.config.search</field>
+        <field name="model">cv.parser.config</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Konfigürasyon"/>
+                <field name="provider_id" string="Sağlayıcı"/>
+                <filter name="active" string="Aktif" domain="[('active','=',True)]"/>
+                <filter name="inactive" string="Pasif" domain="[('active','=',False)]"/>
+                <separator/>
+                <filter name="group_provider" string="Sağlayıcıya Göre" context="{'group_by': 'provider_id'}"/>
+                <filter name="group_model" string="Modele Göre" context="{'group_by': 'provider_model_id'}"/>
+            </search>
         </field>
     </record>
 
@@ -54,6 +76,7 @@
         <field name="name">CV Parser Konfigürasyonu</field>
         <field name="res_model">cv.parser.config</field>
         <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
     </record>
 
 </odoo>

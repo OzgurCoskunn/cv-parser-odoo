@@ -45,6 +45,7 @@ class CvParserConfig(models.Model):
         ('stop', 'Durdur ve Pasife Al'),
         ('warn', 'Uyar ve Devam Et'),
     ], string='Limit Aşılınca', default='stop')
+    deactivation_reason = fields.Char(string='Pasife Alınma Nedeni', readonly=True)
 
     @api.depends('provider_model_id')
     def _compute_llm_model(self):
@@ -73,6 +74,9 @@ class CvParserConfig(models.Model):
         )
         if total_spent >= self.max_spend_usd:
             if self.limit_action == 'stop':
-                self.active = False
+                self.write({
+                    'active': False,
+                    'deactivation_reason': 'Harcama limiti aşıldı ($%.4f / $%.4f)' % (total_spent, self.max_spend_usd),
+                })
                 return True
         return False
