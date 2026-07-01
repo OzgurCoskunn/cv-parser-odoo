@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_cv_parser_dashboard" model="ir.actions.act_window">
+        <field name="name">CV Parser Dashboard</field>
+        <field name="res_model">openrouter.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_success': 1}</field>
+    </record>
+
+    <menuitem id="menu_cv_parser_root"
+        name="CV Parser Ayarları"
+        parent="hr_recruitment.menu_hr_recruitment_configuration"
+        sequence="90"
+        groups="base.group_system"/>
+
+    <menuitem id="menu_cv_parser_providers"
+        name="AI Sağlayıcılar"
+        parent="menu_cv_parser_root"
+        action="action_cv_parser_provider"
+        sequence="10"/>
+
+    <menuitem id="menu_cv_parser_config"
+        name="Konfigürasyon"
+        parent="menu_cv_parser_root"
+        action="action_cv_parser_config"
+        sequence="20"/>
+
+    <menuitem id="menu_cv_parser_logs"
+        name="Kullanım Kayıtları"
+        parent="menu_cv_parser_root"
+        action="action_openrouter_log"
+        sequence="30"/>
+
+</odoo>

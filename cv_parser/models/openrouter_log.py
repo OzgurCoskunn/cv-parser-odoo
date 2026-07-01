@@ -1,6 +1,3 @@
-import json
-import urllib.request
-
 from odoo import models, fields, api
 from odoo.exceptions import UserError
 
@@ -11,6 +8,7 @@ class OpenRouterLog(models.Model):
     _order = 'date desc'
 
     date = fields.Datetime(string='Tarih', default=fields.Datetime.now, readonly=True)
+    provider_id = fields.Many2one('cv.parser.provider', string='Sağlayıcı', readonly=True)
     res_model = fields.Char(string='Model', readonly=True)
     res_id = fields.Integer(string='Kayıt ID', readonly=True)
     res_name = fields.Char(string='Kayıt Adı', readonly=True)
@@ -27,68 +25,59 @@ class OpenRouterLog(models.Model):
     request_payload = fields.Text(string='Gönderilen İstek', readonly=True)
     response_payload = fields.Text(string='Dönen Yanıt', readonly=True)
 
-    # Özet istatistikler (read-only hesaplanan alanlar)
-    total_requests = fields.Integer(
-        string='Toplam İstek',
-        compute='_compute_stats',
-    )
-    total_cost = fields.Float(
-        string='Toplam Maliyet (USD)',
-        digits=(10, 4),
-        compute='_compute_stats',
-    )
-    avg_cost = fields.Float(
-        string='Ortalama Maliyet (USD)',
-        digits=(10, 6),
-        compute='_compute_stats',
-    )
-
-    @api.depends()
-    def _compute_stats(self):
-        all_logs = self.search([('status', '=', 'success')])
-        total = len(all_logs)
-        total_cost = sum(all_logs.mapped('cost_usd'))
-        avg = total_cost / total if total else 0.0
-        for rec in self:
-            rec.total_requests = total
-            rec.total_cost = total_cost
-            rec.avg_cost = avg
-
     @api.model
     def action_check_balance(self):
-        api_key = self.env['ir.config_parameter'].sudo().get_param('openrouter.api_key')
-        if not api_key:
-            raise UserError("OpenRouter API key bulunamadı. Sistem Parametreleri > 'openrouter.api_key'")
+        providers = self.env['cv.parser.provider'].search([('active', '=', True)])
+        if not providers:
+            raise UserError("Aktif sağlayıcı bulunamadı. CV Parser Ayarları > AI Sağlayıcılar")
 
-        req = urllib.request.Request(
-            'https://openrouter.ai/api/v1/auth/key',
-            headers={'Authorization': 'Bearer ' + api_key},
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=10) as resp:
-                data = json.loads(resp.read().decode('utf-8')).get('data', {})
-        except Exception as e:
-            raise UserError("Bakiye sorgulanamadı: " + str(e))
+        active_provider = providers[0]
+        return active_provider.action_check_balance()
 
-        limit = data.get('limit')
-        usage = data.get('usage', 0)
-        remaining = (limit - usage) if limit else None
+    @api.model
+    def get_dashboard_data(self):
+        providers = self.env['cv.parser.provider'].search([('active', '=', True)])
+        result = []
+        for provider in providers:
+            logs = self.search([('provider_id', '=', provider.id), ('status', '=', 'success')])
+            odoo_total = sum(logs.mapped('cost_usd'))
+            odoo_requests = len(logs)
 
-        lines = []
-        if limit:
-            lines.append("Toplam Limit: $%.4f" % limit)
-        lines.append("Kullanılan: $%.4f" % usage)
-        if remaining is not None:
-            lines.append("Kalan: $%.4f" % remaining)
-        if data.get('is_free_tier'):
-            lines.append("(Ücretsiz plan)")
+            api_data = {}
+            if provider.balance_url:
+                try:
+                    import urllib.request as urlreq
+                    import json
+                    req = urlreq.Request(
+                        provider.balance_url,
+                        headers={'Authorization': 'Bearer ' + provider.api_key},
+                    )
+                    with urlreq.urlopen(req, timeout=10) as resp:
+                        api_data = json.loads(resp.read().decode('utf-8')).get('data', {})
+                except Exception:
+                    pass
 
-        raise UserError("OpenRouter Bakiye\n\n" + "\n".join(lines))
+            api_limit = api_data.get('limit', 0) or 0
+            api_usage = api_data.get('usage', 0) or 0
+            api_remaining = api_limit - api_usage if api_limit else None
+            percent = int((api_usage / api_limit) * 100) if api_limit else 0
+
+            result.append({
+                'provider_id': provider.id,
+                'provider_name': provider.name,
+                'odoo_total': round(odoo_total, 4),
+                'odoo_requests': odoo_requests,
+                'api_limit': round(api_limit, 4),
+                'api_usage': round(api_usage, 4),
+                'api_remaining': round(api_remaining, 4) if api_remaining is not None else None,
+                'percent': percent,
+            })
+        return result
 
     @api.model
     def _create_log(self, res_model, res_id, res_name, llm_model,
                     prompt_tokens, completion_tokens, status='success', error_message=None,
-                    request_payload=None, response_payload=None):
+                    request_payload=None, response_payload=None, provider_id=None):
         MODEL_PRICES = {
             'anthropic/claude-haiku-4.5': (1.0, 5.0),
             'anthropic/claude-sonnet-4.5': (3.0, 15.0),
@@ -99,6 +88,7 @@ class OpenRouterLog(models.Model):
         cost = (prompt_tokens * input_price + completion_tokens * output_price) / 1_000_000
 
         self.create({
+            'provider_id': provider_id,
             'res_model': res_model,
             'res_id': res_id,
             'res_name': res_name,

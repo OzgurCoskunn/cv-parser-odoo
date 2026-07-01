@@ -94,11 +94,5 @@
         <field name="context">{'search_default_success': 1}</field>
     </record>
 
-    <menuitem id="menu_openrouter_log"
-        name="OpenRouter Kullanım Kayıtları"
-        parent="hr_recruitment.menu_hr_recruitment_configuration"
-        action="action_openrouter_log"
-        sequence="100"
-        groups="base.group_system"/>
 
 </odoo>

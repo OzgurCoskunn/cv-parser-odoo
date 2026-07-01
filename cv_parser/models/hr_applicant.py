@@ -1,4 +1,3 @@
-import base64
 import json
 import re
 import urllib.request
@@ -12,16 +11,6 @@ SUPPORTED_MIMES = (
     'application/msword',
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 )
-
-LLM_MODEL = 'anthropic/claude-sonnet-4.5'
-
-PROMPT = """Bu CV'yi analiz et. Yalnızca aşağıdaki JSON formatında döndür, başka hiçbir şey yazma:
-{
-  "partner_name":   "Ad Soyad",
-  "partner_phone":  "Telefon numarası (varsa, yoksa boş string)",
-  "email_from":     "E-posta adresi (varsa, yoksa boş string)",
-  "linkedin":       "LinkedIn URL (varsa, yoksa boş string)"
-}"""
 
 
 class HrApplicant(models.Model):
@@ -38,16 +27,18 @@ class HrApplicant(models.Model):
                 "Tekrar çekmek için 'CV Bilgisi Alındı' işaretini kaldırın."
             )
 
-        api_key = self.env['ir.config_parameter'].sudo().get_param('openrouter.api_key')
-        if not api_key:
-            raise UserError("OpenRouter API key bulunamadı.\nAyarlar > Teknik > Sistem Parametreleri > 'openrouter.api_key'")
+        config = self.env['cv.parser.config'].get_active_config()
+        config.check_spend_limit()
 
+        provider = config.provider_id
         cv_attachment = self._find_cv_attachment()
         if not cv_attachment:
             raise UserError("CV eki bulunamadı. Lütfen PDF veya Word formatında CV ekleyin.")
 
         try:
-            cv_data, usage, req_payload, resp_payload = self._call_openrouter(api_key, cv_attachment)
+            cv_data, usage, req_payload, resp_payload = self._call_provider(
+                provider, config.llm_model, config.prompt, cv_attachment
+            )
         except UserError:
             raise
         except Exception as e:
@@ -56,13 +47,14 @@ class HrApplicant(models.Model):
                     res_model='hr.applicant',
                     res_id=self.id,
                     res_name=self.partner_name or str(self.id),
-                    llm_model=LLM_MODEL,
+                    llm_model=config.llm_model,
                     prompt_tokens=0,
                     completion_tokens=0,
                     status='error',
                     error_message=str(e),
+                    provider_id=provider.id,
                 )
-            raise UserError("OpenRouter API hatası: " + str(e))
+            raise UserError("API hatası: " + str(e))
 
         vals = self._extract_vals(cv_data)
         vals['x_cv_parsed'] = True
@@ -72,12 +64,13 @@ class HrApplicant(models.Model):
             res_model='hr.applicant',
             res_id=self.id,
             res_name=cv_data.get('partner_name') or self.partner_name or str(self.id),
-            llm_model=LLM_MODEL,
+            llm_model=config.llm_model,
             prompt_tokens=usage.get('prompt_tokens', 0),
             completion_tokens=usage.get('completion_tokens', 0),
             status='success',
             request_payload=req_payload,
             response_payload=resp_payload,
+            provider_id=provider.id,
         )
 
     def _find_cv_attachment(self):
@@ -100,7 +93,7 @@ class HrApplicant(models.Model):
             ('mimetype', 'in', list(SUPPORTED_MIMES)),
         ], order='id asc', limit=1)
 
-    def _call_openrouter(self, api_key, cv_attachment):
+    def _call_provider(self, provider, llm_model, prompt, cv_attachment):
         b64 = cv_attachment.datas.decode('utf-8')
         mime = cv_attachment.mimetype
 
@@ -121,22 +114,22 @@ class HrApplicant(models.Model):
         messages = [{
             'role': 'user',
             'content': [
-                {'type': 'text', 'text': PROMPT},
+                {'type': 'text', 'text': prompt},
                 file_content,
             ]
         }]
 
         payload = json.dumps({
-            'model': LLM_MODEL,
+            'model': llm_model,
             'messages': messages,
             'temperature': 0,
         }).encode('utf-8')
 
         req = urllib.request.Request(
-            'https://openrouter.ai/api/v1/chat/completions',
+            provider.api_url,
             data=payload,
             headers={
-                'Authorization': 'Bearer ' + api_key,
+                'Authorization': 'Bearer ' + provider.api_key,
                 'Content-Type': 'application/json',
                 'HTTP-Referer': 'https://odoo.internal',
                 'X-Title': 'Odoo CV Parser',
@@ -148,8 +141,7 @@ class HrApplicant(models.Model):
 
         raw_content = result['choices'][0]['message']['content']
         usage = result.get('usage', {})
-        req_payload = json.dumps({'model': LLM_MODEL, 'prompt': PROMPT}, ensure_ascii=False)
-        resp_payload = raw_content
+        req_payload = json.dumps({'model': llm_model, 'prompt': prompt}, ensure_ascii=False)
 
         try:
             cv_data = json.loads(raw_content)
@@ -160,7 +152,7 @@ class HrApplicant(models.Model):
             else:
                 raise UserError("LLM yanıtı JSON olarak okunamadı:\n" + raw_content)
 
-        return cv_data, usage, req_payload, resp_payload
+        return cv_data, usage, req_payload, raw_content
 
     def _extract_vals(self, cv_data):
         vals = {}
