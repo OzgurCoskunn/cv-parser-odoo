@@ -49,7 +49,7 @@
                         </group>
                     </group>
                     <group string="Prompt">
-                        <field name="prompt" nolabel="1" style="min-height: 200px;"/>
+                        <field name="prompt" nolabel="1" rows="14"/>
                     </group>
                 </sheet>
             </form>
