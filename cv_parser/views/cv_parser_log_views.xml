@@ -119,8 +119,17 @@
         </field>
     </record>
 
+    <!-- Kullanım Kayıtları: sadece başarılı, maliyet odaklı -->
+    <record id="action_cv_parser_kullanim" model="ir.actions.act_window">
+        <field name="name">Kullanım Kayıtları</field>
+        <field name="res_model">cv.parser.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('status','=','success')]</field>
+    </record>
+
+    <!-- Loglar: tüm denemeler, hata dahil -->
     <record id="action_cv_parser_log" model="ir.actions.act_window">
-        <field name="name">CV Parser Log</field>
+        <field name="name">Loglar</field>
         <field name="res_model">cv.parser.log</field>
         <field name="view_mode">list,form</field>
     </record>

@@ -19,16 +19,22 @@
         action="action_cv_parser_config"
         sequence="20"/>
 
+    <menuitem id="menu_cv_parser_kullanim"
+        name="Kullanım Kayıtları"
+        parent="menu_cv_parser_root"
+        action="action_cv_parser_kullanim"
+        sequence="30"/>
+
     <menuitem id="menu_cv_parser_logs"
-        name="CV Parser Log"
+        name="Loglar"
         parent="menu_cv_parser_root"
         action="action_cv_parser_log"
-        sequence="30"/>
+        sequence="40"/>
 
     <menuitem id="menu_cv_parser_report"
         name="Kullanım Raporu"
         parent="menu_cv_parser_root"
         action="action_cv_parser_log_report"
-        sequence="40"/>
+        sequence="50"/>
 
 </odoo>
