@@ -17,6 +17,25 @@ class HrApplicant(models.Model):
     _inherit = 'hr.applicant'
 
     x_cv_parsed = fields.Boolean(string='CV Bilgisi Alındı', default=False)
+    cv_log_count = fields.Integer(string='Log Sayısı', compute='_compute_cv_log_count')
+
+    def _compute_cv_log_count(self):
+        for rec in self:
+            rec.cv_log_count = self.env['cv.parser.log'].search_count([
+                ('res_model', '=', 'hr.applicant'),
+                ('res_id', '=', rec.id),
+            ])
+
+    def action_view_cv_logs(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'CV Parser Log',
+            'res_model': 'cv.parser.log',
+            'view_mode': 'list,form',
+            'domain': [('res_model', '=', 'hr.applicant'), ('res_id', '=', self.id)],
+            'context': {'default_res_model': 'hr.applicant', 'default_res_id': self.id},
+        }
 
     def action_parse_cv_with_llm(self):
         self.ensure_one()
