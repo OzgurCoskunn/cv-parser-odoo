@@ -8,6 +8,7 @@ class CvParserLog(models.Model):
     _order = 'date desc'
 
     date = fields.Datetime(string='Tarih', default=fields.Datetime.now, readonly=True)
+    user_id = fields.Many2one('res.users', string='Kullanıcı', readonly=True)
     provider_id = fields.Many2one('cv.parser.provider', string='Sağlayıcı', readonly=True)
     config_id = fields.Many2one('cv.parser.config', string='Konfigürasyon', readonly=True, ondelete='set null')
     res_model = fields.Char(string='İlgili Model', readonly=True)
@@ -22,6 +23,7 @@ class CvParserLog(models.Model):
         ('success', 'Başarılı'),
         ('error', 'Hata'),
     ], string='Durum', default='success', readonly=True)
+    changed_fields = fields.Text(string='Değiştirilen Alanlar', readonly=True)
     error_message = fields.Text(string='Hata Mesajı', readonly=True)
     request_payload = fields.Text(string='Gönderilen İstek', readonly=True)
     response_payload = fields.Text(string='Dönen Yanıt', readonly=True)
@@ -36,7 +38,8 @@ class CvParserLog(models.Model):
     @api.model
     def _create_log(self, res_model, res_id, res_name, llm_model,
                     prompt_tokens, completion_tokens, status='success', error_message=None,
-                    request_payload=None, response_payload=None, provider_id=None, config_id=None):
+                    request_payload=None, response_payload=None, provider_id=None, config_id=None,
+                    user_id=None, changed_fields=None):
         MODEL_PRICES = {
             'anthropic/claude-haiku-4.5': (1.0, 5.0),
             'anthropic/claude-sonnet-4.5': (3.0, 15.0),
@@ -49,6 +52,7 @@ class CvParserLog(models.Model):
         self.create({
             'provider_id': provider_id,
             'config_id': config_id,
+            'user_id': user_id,
             'res_model': res_model,
             'res_id': res_id,
             'res_name': res_name,
@@ -58,6 +62,7 @@ class CvParserLog(models.Model):
             'total_tokens': prompt_tokens + completion_tokens,
             'cost_usd': cost,
             'status': status,
+            'changed_fields': changed_fields,
             'error_message': error_message,
             'request_payload': request_payload,
             'response_payload': response_payload,

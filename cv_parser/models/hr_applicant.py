@@ -65,6 +65,15 @@ class HrApplicant(models.Model):
             vals['x_cv_parsed'] = True
             self.write(vals)
 
+            FIELD_LABELS = {
+                'partner_name': 'Ad Soyad',
+                'partner_phone': 'Telefon',
+                'email_from': 'E-posta',
+                'linkedin_profile': 'LinkedIn',
+            }
+            written = [FIELD_LABELS.get(k, k) for k in vals if k != 'x_cv_parsed']
+            changed_fields = ', '.join(written) if written else '-'
+
             self.env['cv.parser.log'].sudo()._create_log(
                 res_model='hr.applicant',
                 res_id=self.id,
@@ -77,6 +86,8 @@ class HrApplicant(models.Model):
                 response_payload=resp_payload,
                 provider_id=provider.id,
                 config_id=config.id,
+                user_id=self.env.uid,
+                changed_fields=changed_fields,
             )
             return
 
@@ -88,6 +99,7 @@ class HrApplicant(models.Model):
     def _log_error_independent(self, res_name, llm_model, error_message, provider_id, config_id):
         # Ayrı cursor: dış transaction rollback olsa bile log kalır
         try:
+            uid = self.env.uid
             registry = self.env.registry
             with registry.cursor() as cr:
                 env = self.env(cr=cr)
@@ -102,6 +114,7 @@ class HrApplicant(models.Model):
                     error_message=error_message,
                     provider_id=provider_id,
                     config_id=config_id,
+                    user_id=uid,
                 )
         except Exception:
             pass

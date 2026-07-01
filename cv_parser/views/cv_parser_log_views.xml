@@ -7,10 +7,12 @@
         <field name="arch" type="xml">
             <list string="CV Parser Log" decoration-danger="status == 'error'">
                 <field name="date"/>
+                <field name="user_id" string="Kullanıcı"/>
                 <field name="res_name" string="Aday"/>
                 <field name="provider_id" string="Sağlayıcı"/>
                 <field name="config_id" string="Konfigürasyon"/>
                 <field name="llm_model" string="Model"/>
+                <field name="changed_fields" string="Değiştirilen Alanlar"/>
                 <field name="prompt_tokens"/>
                 <field name="completion_tokens"/>
                 <field name="total_tokens"/>
@@ -34,6 +36,7 @@
                     <group>
                         <group string="Genel">
                             <field name="date"/>
+                            <field name="user_id" string="Kullanıcı"/>
                             <field name="provider_id" string="Sağlayıcı"/>
                             <field name="config_id" string="Konfigürasyon"/>
                             <field name="res_model" string="İlgili Model"/>
@@ -47,6 +50,9 @@
                             <field name="total_tokens"/>
                             <field name="cost_usd" string="Tahmini Maliyet (USD)"/>
                         </group>
+                    </group>
+                    <group string="Değiştirilen Alanlar" invisible="status == 'error'">
+                        <field name="changed_fields" nolabel="1" colspan="2"/>
                     </group>
                     <group string="Hata Detayı" invisible="status == 'success'">
                         <field name="error_message" nolabel="1"/>
