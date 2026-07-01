@@ -58,6 +58,7 @@ class HrApplicant(models.Model):
                         status='error',
                         error_message=str(e),
                         provider_id=provider.id,
+                        config_id=config.id,
                     )
                 config.active = False
                 continue
@@ -78,6 +79,7 @@ class HrApplicant(models.Model):
                 request_payload=req_payload,
                 response_payload=resp_payload,
                 provider_id=provider.id,
+                config_id=config.id,
             )
             return
 

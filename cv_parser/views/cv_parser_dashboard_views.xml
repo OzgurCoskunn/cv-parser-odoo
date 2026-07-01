@@ -32,4 +32,10 @@
         action="action_openrouter_log"
         sequence="30"/>
 
+    <menuitem id="menu_cv_parser_report"
+        name="Kullanım Raporu"
+        parent="menu_cv_parser_root"
+        action="action_openrouter_report"
+        sequence="40"/>
+
 </odoo>

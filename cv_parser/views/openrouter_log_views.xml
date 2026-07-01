@@ -8,6 +8,8 @@
             <list string="OpenRouter Kullanım Kayıtları" decoration-danger="status == 'error'">
                 <field name="date"/>
                 <field name="res_name" string="Aday"/>
+                <field name="provider_id" string="Sağlayıcı"/>
+                <field name="config_id" string="Konfigürasyon"/>
                 <field name="llm_model" string="Model"/>
                 <field name="prompt_tokens"/>
                 <field name="completion_tokens"/>
@@ -32,6 +34,8 @@
                     <group>
                         <group string="Genel">
                             <field name="date"/>
+                            <field name="provider_id" string="Sağlayıcı"/>
+                            <field name="config_id" string="Konfigürasyon"/>
                             <field name="res_model"/>
                             <field name="res_id"/>
                             <field name="llm_model"/>
@@ -64,11 +68,44 @@
             <search>
                 <field name="res_name" string="Aday"/>
                 <field name="llm_model" string="Model"/>
+                <field name="provider_id" string="Sağlayıcı"/>
+                <field name="config_id" string="Konfigürasyon"/>
                 <filter name="success" string="Başarılı" domain="[('status','=','success')]"/>
                 <filter name="error" string="Hatalı" domain="[('status','=','error')]"/>
+                <separator/>
+                <filter name="group_provider" string="Sağlayıcıya Göre" context="{'group_by': 'provider_id'}"/>
+                <filter name="group_config" string="Konfigürasyona Göre" context="{'group_by': 'config_id'}"/>
                 <filter name="group_model" string="LLM Modele Göre" context="{'group_by': 'llm_model'}"/>
                 <filter name="group_date" string="Aya Göre" context="{'group_by': 'date:month'}"/>
             </search>
+        </field>
+    </record>
+
+    <record id="view_openrouter_log_graph" model="ir.ui.view">
+        <field name="name">openrouter.log.graph</field>
+        <field name="model">openrouter.log</field>
+        <field name="arch" type="xml">
+            <graph string="Kullanım Raporu" type="bar">
+                <field name="provider_id" type="row"/>
+                <field name="cost_usd" type="measure"/>
+                <field name="total_tokens" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_openrouter_log_pivot" model="ir.ui.view">
+        <field name="name">openrouter.log.pivot</field>
+        <field name="model">openrouter.log</field>
+        <field name="arch" type="xml">
+            <pivot string="Kullanım Özeti">
+                <field name="provider_id" type="row"/>
+                <field name="config_id" type="row"/>
+                <field name="date" interval="month" type="col"/>
+                <field name="cost_usd" type="measure"/>
+                <field name="total_tokens" type="measure"/>
+                <field name="prompt_tokens" type="measure"/>
+                <field name="completion_tokens" type="measure"/>
+            </pivot>
         </field>
     </record>
 
@@ -82,11 +119,17 @@
     </record>
 
     <record id="action_openrouter_log" model="ir.actions.act_window">
-        <field name="name">OpenRouter Kullanım Kayıtları</field>
+        <field name="name">Kullanım Kayıtları</field>
         <field name="res_model">openrouter.log</field>
         <field name="view_mode">list,form</field>
-        <field name="context">{'search_default_success': 1}</field>
     </record>
 
+    <record id="action_openrouter_report" model="ir.actions.act_window">
+        <field name="name">Kullanım Raporu</field>
+        <field name="res_model">openrouter.log</field>
+        <field name="view_mode">graph,pivot,list</field>
+        <field name="domain">[('status','=','success')]</field>
+        <field name="context">{'search_default_group_provider': 1}</field>
+    </record>
 
 </odoo>
