@@ -27,50 +27,63 @@ class HrApplicant(models.Model):
                 "Tekrar çekmek için 'CV Bilgisi Alındı' işaretini kaldırın."
             )
 
-        config = self.env['cv.parser.config'].get_active_config()
-        config.check_spend_limit()
-
-        provider = config.provider_id
         cv_attachment = self._find_cv_attachment()
         if not cv_attachment:
             raise UserError("CV eki bulunamadı. Lütfen PDF veya Word formatında CV ekleyin.")
 
-        try:
-            cv_data, usage, req_payload, resp_payload = self._call_provider(
-                provider, config.llm_model, config.prompt, cv_attachment
-            )
-        except UserError:
-            raise
-        except Exception as e:
-            with self.env.cr.savepoint():
-                self.env['openrouter.log'].sudo()._create_log(
-                    res_model='hr.applicant',
-                    res_id=self.id,
-                    res_name=self.partner_name or str(self.id),
-                    llm_model=config.llm_model,
-                    prompt_tokens=0,
-                    completion_tokens=0,
-                    status='error',
-                    error_message=str(e),
-                    provider_id=provider.id,
+        configs = self.env['cv.parser.config'].get_active_configs()
+        last_error = None
+
+        for config in configs:
+            # limit kontrolü
+            if config.check_spend_limit():
+                last_error = "Harcama limiti aşıldı, konfigürasyon pasife alındı: %s" % config.name
+                continue
+
+            provider = config.provider_id
+            try:
+                cv_data, usage, req_payload, resp_payload = self._call_provider(
+                    provider, config.llm_model, config.prompt, cv_attachment
                 )
-            raise UserError("API hatası: " + str(e))
+            except Exception as e:
+                last_error = str(e)
+                with self.env.cr.savepoint():
+                    self.env['openrouter.log'].sudo()._create_log(
+                        res_model='hr.applicant',
+                        res_id=self.id,
+                        res_name=self.partner_name or str(self.id),
+                        llm_model=config.llm_model,
+                        prompt_tokens=0,
+                        completion_tokens=0,
+                        status='error',
+                        error_message=str(e),
+                        provider_id=provider.id,
+                    )
+                config.active = False
+                continue
 
-        vals = self._extract_vals(cv_data)
-        vals['x_cv_parsed'] = True
-        self.write(vals)
+            # başarılı
+            vals = self._extract_vals(cv_data)
+            vals['x_cv_parsed'] = True
+            self.write(vals)
 
-        self.env['openrouter.log'].sudo()._create_log(
-            res_model='hr.applicant',
-            res_id=self.id,
-            res_name=cv_data.get('partner_name') or self.partner_name or str(self.id),
-            llm_model=config.llm_model,
-            prompt_tokens=usage.get('prompt_tokens', 0),
-            completion_tokens=usage.get('completion_tokens', 0),
-            status='success',
-            request_payload=req_payload,
-            response_payload=resp_payload,
-            provider_id=provider.id,
+            self.env['openrouter.log'].sudo()._create_log(
+                res_model='hr.applicant',
+                res_id=self.id,
+                res_name=cv_data.get('partner_name') or self.partner_name or str(self.id),
+                llm_model=config.llm_model,
+                prompt_tokens=usage.get('prompt_tokens', 0),
+                completion_tokens=usage.get('completion_tokens', 0),
+                status='success',
+                request_payload=req_payload,
+                response_payload=resp_payload,
+                provider_id=provider.id,
+            )
+            return
+
+        raise UserError(
+            "Tüm konfigürasyonlar başarısız oldu veya pasife alındı.\n"
+            "Son hata: " + (last_error or 'Bilinmiyor')
         )
 
     def _find_cv_attachment(self):

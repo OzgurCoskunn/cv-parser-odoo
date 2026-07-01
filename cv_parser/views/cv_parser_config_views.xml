@@ -6,9 +6,10 @@
         <field name="model">cv.parser.config</field>
         <field name="arch" type="xml">
             <list string="CV Parser Konfigürasyonları">
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="provider_id"/>
-                <field name="llm_model"/>
+                <field name="provider_model_id" string="Model"/>
                 <field name="max_spend_usd" string="Maks. Harcama ($)"/>
                 <field name="limit_action"/>
                 <field name="active" widget="boolean_toggle"/>
@@ -23,12 +24,17 @@
             <form string="CV Parser Konfigürasyon">
                 <sheet>
                     <div class="oe_title">
+                        <label for="name"/>
                         <h1><field name="name"/></h1>
                     </div>
                     <group>
                         <group string="AI Ayarları">
                             <field name="provider_id"/>
-                            <field name="llm_model"/>
+                            <field name="provider_model_id"
+                                domain="[('provider_id', '=', provider_id)]"
+                                string="Model"/>
+                            <field name="llm_model" string="Model ID" readonly="1"/>
+                            <field name="sequence" string="Öncelik"/>
                             <field name="active"/>
                         </group>
                         <group string="Harcama Limiti">

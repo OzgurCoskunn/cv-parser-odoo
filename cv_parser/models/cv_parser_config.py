@@ -13,8 +13,10 @@ DEFAULT_PROMPT = """Bu CV'yi analiz et. Yalnızca aşağıdaki JSON formatında 
 class CvParserConfig(models.Model):
     _name = 'cv.parser.config'
     _description = 'CV Parser Konfigürasyon'
+    _order = 'sequence, id'
 
-    name = fields.Char(string='Konfigürasyon Adı', required=True, default='Varsayılan')
+    name = fields.Char(string='Konfigürasyon Adı', required=True)
+    sequence = fields.Integer(string='Öncelik', default=10)
     active = fields.Boolean(default=True)
     provider_id = fields.Many2one(
         'cv.parser.provider',
@@ -22,11 +24,15 @@ class CvParserConfig(models.Model):
         required=True,
         domain=[('active', '=', True)],
     )
-    llm_model = fields.Char(
+    provider_model_id = fields.Many2one(
+        'cv.parser.provider.model',
         string='Model',
-        required=True,
-        default='anthropic/claude-sonnet-4.5',
-        help='Örn: anthropic/claude-sonnet-4.5',
+        domain="[('provider_id', '=', provider_id)]",
+    )
+    llm_model = fields.Char(
+        string='Model ID',
+        compute='_compute_llm_model',
+        store=True,
     )
     prompt = fields.Text(string='Prompt', required=True, default=DEFAULT_PROMPT)
     max_spend_usd = fields.Float(
@@ -36,23 +42,29 @@ class CvParserConfig(models.Model):
         help='0 = limit yok',
     )
     limit_action = fields.Selection([
-        ('stop', 'Durdur'),
+        ('stop', 'Durdur ve Pasife Al'),
         ('warn', 'Uyar ve Devam Et'),
     ], string='Limit Aşılınca', default='stop')
 
+    @api.depends('provider_model_id')
+    def _compute_llm_model(self):
+        for rec in self:
+            rec.llm_model = rec.provider_model_id.model_id if rec.provider_model_id else ''
+
     @api.model
-    def get_active_config(self):
-        config = self.search([('active', '=', True)], limit=1, order='id asc')
-        if not config:
+    def get_active_configs(self):
+        configs = self.search([('active', '=', True)], order='sequence, id')
+        if not configs:
             raise UserError(
-                "CV Parser konfigürasyonu bulunamadı.\n"
-                "İşe Alım > Yapılandırma > CV Parser Ayarları"
+                "Aktif CV Parser konfigürasyonu bulunamadı.\n"
+                "İşe Alım > Yapılandırma > CV Parser Ayarları > Konfigürasyon"
             )
-        return config
+        return configs
 
     def check_spend_limit(self):
+        self.ensure_one()
         if not self.max_spend_usd:
-            return
+            return False
         total_spent = sum(
             self.env['openrouter.log'].search([
                 ('provider_id', '=', self.provider_id.id),
@@ -61,8 +73,6 @@ class CvParserConfig(models.Model):
         )
         if total_spent >= self.max_spend_usd:
             if self.limit_action == 'stop':
-                raise UserError(
-                    "Maksimum harcama limitine ulaşıldı ($%.2f).\n"
-                    "CV Parser Ayarları > Limit Aşılınca ayarını 'Uyar ve Devam Et' yapabilirsiniz."
-                    % self.max_spend_usd
-                )
+                self.active = False
+                return True
+        return False
